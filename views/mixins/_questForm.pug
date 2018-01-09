@@ -1,0 +1,50 @@
+mixin questForm(quest = {})
+    form.card(action=`/add/${quest._id || ''}` method="POST" enctype="multipart/form-data")
+        label(for="name") Name
+        input(type="text" name="name" value=quest.name placeholder="Enter quest name")
+        label(for="description") Description
+        textarea(name="description" placeholder="Enter a description")= quest.description
+        label(for="photo") Photo
+            input(type="file" name="photo" id="photo" accept="image/png, image/jpeg")
+            if quest.photo
+                img(src=`/uploads/${quest.photo}`, alt=quest.name width=200)
+        
+        label(for="address") Address
+        input(type="text" id="address" name="location[address]" 
+            value=(quest.location && quest.location.address))
+
+        label(for="lng") Address Lng
+        input(type="text" id="lng" name="location[coodrinates][0]" 
+                value=(quest.location && quest.location.coodrinates[0]) required)
+        input(type="text" id="lat" name="location[coodrinates][1]" 
+                value=(quest.location && quest.location.coodrinates[1]) required)
+
+        label(for="city") City
+        input(type="text" id="city" name="location[city]" 
+            value=(quest.location && quest.location.city))
+            
+
+        label(for="Citylng") Address City Lng
+        input(type="text" id="cityLng" name="location[cityCoodrinates][0]" 
+                value=(quest.location && quest.location.cityCoodrinates[0]) required)
+        input(type="text" id="cityLat" name="location[cityCoodrinates][1]" 
+                value=(quest.location && quest.location.cityCoodrinates[1]) required)
+
+        label(for="price") Price
+        input(type="text" name="price" value=quest.price placeholder="Enter price if any")
+
+        label(for="estimatedTime") Estimated Time
+        input(type="text" name="estimatedTime" value=quest.price placeholder="Enter a estimated time")
+
+        - const choices = ["Wifi", "open late", "Family friendly", "Vegatarian", "Licensed"]
+        - const tags = quest.tags || []
+        ul.tags
+            each choice in choices
+                .tag.tag__choice
+                    input(type="checkbox" 
+                            id=choice 
+                            value=choice 
+                            name="tags" 
+                            checked=(tags.includes(choice)))
+                    label(for=choice) #{choice}
+        input(type="submit" value="Save" class="button")

@@ -1,0 +1,38 @@
+extends layout
+
+block content
+    .single
+        .single__hero
+            img.single__image(src=`/uploads/${quest.photo || 'quest.png'}`)
+            h2.title.title--single
+                a(href=`/quest/${quest.slug}`) #{quest.name}
+
+    .single__details.inner
+        img.signel__map(src=h.staticMap(quest.location.coodrinates))
+        if user
+            pre=h.dump(user.bookmarked)
+            .quest__action.quest__action--heart
+                form.heart(method="POST" action=`/api/quests/${quest._id}/heart`)
+                    - const heartStrings = user.bookmarked.map(obj => obj.toString())
+                    - const heartClass = heartStrings.includes(quest._id.toString()) ? 'heart__button--hearted': ''
+                    button.heart__button(type="submit" name="heart" class=heartClass)
+                        != h.icon('heart')
+        p.single__location= quest.location.city
+        p= quest.location.address
+        p= quest.price
+        p= quest.estimatedTime        
+        p= quest.description
+
+         if user
+            pre=h.dump(user.bookmarked)
+            .quest__action.quest__action--heart
+                form.complete(method="POST" action=`/api/quests/${quest._id}/completed`)
+                    button.heart__button(type="submit" name="completed")
+                        != h.icon('heart')
+
+        if quest.tags
+            ul.tags
+                each tag in quest.tags
+                    li.tag
+                        a.tag__link(href=`/tags/${tag}`)
+                            span.tag__text ##{tag}
