@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Quest = mongoose.model('Quest');
 const User = mongoose.model('User');
+const CompletedQuest = mongoose.model('CompletedQuest');
 const multer = require('multer');
 const jimp = require('jimp');
 const uuid = require('uuid');
@@ -102,7 +103,7 @@ exports.updateQuest = async (req, res) => {
     req.flash('success', 
         `Successfully updated <strong>${quest.name} 
         </strong> <a href="/quest/${quest.slug}">View quest</a>`);
-    res.redirect(`/quests/${quest._id}/edit`)
+    res.redirect(`/quests/${quest._id}/edit`);
 };
 
 exports.getQuestBySlug = async (req, res, next) => {
@@ -154,16 +155,17 @@ exports.heartQuest = async(req, res) => {
 };
 
 exports.completeQuest = async(req, res) => {
-    const complete = req.user.completed.map(obj => obj.toString());
+    req.body.user = req.user._id;
+    
+    req.body.quest = await Quest.findOne({_id: req.params.id});
 
-    const operator = complete.includes(req.params.id) ? '$pull' : '$addToSet';
-    const user = await User
-        .findByIdAndUpdate(
-            req.user._id, 
-            { [operator]: {completed: req.params.id} },
-            { new: true }
-    );
-    res.json(user);
+    req.flash('success', `Quest Completed <strong>${req.body.quest.name}</strong>`);
+
+    const completedQuest = await (new CompletedQuest(req.body)).save();
+
+
+    
+    res.redirect('back');
 }
 
 exports.getHearts = async(req, res) => {

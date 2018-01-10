@@ -30,9 +30,13 @@ router.post('/add/:id',
   catchErrors(questController.resize), 
   catchErrors(questController.updateQuest));
 
-
 router.get('/quest/:slug', 
   catchErrors(questController.getQuestBySlug));
+
+router.post('/completedQuest/:id',
+  questController.upload,
+  catchErrors(questController.resize), 
+  catchErrors(questController.completeQuest));
 
 router.get('/tags', 
   catchErrors(questController.getQuestByTag));
