@@ -32,7 +32,7 @@ const userSchema = new Schema({
     completed: [
         {
             type: mongoose.Schema.ObjectId,
-            ref: 'Quest'
+            ref: 'CompletedQuest'
         }
     ],
     join: {

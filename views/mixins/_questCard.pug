@@ -13,7 +13,7 @@ mixin questCard(quest = {})
                     .quest__action.quest__action--edit
                         a(href=`/quests/${quest._id}/edit`)
                             != h.icon('pencil')
-            img(src=`/uploads/${quest.photo || 'quest.png'}`)
+            img(src=`/uploads/${quest.photo || 'store.png'}`)
             h2.title
                 a(href=`/quest/${quest.slug}`) #{quest.name}
         .quest__details

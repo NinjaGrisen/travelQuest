@@ -155,15 +155,21 @@ exports.heartQuest = async(req, res) => {
 };
 
 exports.completeQuest = async(req, res) => {
+    const complet = req.user.completed.map(obj => obj.toString());
+
     req.body.user = req.user._id;
-    
     req.body.quest = await Quest.findOne({_id: req.params.id});
 
-    req.flash('success', `Quest Completed <strong>${req.body.quest.name}</strong>`);
+    const user = await User
+        .findByIdAndUpdate(
+            req.user._id, 
+            { "$addToSet": {completed: req.params.id} },
+            { new: true }
+    );
 
     const completedQuest = await (new CompletedQuest(req.body)).save();
 
-
+    req.flash('success', `Quest Completed <strong>${req.body.quest.name}</strong>`);    
     
     res.redirect('back');
 }
@@ -173,6 +179,13 @@ exports.getHearts = async(req, res) => {
     const quests = await Quest.find({
         _id: { $in: req.user.bookmarked }
     });
-
+    
     res.render('quests', {title: 'Hearted quests', quests} );
 };
+
+exports.getCompletedQuests = async(req, res) => {
+    const completedQuests = await CompletedQuest.find({
+        quest: {$in: req.user.completed}
+    });
+    res.render('completed', {title: 'Completed Quests', completedQuests})
+}

@@ -78,6 +78,10 @@ router.get('/hearts',
   authController.isLoggedIn,
   catchErrors(questController.getHearts));
 
+router.get('/completed', 
+  authController.isLoggedIn,
+  catchErrors(questController.getCompletedQuests));
+
 //Api end points
 router.get('/api/search', 
 catchErrors(questController.searchQuests));

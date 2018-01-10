@@ -1,0 +1,9 @@
+extends layout
+
+block content
+    each completed in completedQuests
+        .completed__wrapper
+            if completed.photo != undefined  
+                img(src=`/uploads/${completed.photo}`)
+            p=completed.text
+        
