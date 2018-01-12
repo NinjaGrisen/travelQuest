@@ -1,22 +1,19 @@
 mixin questCard(quest = {})
-    .quest
-        .quest__hero
-            .quest__actions
-                if user
-                    .quest__action.quest__action--heart
-                        form.heart(method="POST" action=`/api/quests/${quest._id}/heart`)
-                            - const heartStrings = user.bookmarked.map(obj => obj.toString())
-                            - const heartClass = heartStrings.includes(quest._id.toString()) ? 'heart__button--hearted': ''
-                            button.heart__button(type="submit" name="heart" class=heartClass)
-                                != h.icon('heart')
-                if user && quest.author.equals(user._id) || user && user.admin
-                    .quest__action.quest__action--edit
-                        a(href=`/quests/${quest._id}/edit`)
-                            != h.icon('pencil')
-            img(src=`/uploads/${quest.photo || 'store.png'}`)
-            h2.title
-                a(href=`/quest/${quest.slug}`) #{quest.name}
-        .quest__details
-            p= quest.description.split(' ').slice(0,25).join(' ')
+    a(href=`/quest/${quest.slug}`)
+        .quest
+            .quest__hero(style=`background-image: url(/uploads/${quest.photo || 'store.png'})`)
+                .quest__actions
+                    if user
+                        .quest__action.quest__action--heart
+                            form.heart(method="POST" action=`/api/quests/${quest._id}/heart`)
+                                - const heartStrings = user.bookmarked.map(obj => obj.toString())
+                                - const heartClass = heartStrings.includes(quest._id.toString()) ? 'heart__button--hearted': ''
+                                button.heart__button(type="submit" name="heart" class=heartClass) 
+                                    span.heart__button--hearted--inactive ☆
+                                    span.heart__button--hearted--active ★
+                
+            .quest__details
+                h2.title #{quest.name}
+                p= quest.description.split(' ').slice(0,25).join(' ')
 
             

@@ -4,7 +4,7 @@ mixin questForm(quest = {})
         input(type="text" name="name" value=quest.name placeholder="Enter quest name")
         label(for="description") Description
         textarea(name="description" placeholder="Enter a description")= quest.description
-        label(for="photo") Photo
+        label.photo-label(for="photo") Photo
             input(type="file" name="photo" id="photo" accept="image/png, image/jpeg")
             if quest.photo
                 img(src=`/uploads/${quest.photo}`, alt=quest.name width=200)
@@ -13,10 +13,10 @@ mixin questForm(quest = {})
         input(type="text" id="address" name="location[address]" 
             value=(quest.location && quest.location.address))
 
-        label(for="lng") Address Lng
-        input(type="text" id="lng" name="location[coodrinates][0]" 
+        label.hiddenForm(for="lng") Address Lng
+        input.hiddenForm(type="text" id="lng" name="location[coodrinates][0]" 
                 value=(quest.location && quest.location.coodrinates[0]) required)
-        input(type="text" id="lat" name="location[coodrinates][1]" 
+        input.hiddenForm(type="text" id="lat" name="location[coodrinates][1]" 
                 value=(quest.location && quest.location.coodrinates[1]) required)
 
         label(for="city") City
@@ -24,10 +24,10 @@ mixin questForm(quest = {})
             value=(quest.location && quest.location.city))
             
 
-        label(for="Citylng") Address City Lng
-        input(type="text" id="cityLng" name="location[cityCoodrinates][0]" 
+        label.hiddenForm(for="Citylng") Address City Lng
+        input.hiddenForm(type="text" id="cityLng" name="location[cityCoodrinates][0]" 
                 value=(quest.location && quest.location.cityCoodrinates[0]) required)
-        input(type="text" id="cityLat" name="location[cityCoodrinates][1]" 
+        input.hiddenForm(type="text" id="cityLat" name="location[cityCoodrinates][1]" 
                 value=(quest.location && quest.location.cityCoodrinates[1]) required)
 
         label(for="price") Price

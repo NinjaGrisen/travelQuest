@@ -27,6 +27,15 @@ exports.isLoggedIn = (req, res, next) => {
     res.redirect('/login');
 }
 
+exports.isCreativeOrAdmin = (req, res, next) => {
+    if(req.user.admin > 2) {
+        next();
+        return;
+    }
+    req.flash('info', 'You don\'t have premissions to add new quests');
+    res.redirect('back');
+}
+
 exports.forgot = async (req, res) => {
     const user = await User.findOne({ email: req.body.email });
     if(!user) {

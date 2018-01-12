@@ -1,13 +1,10 @@
 mixin completedQuestForm(quest)
+    p Add a image and text, to reminder your completed Quest if you like
+    span.completed-quest__close X
     form(action=`/completedQuest/${quest._id}` method="POST" enctype="multipart/form-data")
-        textarea(name="text" placeholder="Reminder")
-
-        .reviewer__meta
-            .reviewer__stars
-            input.button(type="submit" value="Submit review")
-
-            label(for="photo") Photo
-            input(type="file" name="photo" id="photo" accept="image/png, image/jpeg")
-
+        textarea(name="text" placeholder="Reminder")    
+        label(for="photo") Photo
+        input(type="file" name="photo" id="photo" accept="image/png, image/jpeg")
+        input.button(type="submit" value="Complete Quest")
         
         

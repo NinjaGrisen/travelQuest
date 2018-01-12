@@ -1,8 +1,27 @@
 input, textarea {
-  width:100%;
-  padding:10px;
-  border: 1px solid $grey;
+    width: 100%;
+    max-width: 900px;
+    padding: 10px;
+    color: #dddddd;
+    background: #2f1a50;
+    border: none;
+    border-left: 1px solid rgba(lighten($color-main, 20), .5);
+    border-top: 1px solid rgba(lighten($color-main, 20), .5);
+    box-shadow: 5px 5px 32px rgba($color-black, .2);
+    outline: none;
+
+    &.button {
+      background: $color-cta;
+      max-width: 300px;
+      color: $color-main;
+      font-weight: bold;
+
+    }
+
   &.input {
+
+    
+
     &--error {
       border-color: red;
     }
@@ -29,4 +48,30 @@ label {
     margin-bottom: 2rem;
     border-bottom: 1px solid $grey;
   }
+}
+
+.hiddenForm {
+  display: inherit;
+  height: 0;
+  padding: 0;
+  opacity: 0;
+}
+
+.photo-label {
+  input {
+    display: block;
+  }
+}
+
+::-webkit-input-placeholder {
+  color: rgba($color-white, .5);
+}
+::-moz-placeholder {
+  color: rgba($color-white, .5);
+}
+:-ms-input-placeholder {
+  color: rgba($color-white, .5);
+}
+:-moz-placeholder {
+  color: rgba($color-white, .5);
 }

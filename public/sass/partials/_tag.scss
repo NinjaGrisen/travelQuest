@@ -3,13 +3,16 @@
   padding: 0;
   list-style: none;
   display: flex;
-  margin-bottom: 2rem;
+  margin: 2rem 0;
   flex-wrap: wrap;
 }
 
 .tag {
+  position: relative;
   display: block;
   margin-right: 1rem;
+  z-index: 2;
+  
   &__choice {
     display: flex;
     justify-content: center;
@@ -20,36 +23,81 @@
       margin-right: -1rem;
       position: relative;
       z-index: 2;
+      opacity: 0;
       & + label {
-        background: $grey;
-        padding: 1rem 1rem 1rem 4rem;
+        padding: 1rem 1rem 1rem 2rem;
+        font-weight: 800;
+        cursor: pointer;
       }
       &:checked + label {
-        background: $yellow;
+        position: relative;
+        text-shadow: 4px 3px 8px $color-black;
+
+        &:after {
+          content: '#';
+          position: absolute;
+          left: 1px;
+          top: -20px;
+          width: 30px;
+          height: 30px;
+          font-size: 5rem;
+          color: rgba(221, 221, 221, 0.3);
+          font-weight: 800;
+          text-shadow: none;
+        }
       }
     }
   }
   &__link {
-    background:$yellow;
-    color:$black;
+    //background:$color-main;
+    //color:$color-white;
     display: flex;
     padding-left: 10px;
-    clip-path: polygon(10px 0%, 100% 1%, 100% 100%, 10px 100%, 0% 50%);
+    position: relative;
+    font-weight: 800;
+    color: $color-white;
+
+    &:hover {
+      &:after {
+        content: '#';
+        position: absolute;
+        left: 1px;
+        top: -20px;
+        width: 30px;
+        height: 30px;
+        font-size: 5rem;
+        color: rgba($color-white, .3);
+        font-weight: 800;
+        text-shadow: none;
+      }
+    }
+    
     &--active {
-      background: lighten($purple, 40%);
-      .tag__text {
-        color: white;
+      text-shadow: 4px 3px 8px $color-black;
+      
+      &:after {
+        content: '#';
+        position: absolute;
+        left: 1px;
+        top: -20px;
+        width: 30px;
+        height: 30px;
+        font-size: 5rem;
+        color: rgba($color-white, .3);
+        font-weight: 800;
+        text-shadow: none;
       }
     }
   }
   &__text {
     padding: 1rem 1rem;
     display: block;
+    position: relative;
+    z-index: 99;
   }
   &__count {
-    padding: 1rem 1rem;
-    background: white;
-    border-left: 3px solid rgba(0,0,0,0.1);
+    padding: 1rem 0rem;
+    //background: white;
     margin-right: -1px; /* ugh */
     background-clip: padding-box;
   }

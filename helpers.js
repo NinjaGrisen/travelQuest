@@ -22,8 +22,9 @@ exports.siteName = `Now That's Delicious!`;
 
 exports.menu = [
   { slug: '/quests', title: 'Quests', icon: 'store', },
-  { slug: '/tags', title: 'Tags', icon: 'tag', },
-  { slug: '/top', title: 'Top', icon: 'top', },
+  { slug: '/tags', title: 'Categories', icon: 'tag', },
+  //{ slug: '/top', title: 'Top', icon: 'top', },
   { slug: '/add', title: 'Add', icon: 'add', },
-  { slug: '/map', title: 'Map', icon: 'map', },
+  //{ slug: '/map', title: 'Map', icon: 'map', },
+  { slug: '/search', title: 'Search', icon: 'map' },
 ];

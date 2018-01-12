@@ -20,7 +20,7 @@ const userSchema = new Schema({
         require: 'Please supply a name',
         trim: true
     },
-    admin: Boolean,
+    admin: Number,
     resetPasswordToken: String,
     resetPasswordExpires: Date,
     bookmarked: [

@@ -4,28 +4,51 @@
     border: 0;
     outline: 0;
     position: relative;
+
+    .heart__button--hearted--inactive {
+      display: block;
+    }
+
+    .heart__button--hearted--active {
+      display: none;
+    }
+
     &:after {
       content: '★';
       font-size: 20px;
       position: absolute;
       opacity: 0;
       top: 0;
-      color: red;
+      color: $color-cta;
     }
     svg {
       width: 25px;
       fill: gold;
     }
     &--hearted {
+      .heart__button--hearted--inactive {
+        display: none;
+      }
+      
+
+      .heart__button--hearted--active {
+        display: block;
+      }
       svg {
-        fill: red;
+        fill: $color-cta;
       }
     }
+    
     &--float {
       &:after {
         animation: fly 2.5s 1 ease-out;
       }
     }
+  }
+  &__text {
+    font-size: 2rem;
+    color: $color-white;
+    margin-left: 5px;
   }
 }
 

@@ -13,7 +13,7 @@ html {
 
 body {
   font-size:1.5rem;
-  color:$black;
+  color: $color-white;
 }
 
 h1, h2, h3, h4, h5, h6, {
@@ -21,11 +21,12 @@ h1, h2, h3, h4, h5, h6, {
   font-family: 'Panama';
   font-weight: 600;
   letter-spacing:-1px;
+  color: $color-white;
 }
 
 a {
   text-decoration: none;
-  color:$black;
+  color: $color-cta;
 }
 
 p a {
@@ -43,30 +44,16 @@ p {
   z-index: 2;
   margin:0;
   font-size: 40px;
-  z-index: 2;
   line-height:1.1;
-  transform: skew(0, -3deg);
   &--long {
     font-size: 30px;
   }
-  &:before {
-    content: '';
-    width:50px;
-    left:0;
-    top:0;
-    height:100%;
-    // top:10%;
-    display: block;
-    position: absolute;
-    z-index: -1;
-    transform:skew(-5deg)
-  }
+
   line-height:1.1;
   // inline link inside
   a {
     border-bottom: 0;
-    $yellowa: rgba($yellow,0.8);
-    background-image: linear-gradient(to right, $yellowa 100%, $yellowa 50%);
+    
   }
 }
 

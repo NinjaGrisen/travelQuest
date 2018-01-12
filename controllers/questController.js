@@ -47,6 +47,21 @@ exports.resize = async(req, res, next) => {
     next();
 };
 
+exports.resizeLarge = async(req, res, next) => {
+    if(!req.file) {
+        next();
+        return;
+    } 
+    const extension = req.file.mimetype.split('/')[1];
+    req.body.photoBig = `${uuid.v4()}.${extension}`;
+
+    const photo = await jimp.read(req.file.buffer);
+    await photo.cover(1300, 700);
+    await photo.write(`./public/uploads/${req.body.photoBig}`);
+
+    next();
+};
+
 exports.createQuest = async (req, res) => {
     req.body.author = req.user._id;
 
@@ -80,7 +95,7 @@ exports.getQuests = async (req, res) => {
     res.render('quests', {title: 'Quest', quests, page, pages, count});
 };
 const confirmOwnerOrAdmin = (quest, user) => {
-    if(!user.admin) {    
+    if(!user.admin === 4) {
         if(!quest.author.equals(user._id)) {
             throw Error('You must have created this page to edit it!');
         }
@@ -188,4 +203,10 @@ exports.getCompletedQuests = async(req, res) => {
         quest: {$in: req.user.completed}
     });
     res.render('completed', {title: 'Completed Quests', completedQuests})
+}
+
+exports.searchCity = async(req, res) => {
+    const cities = await Quest.distinct('location.city');
+  
+    res.render('search', {title: 'Search after a city', cities});
 }

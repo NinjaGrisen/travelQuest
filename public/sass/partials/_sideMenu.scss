@@ -1,0 +1,40 @@
+.menu-sidebar {
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    
+    &__link {
+        width: 100%;
+        max-width: 190px;
+        padding: 24px 0;
+        margin: 10px auto;
+        background: lighten($color-main, 5);
+        color: $color-white;
+        
+        text-align: center;
+        font-weight: 600;
+        box-shadow: 8px 8px 15px rgba(0,0,0,.4);
+        transition: all .5s ease;
+        border-left: 1px solid lighten($color-main, 20);
+        border-top: 1px solid lighten($color-main, 20);
+
+        &:hover {
+            background: lighten($color-main, 10);
+            transition: all .5s ease;
+        }
+        &--active {
+            background: $color-cta;
+            color: $color-main;
+            border-left: 1px solid lighten($color-cta, 20);
+            border-top: 1px solid lighten($color-cta, 20);
+            box-shadow: 2px 2px 20px rgba(0,0,0,.3);
+            &:hover {
+                background: lighten($color-cta, 10);
+                transition: all .5s ease;
+            }
+        }
+    }
+}

@@ -18,11 +18,17 @@ router.get('/quests/:id/edit',
   catchErrors(questController.editQuest));
 router.get('/add',
   authController.isLoggedIn,
+  authController.isCreativeOrAdmin,
   questController.addQuest); 
 router.post('/add',
   questController.upload, 
-  catchErrors(questController.resize), 
+  catchErrors(questController.resize),
+  catchErrors(questController.resizeLarge), 
   catchErrors(questController.createQuest)
+);
+
+router.get('/search',
+  catchErrors(questController.searchCity)
 );
  
 router.post('/add/:id',

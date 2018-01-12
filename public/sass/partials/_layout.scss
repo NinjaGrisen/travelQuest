@@ -3,21 +3,34 @@ html {
 }
 
 body {
-  background: $purple;
-  background:#efefef;
-  &:before {
-    content: '';
-    display: block;
-    background: $grad;
-    height: 10px;
-    width: 100%;
-  }
+  background:$color-main;
+  // background-image: radial-gradient(farthest-corner at 40px 40px,
+  //     lighten($color-grey, 10) 0%, darken($color-grey, 10) 100%);
+  min-height: 100vh;
+  margin-bottom: 30px;
 }
 
 .inner {
-  max-width:900px;
+  width: 66vw;
   margin: 0 auto;
   @media all and (max-width: 900px) {
     padding: 2rem;
   }
 }
+
+
+
+.top {
+  height: 70px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.content {
+  margin-left: 33vw;
+  width: 66vw;
+}
+

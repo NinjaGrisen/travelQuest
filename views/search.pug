@@ -1,0 +1,7 @@
+extends layout
+
+block content
+    input#searchForm(type="text")
+    each city in cities
+        div.citySearch
+            span= city
