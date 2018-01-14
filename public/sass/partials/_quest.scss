@@ -77,17 +77,12 @@
       width: 100%;
       max-width: 190px;
       padding: 17px 68px;
-      margin: 0 30px;
-      background: #45ebad;
+      margin: 0 30px 30px;
       text-align: center;
-      color: #2a164b;
       font-weight: 600;
-      box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.4);
       border: none;
-      border-left: 1px solid #a1f5d6;
-      border-top: 1px solid #a1f5d6;
-      transition: all .5s ease;
-      cursor: pointer;
+
+      @include button-style($color-main, $color-cta);
     }
   }
 }

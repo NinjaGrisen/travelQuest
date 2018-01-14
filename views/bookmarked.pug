@@ -6,9 +6,9 @@ include mixins/_pagination
 
 block content
     .inner
-        h2 #{title}
+        h2 #{title}----
         .quests
             each quest in quests
                 +questCard(quest)
 
-        +pagination(page, pages, count, '/quests/page')
+        +pagination(page, pages, count, '/bookmarked')

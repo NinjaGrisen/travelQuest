@@ -92,7 +92,7 @@ exports.getQuests = async (req, res) => {
         return;
     }
 
-    res.render('quests', {title: 'Quest', quests, page, pages, count});
+    res.render('quests', {title: 'Quests', quests, page, pages, count});
 };
 const confirmOwnerOrAdmin = (quest, user) => {
     if(!user.admin === 4) {
@@ -189,24 +189,56 @@ exports.completeQuest = async(req, res) => {
     res.redirect('back');
 }
 
-exports.getHearts = async(req, res) => {
+exports.getBookmarks = async(req, res) => {
+    const page = req.params.page || 1;
+    const limit = 4;
+    const skip = (page * limit) - limit;
 
-    const quests = await Quest.find({
-        _id: { $in: req.user.bookmarked }
-    });
+    const questsPromise = Quest
+        .find({
+            _id: { $in: req.user.bookmarked }
+        })
+        .skip(skip)
+        .limit(limit)
+        .sort({ created: 'desc'});
+
+    const countPromise = Quest
+        .find({
+            _id: { $in: req.user.bookmarked }
+        }).count();
+
+    const [quests, count] = await Promise.all([questsPromise, countPromise]);
+    const pages = Math.ceil(count / limit);
+
+    if(!quests.length && skip) {
+        req.flash('info', `Hey you asked for page ${page}. That does not exist so I put you on ${pages}`)
+        res.redirect(`/bookmarked/${pages}`);
+        return;
+    }
     
-    res.render('quests', {title: 'Hearted quests', quests} );
+    res.render('bookmarked', {title: 'Hearted quests', quests, page, pages, count} );
 };
 
 exports.getCompletedQuests = async(req, res) => {
     const completedQuests = await CompletedQuest.find({
         quest: {$in: req.user.completed}
     });
+
     res.render('completed', {title: 'Completed Quests', completedQuests})
 }
 
 exports.searchCity = async(req, res) => {
+    //const cities = await Quest.find();
     const cities = await Quest.distinct('location.city');
   
     res.render('search', {title: 'Search after a city', cities});
 }
+
+exports.citySearch = async (req, res) => {
+    const city = await Quest.find({
+        'location.city': req.params.city
+    });
+    res.json(city);
+    //const city = await Quest.
+}
+

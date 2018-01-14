@@ -8,8 +8,8 @@ block content
             input(type="text" name="name" value=user.name)
             label(for="email") Email
             input(type="text" name="email" value=user.email)
-            input.button(type="submit" value="update my account")
-
-    .inner 
-        a.nav__link(href="/logout")
-            span Logout
+            a.nav__link.logout-button(href="/logout")
+                span Logout
+            input.button.update-account(type="submit" value="update my account")
+            
+        

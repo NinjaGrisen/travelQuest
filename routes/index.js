@@ -30,7 +30,9 @@ router.post('/add',
 router.get('/search',
   catchErrors(questController.searchCity)
 );
- 
+router.get('/city/:city', 
+  catchErrors(questController.citySearch));
+
 router.post('/add/:id',
   questController.upload, 
   catchErrors(questController.resize), 
@@ -80,9 +82,13 @@ router.post('/account/reset/:token',
   authController.confirmedPassords,
   catchErrors(authController.update));
 
-router.get('/hearts', 
+router.get('/bookmarked', 
   authController.isLoggedIn,
-  catchErrors(questController.getHearts));
+  catchErrors(questController.getBookmarks));
+
+router.get('/bookmarked/:page',
+  authController.isLoggedIn,
+  catchErrors(questController.getBookmarks));
 
 router.get('/completed', 
   authController.isLoggedIn,

@@ -1,9 +1,10 @@
+@import 'mixins/buttons';
 @import 'partials/normalize';
 @import 'partials/variables';
 @import 'partials/layout';
 @import 'partials/typography';
 @import 'partials/forms';
-// @import 'partials/search';
+@import 'partials/search';
 @import 'partials/flashes';
 @import 'partials/sideMenu';
 @import 'partials/menuTop';
@@ -11,11 +12,12 @@
 // @import 'partials/table';
 @import 'partials/quest';
 @import 'partials/completedQuest';
+@import 'partials/completedQuestList';
 @import 'partials/tag';
 @import 'partials/single';
 @import 'partials/heart';
 // @import 'partials/reviews';
 // @import 'partials/reviewer';
-// @import 'partials/pagination';
+@import 'partials/pagination';
 // @import 'partials/map';
 // @import 'partials/helpers';

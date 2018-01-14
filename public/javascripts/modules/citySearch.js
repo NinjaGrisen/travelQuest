@@ -9,6 +9,8 @@ function citySearch(searchForm, cities) {
         let query = searchForm.value;
         if(query.length > 2) {
             showMatchingCitites(query);
+        } else {
+            resetCities(query);
         }
     }
 
@@ -16,11 +18,17 @@ function citySearch(searchForm, cities) {
         cities.forEach((el) => {
             let cityName = el.textContent.toLowerCase();
             if(cityName.includes(query.toLowerCase())) {
-                el.classList.add('citySearch__visible');
-            } else if(el.classList.contains('citySearch__visible')){
-                el.classList.remove('citySearch__visible')
+                el.classList.add('city-search__visible');
+            } else if(el.classList.contains('city-search__visible')){
+                el.classList.remove('city-search__visible')
             }
-        })
+        });
+    }
+
+    function resetCities(query) {
+        cities.forEach((el) => {
+            el.classList.remove('city-search__visible');
+        });
     }
 }
 

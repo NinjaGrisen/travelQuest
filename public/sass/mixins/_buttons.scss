@@ -1,0 +1,15 @@
+@mixin button-style($color, $background) {
+    background: $background;
+    color: $color;
+    border-left: 1px solid lighten($background, 20);
+    border-top: 1px solid lighten($background, 20);
+    box-shadow: 8px 8px 15px rgba(0,0,0,.4);
+    transition: all .5s ease;
+    cursor: pointer;
+
+    &:hover {
+        background: lighten($background, 10);
+        transition: all .5s ease;
+        box-shadow: 18px 18px 32px rgba(0,0,0,.2);
+    }
+  }

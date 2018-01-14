@@ -1,0 +1,29 @@
+.completed-list {
+    &__wrapper {
+        width: 900px;
+        padding: 24px;
+        background: lighten($color-main, 10);        
+    }
+    &__user-info {
+        display: flex;
+    }
+
+    &__background {
+        width: 50%;
+        height: 235px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;    
+    }
+
+    &__heading {
+        position: relative;
+        margin: 0 0 -33px 0;
+        text-shadow: 5px 5px 12px rgba($color-black, .7);        
+    }
+
+    &__text {
+        padding: 0 24px;
+    }
+}
+

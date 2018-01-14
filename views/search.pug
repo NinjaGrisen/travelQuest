@@ -1,7 +1,8 @@
 extends layout
 
 block content
-    input#searchForm(type="text")
+    input#searchForm(type="text" placeholder="Search for a city")
     each city in cities
-        div.citySearch
-            span= city
+        div.city-search
+            a(href=`/city/${city}`)
+                span= city

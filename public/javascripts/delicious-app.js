@@ -16,7 +16,7 @@ if($('#complete-quest')) {
     completedQuest($('#complete-quest'), $('#completed-quest-form'), $('.completed-quest__close'));
 }
 if($('#searchForm')) {
-    citySearch($('#searchForm'), $$('.citySearch'));
+    citySearch($('#searchForm'), $$('.city-search'));
 
 }
 

@@ -27,6 +27,11 @@ function autoPopulate(next) {
     next();
 }
 
+function autoPopulate(next) {
+    this.populate('quest'),
+    next();
+}
+
 completedQuestSchema.pre('find', autoPopulate);
 completedQuestSchema.pre('findOne', autoPopulate);
 
