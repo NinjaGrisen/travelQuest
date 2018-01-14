@@ -130,6 +130,7 @@ exports.getQuestBySlug = async (req, res, next) => {
 };
 
 exports.getQuestByTag = async (req, res) => {
+
     const tag = req.params.tag;
     const tagQuery = tag || { $exists: true };
     const tagsPromise = Quest.getTagsList();
@@ -137,6 +138,7 @@ exports.getQuestByTag = async (req, res) => {
     const [tags, quests] = await Promise.all([tagsPromise, questPromise]);
 
     res.render('tag', {tags, title: 'Tags', tag, quests});
+
 };
 
 exports.searchQuests = async (req, res) => {
@@ -235,10 +237,48 @@ exports.searchCity = async(req, res) => {
 }
 
 exports.citySearch = async (req, res) => {
-    const city = await Quest.find({
-        'location.city': req.params.city
-    });
-    res.json(city);
-    //const city = await Quest.
+    const param = req.params.tag;
+    const tagQuery = param || { $exists: true };
+    const tagsPromise = Quest.getTagsList();
+    const existingTagsPromise = Quest
+        .find({'location.city': req.params.city})
+        .distinct('tags');
+    
+    const page = req.params.page || 1;
+    const limit = 4;
+    const skip = (page * limit) - limit;
+        
+  
+        const questsPromise = Quest
+            .find({ $and: 
+                [ 
+                    {'location.city': req.params.city},
+                    { tags:  tagQuery}
+                ]
+            })
+            .find()
+            .skip(skip)
+            .limit(limit)
+            .sort({ created: 'desc'});
+    
+    const countPromise = Quest
+    .find({ $and: 
+        [ 
+            {'location.city': req.params.city},
+            { tags:  tagQuery}
+        ]
+    }).count();
+
+    const [existingTags, tags, quests, count] = await Promise.all([existingTagsPromise, tagsPromise, questsPromise, countPromise]);
+    const pages = Math.ceil(count / limit);
+
+    if(!quests.length && skip) {
+        req.flash('info', `Hey you asked for page ${page}. That does not exist so I put you on ${pages}`)
+        res.redirect(`/quests/page/${pages}`);
+        return;
+    }
+
+    res.render('searched', {title: req.params.city, existingTags, tags, quests, page, pages, count, param});
+
 }
 

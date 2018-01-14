@@ -5,5 +5,6 @@ block content
         .completed-list__wrapper
             h2.completed-list__heading= completed.quest.name
             .completed-list__user-info
-                .completed-list__background(style=`background-image: url(/uploads/${completed.photo || ''})`)
+                if completed.photo != undefined
+                    .completed-list__background(style=`background-image: url(/uploads/${completed.photo || ''})`)
                 p.completed-list__text=completed.text

@@ -5,6 +5,19 @@
     position: fixed;
     top: 50%;
     transform: translateY(-50%);
+    transition: all .25s ease;
+
+    @media screen and(max-width: 1300px) {
+        width: 230px;
+    }
+
+    @media screen and(max-width: 950px) {
+        left: -230px;
+    }
+
+    &--show {
+        left: 0;
+    }
     
     &__link {
         width: 100%;
@@ -83,11 +96,65 @@
             text-align: center;
             font-size: 1.5rem;
             font-weight: 700;
-            @include button-style($color-main, $color-cta);
+            @include button-style($color-main, $color-white);
         }
     }
 
     &__user {
         font-size: 3rem;
     }
+}
+
+.mobile-menu {
+    position: fixed;
+    display: inline-block;
+    bottom: 26px;
+    left: 26px;
+    height: 60px;
+    width: 60px;
+    background: $color-cta;
+    color: $color-main;
+    border-radius: 50%;
+    box-shadow: 5px 5px 15px black;
+    cursor: pointer;
+    z-index: 99999;
+
+    @media screen and(min-width: 900px){
+        display: none;
+    }
+
+    &__icon {
+        position: relative;
+        display: block;
+        width: 30px;
+        height: 4px;
+        margin: 50% auto 0 auto;
+        background: $color-main;
+        transform: translateY(-50%);
+
+        &:after,
+        &:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: -8px;
+            width: 100%;
+            height: 4px;
+            background: $color-main;
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 100%;
+            height: 4px;
+            background: $color-main;
+        }
+    }
+}
+
+.body--show {
+    background: lighten($color-main, 10);
 }

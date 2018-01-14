@@ -14,8 +14,10 @@ body {
 .inner {
   width: 66vw;
   margin: 0 auto;
-  @media all and (max-width: 900px) {
-    padding: 2rem;
+
+
+  @media screen and(max-width: 1300px) {
+    width: auto;
   }
 }
 
@@ -31,5 +33,49 @@ body {
 .content {
   margin-left: 33vw;
   width: 66vw;
+  background: $color-main;
+  transition: all .25s ease;    
+  
+  &__background-map {
+    &.single__hero {
+      position: absolute;
+      left: -40px;
+      width: calc(66vw + 45px);
+      overflow: hidden;
+      
+
+      @media screen and (max-width: 1300px) {
+        left: 0;
+        margin-left: 270px;
+        width: calc(100vw - 245px);
+      }
+
+      @media screen and (max-width: 950px) {
+        width: 105vw;
+        margin-left: 0;
+      }
+    }
+  }
+  
+  @media screen and(max-width: 1300px) {
+    margin-left: 270px;
+    width: calc(100vw - 270px);
+  }
+
+  @media screen and(max-width: 950px) {
+    margin-left: auto;
+    width: 100vw;
+    padding-bottom: 70px;
+    overflow-x: hidden;
+  }
+
+  &--show {
+    height: 80vh;
+    overflow: hidden;
+    margin-top: 5vh;
+    width: calc(100vw - 270px);
+    box-shadow: 12px 12px 20px rgba($color-black, .6);
+    filter: blur(6px);
+  }
 }
 

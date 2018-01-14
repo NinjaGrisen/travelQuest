@@ -9,12 +9,10 @@ function completedQuest(button, form, close) {
 }
 
 function displayForm(form) {
-    console.log(form.classList);
     form.classList.toggle("completed-quest--hidden");
 }
 
 function closeForm(form) {
-    console.log(form.classList);
     form.classList.toggle("completed-quest--hidden");
 }
 

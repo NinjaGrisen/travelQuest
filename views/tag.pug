@@ -1,17 +1,17 @@
 extends layout
 
 include mixins/_questCard
+include mixins/_pagination
 
 block content
     .inner
         h2 #{tag || title}
-        
     ul.tags
-        each t in tags
+        each tag in tags
             li.tag
-                a.tag__link(href=`/tags/${t._id}` class=(t._id === tag ? 'tag__link--active': ''))
-                    span.tag__text= t._id
-                    span.tag__count= t.count
+                a.tag__link(href=`/tags/${tag._id}` class=(tag._id === tag ? 'tag__link--active': ''))
+                    span.tag__text= tag._id
+                    span.tag__count= tag.count
     
     .quests
         each quest in quests

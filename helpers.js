@@ -12,7 +12,7 @@ exports.moment = require('moment');
 exports.dump = (obj) => JSON.stringify(obj, null, 2);
 
 // Making a static map is really long - this is a handy helper function to make one
-exports.staticMap = ([lng, lat]) => `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=14&size=800x150&key=${process.env.MAP_KEY}&markers=${lat},${lng}&scale=2`;
+exports.staticMap = ([lng, lat]) => `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=14&size=1550x450&key=${process.env.MAP_KEY}&markers=${lat},${lng}&scale=2`;
 
 // inserting an SVG
 exports.icon = (name) => fs.readFileSync(`./public/images/icons/${name}.svg`);
@@ -21,10 +21,11 @@ exports.icon = (name) => fs.readFileSync(`./public/images/icons/${name}.svg`);
 exports.siteName = `Now That's Delicious!`;
 
 exports.menu = [
-  { slug: '/quests', title: 'Quests', icon: 'store', },
-  { slug: '/tags', title: 'Categories', icon: 'tag', },
-  //{ slug: '/top', title: 'Top', icon: 'top', },
-  { slug: '/add', title: 'Add', icon: 'add', },
-  //{ slug: '/map', title: 'Map', icon: 'map', },
+  { slug: '/quests', title: 'Quests', icon: 'store' },
   { slug: '/search', title: 'Search', icon: 'map' },
+  //{ slug: '/tags', title: 'Categories', icon: 'tag', },
+  //{ slug: '/top', title: 'Top', icon: 'top', },
+  { slug: '/completed', title: 'Completed', icon: '' },
+  { slug: '/add', title: 'Add', icon: 'add' }
+  //{ slug: '/map', title: 'Map', icon: 'map', },
 ];

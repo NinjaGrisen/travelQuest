@@ -16,14 +16,14 @@ html
                 .flash(class=`flash--${category}`)
                   p.flash__text!= message
                   button.flash__remove(onClick="this.parentElement.remove()") &times;
-
-       
+    
+    block topContent
     .wrapper
       .menu-sidebar
         if user
           .menu-sidebar__user-wrapper
             a.menu-sidebar__user.menu-sidebar__bookmarked(href="/bookmarked", class=(currentPath.startsWith('/bookmarked') ? 'menu-sidebar__bookmarked--active' : ''))
-              span ★
+              span ☆
               span.heart-count #{user.bookmarked && user.bookmarked.length}
             a.menu-sidebar__user.menu-sidebar__bookmarked(href="/account", class=(currentPath.startsWith('/account') ? 'menu-sidebar__bookmarked--active' : ''))
               img.avatar(src=user.gravatar + '&d=retro')
@@ -45,9 +45,11 @@ html
               
       .content
         block content
+    .mobile-menu
+      span.mobile-menu__icon
 
     block scripts
-      script(src=`https://maps.googleapis.com/maps/api/js?key=${process.env.MAP_KEY}&libraries=places`)
+      script(src=`https://maps.googleapis.com/maps/api/js?key=${process.env.MAP_KEY}&libraries=places&language=en`)
       //script(src=`https://maps.googleapis.com/maps/api/js?key=${process.env.MAP_KEY}&callback=initMap`)
       
       script(src="/dist/App.bundle.js")

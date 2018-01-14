@@ -9,15 +9,23 @@
 }
 
 .quest {
+  position: relative;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   background: $color-main;
   margin-bottom: 24px;
   width: 100%;
   max-width: 900px;
   min-height: 236px;
-  box-shadow: 11px 11px 35px rgba(0, 0, 0, 0.7);
+  box-shadow: 11px 11px 35px rgba($color-black, .8);
   color: $color-white;
+
+
+  &:hover {
+    background: lighten($color-main, 4);
+    box-shadow: 20px 20px 40px rgba($color-black, .6);
+  }
 
   a {
     color: $color-white;
@@ -29,6 +37,11 @@
     width: 55%; 
     background-size: cover;
     background-position: center;
+
+    @media all and (max-width: 727px) {
+      width: 100%;
+      height: 150px;
+    }
 
     &:before {
       content: '';
@@ -61,9 +74,18 @@
     width: 45%;
     padding: 2rem;
 
+    @media all and (max-width: 727px) {
+      width: 100%;
+      margin-top: -50px; 
+    }
+
     .title {
       margin-left: -110px;
       text-shadow: 5px 5px 10px rgba($color-black, .8);
+
+      @media all and (max-width: 900px) {
+        margin-left: 0;
+      }
     }
   }
 }
@@ -86,87 +108,3 @@
     }
   }
 }
-
-// .quest {
-//   background:white;
-//   margin: 1.25em 0 0 1.25em;
-//   width: calc(33.3333% - 1.25em);
-//   box-shadow: $shad;
-//   &--wide {
-//     width: 100%;
-//   }
-//   &__details {
-//     padding: 2rem;
-//     p {
-//       line-height: 1.2;
-//       margin-bottom: 0;
-//     }
-//   }
-//   @media all and (max-width: 850px) {
-//     width: calc(50% - 1.25em);
-//   }
-//   @media all and (max-width: 550px) {
-//     width: 100%;
-//   }
-// }
-
-// .quest__actions {
-//   position: relative;
-//   z-index: 2;
-//   border-bottom: 1px solid rgba(0,0,0,0.2);
-//   box-shadow: 0 1px 0 rgba(0,0,0,0.2), 0 1px 0 rgba(255,255,255,0.2);
-//   margin-bottom: 50px;
-//   padding-top: 10px;
-//   padding-bottom: 20px;
-//   display: flex;
-//   color: white;
-//   align-items: center;
-//   justify-content: space-around;
-// }
-
-// .quest__action {
-//   font-size: 10px;
-//   svg {
-//     width: 25px;
-//     fill: white
-//   }
-//   &--edit {
-//     a {
-//       border-bottom: 0;
-//     }
-//   }
-// }
-
-
-// .quest__hero {
-//   position: relative;
-//   padding: 0 10px 0 10px;
-//   text-align: right;
-//   &:before {
-//     display: block;
-//     content: '';
-//     position: absolute;
-//     height: 100%;
-//     width: 100%;
-//     top: 0;
-//     right: 0;
-//     background:
-//       linear-gradient(45deg, hsla(190, 95%, 43%, 1) 0%, hsla(190, 95%, 43%, 0) 70%),
-//       linear-gradient(135deg, hsla(219, 93%, 48%, 1) 10%, hsla(219, 93%, 48%, 0) 80%),
-//       linear-gradient(225deg, hsla(293, 93%, 48%, 1) 10%, hsla(293, 93%, 48%, 0) 80%),
-//       linear-gradient(315deg, hsla(130, 96%, 45%, 1) 100%, hsla(130, 96%, 45%, 0) 70%);
-//     opacity: 0.6;
-//     z-index: 1;
-//     clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
-//   }
-//   img {
-//     height: 100%;
-//     width: 100%;
-//     top: 0;
-//     right: 0;
-//     position: absolute;
-//     left: 0;
-//     object-fit: cover;
-//     clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
-//   }
-// }

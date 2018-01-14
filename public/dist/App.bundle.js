@@ -1048,12 +1048,10 @@ function completedQuest(button, form, close) {
 }
 
 function displayForm(form) {
-    console.log(form.classList);
     form.classList.toggle("completed-quest--hidden");
 }
 
 function closeForm(form) {
-    console.log(form.classList);
     form.classList.toggle("completed-quest--hidden");
 }
 
@@ -3148,11 +3146,17 @@ var _completedQuest = __webpack_require__(12);
 
 var _completedQuest2 = _interopRequireDefault(_completedQuest);
 
+var _mobileToggle = __webpack_require__(44);
+
+var _mobileToggle2 = _interopRequireDefault(_mobileToggle);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (0, _autocomplete2.default)((0, _bling.$)('#address'), (0, _bling.$)('#lat'), (0, _bling.$)('#lng'));
 (0, _autocomplete2.default)((0, _bling.$)('#city'), (0, _bling.$)('#cityLat'), (0, _bling.$)('#cityLng'));
 (0, _typeAhead2.default)((0, _bling.$)('.search'));
+
+(0, _mobileToggle2.default)((0, _bling.$)('.mobile-menu'), (0, _bling.$)('.menu-sidebar'), (0, _bling.$)('.content'));
 
 if ((0, _bling.$)('#complete-quest')) {
     (0, _completedQuest2.default)((0, _bling.$)('#complete-quest'), (0, _bling.$)('#completed-quest-form'), (0, _bling.$)('.completed-quest__close'));
@@ -3170,6 +3174,39 @@ heartForms.on('submit', _heart2.default);
 
 var completeForms = (0, _bling.$$)('form.completet');
 completeForms.on('submit', _heart2.default);
+
+/***/ }),
+/* 39 */,
+/* 40 */,
+/* 41 */,
+/* 42 */,
+/* 43 */,
+/* 44 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _bling = __webpack_require__(1);
+
+function mobileToggle(mobileButton, sideMenu, container) {
+    mobileButton.on('click', function () {
+        toggleMobileMenu(sideMenu, container);
+    });
+}
+
+function toggleMobileMenu(sideMenu, container) {
+    sideMenu.classList.toggle('menu-sidebar--show');
+    container.classList.toggle('content--show');
+
+    (0, _bling.$)('body').classList.toggle('body--show');
+}
+
+exports.default = mobileToggle;
 
 /***/ })
 /******/ ]);

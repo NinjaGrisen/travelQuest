@@ -2,18 +2,50 @@
 #searchForm {
   margin: 50px 0;
   height: 63px;
+
+  @media screen and(max-width: 950px) {
+    margin: 25px;
+    width: calc(100vw - 50px);
+  }
 }
 
-.city-search {
-  opacity: 0;
-  height: 0;
-  transition: all .5s ease;
-  pointer-events: none;
-
-  &__visible {
-    opacity: 1;
-    max-height: 30px;
+.city {
+  &-search {
+    opacity: 0;
+    height: 0;
+    font-size: 3rem;
     transition: all .5s ease;
-    pointer-events: auto;
+    pointer-events: none;
+
+    &__visible {
+      opacity: 1;
+      max-height: 30px;
+      transition: all .5s ease;
+      pointer-events: auto;
+      margin: 0 25px 25px 25px;
+    }
+  }
+
+  &__heading {
+    color: $color-main;
+  }
+
+  &__link {
+    &.tag__link {
+      color: $color-main;
+
+      &:after {
+        color: rgba($color-main, .3);
+      }
+
+      &:hover,
+      &--active {
+        text-shadow: none;
+
+        &:after {
+          color: rgba($color-main, .3);
+        }
+      }
+    } 
   }
 }

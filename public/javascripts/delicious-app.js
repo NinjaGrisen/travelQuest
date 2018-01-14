@@ -7,10 +7,13 @@ import ajaxHeart from './modules/heart';
 import citySearch from './modules/citySearch';
 import loadPlaces from './modules/map';
 import completedQuest from './modules/completedQuest';
+import mobileToggle from './modules/mobileToggle';
 
 autocomplete($('#address'), $('#lat'), $('#lng'));
 autocomplete($('#city'), $('#cityLat'), $('#cityLng'));
 typeAhead($('.search'));
+
+mobileToggle($('.mobile-menu'), $('.menu-sidebar'), $('.content'));
 
 if($('#complete-quest')) {
     completedQuest($('#complete-quest'), $('#completed-quest-form'), $('.completed-quest__close'));

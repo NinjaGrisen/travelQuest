@@ -33,6 +33,12 @@ router.get('/search',
 router.get('/city/:city', 
   catchErrors(questController.citySearch));
 
+router.get('/city/:city/page/:page',
+  catchErrors(questController.citySearch));
+
+router.get('/city/:city/tags/:tag',
+  catchErrors(questController.citySearch));
+
 router.post('/add/:id',
   questController.upload, 
   catchErrors(questController.resize), 

@@ -1,0 +1,27 @@
+extends layout
+
+include mixins/_questCard
+include mixins/_pagination
+
+
+block topContent
+    .content.content__background-map.single__hero(style=`background-image: url(${h.staticMap(quests[0].location.cityCoodrinates) || ''})`)
+
+block content
+    .inner
+        h2.city__heading #{title}
+    ul.tags
+        li.tag
+            a.tag__link.city__link(href=`/city/${quests[0].location.city}` class=(param === undefined ? 'tag__link--active': ''))
+                span.tag__text All
+        each tag in existingTags
+            li.tag
+                a.tag__link.city__link(href=`/city/${quests[0].location.city}/tags/${tag}` class=(tag === param ? 'tag__link--active': ''))
+                    span.tag__text= tag
+        
+    .inner
+        .quests
+            each quest in quests
+                +questCard(quest)
+        if quests[0] != undefined
+            +pagination(page, pages, count, `/city/${quests[0].location.city}/page`)

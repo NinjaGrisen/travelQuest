@@ -8,11 +8,15 @@
     background-position: center;
     background-repeat: no-repeat;
 
+    @media all and (max-width: 900px) {
+      height: 60vh;
+    }
+
     &:before {
       content: '';
       position: absolute;
       left: 0;
-      bottom: 0;
+      bottom: -2px;
       width: 100%;
       height: 100%;
       background: linear-gradient(to bottom, rgba(69, 235, 173, 0.4), rgba(42, 22, 75, 0.4) 35%, #2a164b 87%);
@@ -40,9 +44,14 @@
 
   &__quick-info {
     display: flex;
-    justify-content: space-around;
+    //flex-direction: column;
+    flex-wrap: wrap;
     max-width: 900px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
+
+    span:last-child {
+      margin-bottom: 0;
+    }
   }
 
   &__currency, 
@@ -51,19 +60,20 @@
   &__address {
     position: relative;
     font-size: 17px;
-    font-weight: bold;
+    font-weight: 300;
     text-shadow: 5px 5px 14px rgba($color-black, .7);
     z-index: 8;
+    margin: 12px 24px;
 
     &:after {
       content: '';
       position: absolute;
       left: -13px;
-      top: -25px;
+      top: -2px;
       height: 30px;
       width: 30px;
       z-index: -1;
-      font-size: 5rem;
+      font-size: 2rem;
       font-weight: 800;
       opacity: .1;
       color: white;
@@ -94,6 +104,10 @@
   &__description {
     max-width: 900px;
     width: 100%;
+
+    @media all and (max-width: 900px) {
+      padding: 0 24px
+    }
   }
 }
 
@@ -113,6 +127,10 @@
       margin-left: -50px;
       color: $color-white;
       text-shadow: 5px 5px 10px rgba(24, 24, 24, 0.8);
+
+      @media all and (max-width: 900px) {
+        margin-left: 0;
+      }
     }
   }
 }

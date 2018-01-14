@@ -7,7 +7,7 @@
   border: 0;
   background: $yellow;
   color: $black;
-  font-family: 'Panama';
+  font-family: 'Montserrat', sans-serif;
   font-weight: 600;
 }
 
@@ -22,6 +22,10 @@
   background: white;
   padding: 5rem;
   box-shadow: 0 1px 10px rgba(0,0,0,0.15);
+
+  @media screen and(max-width: 950px){
+    padding: 0 24px;
+  }
 }
 
 pre.error {
