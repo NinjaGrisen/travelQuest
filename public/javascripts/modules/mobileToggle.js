@@ -2,7 +2,8 @@ import { $ } from './bling';
 
 function mobileToggle(mobileButton, sideMenu, container) {
     mobileButton.on('click', () => {
-        toggleMobileMenu(sideMenu, container)
+        toggleMobileMenu(sideMenu, container);
+        console.log(container);
     });
 }
 

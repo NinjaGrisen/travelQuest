@@ -1147,6 +1147,7 @@ var _bling = __webpack_require__(1);
 function mobileToggle(mobileButton, sideMenu, container) {
     mobileButton.on('click', function () {
         toggleMobileMenu(sideMenu, container);
+        console.log(container);
     });
 }
 

@@ -5,6 +5,10 @@
 
   a {
     max-width: 900px;
+
+    @media all and (max-width: 950px) {
+      margin: 0 24px;
+    }
   }
 }
 
@@ -16,7 +20,6 @@
   background: $color-main;
   margin-bottom: 24px;
   width: 100%;
-  max-width: 900px;
   min-height: 236px;
   box-shadow: 11px 11px 35px rgba($color-black, .8);
   color: $color-white;
@@ -37,9 +40,14 @@
     width: 55%; 
     background-size: cover;
     background-position: center;
-
+    overflow: hidden;
+    
     @media all and (max-width: 727px) {
       width: 100%;
+      height: 240px;
+    }
+
+    @media all and (max-width: 445px) {
       height: 150px;
     }
 
@@ -48,8 +56,8 @@
       position: absolute;
       left: 0;
       top: 0;
-      width: 100%;
-      height: 100%;
+      width: 101%;
+      height: 101%;
       background: $color-vertical-overlay;
       opacity: .6;
     }

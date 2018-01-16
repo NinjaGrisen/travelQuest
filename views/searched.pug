@@ -8,7 +8,8 @@ block topContent
     .content.content__background-map.single__hero(style=`background-image: url(${h.staticMap(quests[0].location.cityCoodrinates) || ''})`)
 
 block content
-    .inner
+    .content
+    .container
         h2.city__heading #{title}
     ul.tags
         li.tag
@@ -19,7 +20,7 @@ block content
                 a.tag__link.city__link(href=`/city/${quests[0].location.city}/tags/${tag}` class=(tag === param ? 'tag__link--active': ''))
                     span.tag__text= tag
         
-    .inner
+    .container
         .quests
             each quest in quests
                 +questCard(quest)

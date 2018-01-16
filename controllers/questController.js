@@ -218,7 +218,7 @@ exports.getBookmarks = async(req, res) => {
         return;
     }
     
-    res.render('bookmarked', {title: 'Hearted quests', quests, page, pages, count} );
+    res.render('bookmarked', {title: 'Bookmarked quests', quests, page, pages, count} );
 };
 
 exports.getCompletedQuests = async(req, res) => {

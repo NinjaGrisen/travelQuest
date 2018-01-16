@@ -14,6 +14,8 @@ mixin questCard(quest = {})
                 
             .quest__details
                 h2.title #{quest.name}
-                p= quest.description.split(' ').slice(0,25).join(' ')
-
+                if quest.description.length > 15
+                    p= quest.description.split(' ').slice(0,15).join(' ').concat('...')
+                else
+                    p= quest.description
             

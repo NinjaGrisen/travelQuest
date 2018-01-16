@@ -5,28 +5,6 @@ include mixins/_completedQuest
 block content       
     .single
         .single__hero(style=`background-image: url(/uploads/${quest.photoBig || quest.photo})`)
-            //img.single__image(src=`/uploads/${quest.photo || 'store.png'}`)
-
-            //- .single--mobile-menu
-            //-     if user
-            //-         .quest__action.quest__action--heart.quest__action--mobile
-            //-             form.heart(method="POST" action=`/api/quests/${quest._id}/heart`)
-            //-                 - const heartStrings = user.bookmarked.map(obj => obj.toString())
-            //-                 - const heartClass = heartStrings.includes(quest._id.toString()) ? 'heart__button--hearted': ''
-            //-                 button.heart__button.single__heart(type="submit" name="heart" class=heartClass) 
-            //-                     span.heart__button--hearted--inactive ☆ 
-            //-                         span.heart__text Bookmark
-            //-                     span.heart__button--hearted--active ★
-            //-                         span.heart__text Bookmarked
-
-            //-     if user && !user.completed.toString().includes(quest.id.toString())
-            //-         if user
-            //-             .completed-quest.completed-quest--hidden#completed-quest-form
-            //-                 +completedQuestForm(quest)
-            //-             button.complete-quest#complete-quest.completed-quest--mobile
-            //-                 span.complete-quest__icon ✓ 
-            //-                     span.complete-quest__text Complete Quest
-                            
             h2.title.title--single
                 a(href=`/quest/${quest.slug}`) #{quest.name}
         .single__top-wrapper
@@ -59,13 +37,17 @@ block content
             .single__details
                 .single__quick-info
                     if quest.price
-                        span.single__currency= quest.price
+                        span.single__quick-info__item.single__currency= quest.price
+                            span.single__quick-info__item--description Approximate Price
                     if quest.estimatedTime 
-                        span.single__time= quest.estimatedTime 
+                        span.single__quick-info__item.single__time= quest.estimatedTime
+                            span.single__quick-info__item--description Approximate Time
                     if quest.location.city
-                        span.single__location= quest.location.city
+                        span.single__quick-info__item.single__location= quest.location.city
+                            span.single__quick-info__item--description City
                     if quest.location.address
-                        span.single__address= quest.location.address
+                        span.single__quick-info__item.single__address= quest.location.address
+                            span.single__quick-info__item--description Address
                         
         p.single__description= quest.description
 

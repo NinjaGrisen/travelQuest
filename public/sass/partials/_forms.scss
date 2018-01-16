@@ -25,6 +25,10 @@ input, textarea {
   }
 }
 
+textarea {
+  min-height: 150px;
+}
+
 label {
   padding: 10px 0;
   display: block;
