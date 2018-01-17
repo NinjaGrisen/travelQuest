@@ -11,18 +11,22 @@
 }
 
 .flash {
-  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
-  margin-bottom: 2rem;
+  box-shadow: 12px 12px 10px rgba($color-black, .5);
+  margin: 12px 12px 0 0;
   color: $color-main;  
   font-weight: 700;  
   padding: 2rem;
   position: relative;
   z-index: 1;
-  border-radius: 3px;
   display: flex;
-  text-shadow: 1px 1px 6px rgba($color-black, .4);
+  
   animation: slideIn forwards .1s ease-in-out 2;
   animation-timing-function: cubic-bezier(0.01, 1.68, 0.58, 1);
+
+  &-messages {
+    display: flex;
+    justify-content: flex-end;
+  }
 
   a {
     color: $color-black;
@@ -36,6 +40,7 @@
   }
   &__text {
     flex: 1;
+    padding: 0 30px;
   }
   &__remove {
     background: none;
