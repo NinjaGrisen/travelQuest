@@ -694,19 +694,22 @@ input.button.update-account {
     transform: translateX(0px); } }
 
 .flash {
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
-  margin-bottom: 2rem;
+  box-shadow: 12px 12px 10px rgba(24, 24, 24, 0.5);
+  margin: 12px 12px 0 0;
   color: #2a164b;
   font-weight: 700;
   padding: 2rem;
   position: relative;
   z-index: 1;
-  border-radius: 3px;
   display: -ms-flexbox;
   display: flex;
-  text-shadow: 1px 1px 6px rgba(24, 24, 24, 0.4);
   animation: slideIn forwards .1s ease-in-out 2;
   animation-timing-function: cubic-bezier(0.01, 1.68, 0.58, 1); }
+  .flash-messages {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: end;
+        justify-content: flex-end; }
   .flash a {
     color: #181818;
     text-decoration: underline; }
@@ -716,7 +719,8 @@ input.button.update-account {
       animation-delay: 0.6s; }
   .flash__text {
     -ms-flex: 1;
-        flex: 1; }
+        flex: 1;
+    padding: 0 30px; }
   .flash__remove {
     background: none;
     border: 0; }
@@ -745,39 +749,39 @@ input.button.update-account {
   transition: all .25s ease; }
   @media screen and (max-width: 1300px) {
     .menu-sidebar {
-      width: 230px; } }
+      width: 185px; } }
   @media screen and (max-width: 950px) {
     .menu-sidebar {
-      left: -230px; } }
+      left: -185px; } }
   .menu-sidebar--show {
     left: 0; }
   .menu-sidebar__link {
     width: 100%;
     max-width: 190px;
-    padding: 24px 0;
-    margin: 10px auto;
+    padding: 6px 0;
+    margin: 21px auto 0px auto;
     text-align: center;
     font-weight: 600;
-    background: #351c5f;
     color: #ddd;
-    border-left: 1px solid #6133ae;
-    border-top: 1px solid #6133ae;
-    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.4);
-    transition: all .5s ease;
-    cursor: pointer; }
-    .menu-sidebar__link:hover {
-      background: #4b2786;
-      transition: all .5s ease;
-      box-shadow: 18px 18px 32px rgba(0, 0, 0, 0.2); }
-    .menu-sidebar__link--active {
-      background: #45ebad;
-      color: #2a164b;
-      border-left: 1px solid #a1f5d6;
-      border-top: 1px solid #a1f5d6;
-      box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3); }
-      .menu-sidebar__link--active:hover {
-        background: #73f0c1;
-        transition: all .5s ease; }
+    text-shadow: 3px 3px 10px #181818; }
+    .menu-sidebar__link--active span, .menu-sidebar__link:hover span {
+      padding: 0 10px;
+      position: relative; }
+      .menu-sidebar__link--active span:after, .menu-sidebar__link:hover span:after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        width: 3px;
+        border-radius: 50%;
+        height: 3px;
+        top: 100%;
+        background: #45ebad;
+        -ms-transform: translate(-50%, 3px);
+            transform: translate(-50%, 3px);
+        box-shadow: 9px 0px 0 #45ebad, -9px 0 0 #45ebad; }
+    .menu-sidebar__link--active:hover span:after, .menu-sidebar__link:hover:hover span:after {
+      background: #ddd;
+      box-shadow: 9px 0px 0 #ddd, -9px 0 0 #ddd; }
   .menu-sidebar__user-wrapper {
     display: -ms-flexbox;
     display: flex;
@@ -787,26 +791,17 @@ input.button.update-account {
         justify-content: space-around;
     margin: 0 auto;
     width: 100%;
-    max-width: 190px; }
+    max-width: 190px;
+    margin-bottom: 20px; }
   .menu-sidebar__bookmarked {
     padding: 8px 12px;
-    background: #311957;
-    color: #ddd;
-    border-left: 1px solid #5d31a6;
-    border-top: 1px solid #5d31a6;
-    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.4);
-    transition: all .5s ease;
-    cursor: pointer;
     border: none;
+    color: #ddd;
     padding: 0;
     height: 60px;
     width: 60px;
     line-height: 60px;
     text-align: center; }
-    .menu-sidebar__bookmarked:hover {
-      background: #47257e;
-      transition: all .5s ease;
-      box-shadow: 18px 18px 32px rgba(0, 0, 0, 0.2); }
     .menu-sidebar__bookmarked img {
       width: 60px;
       height: 60px; }
@@ -845,18 +840,7 @@ input.button.update-account {
       width: 100%;
       text-align: center;
       font-size: 1.5rem;
-      font-weight: 700;
-      background: #ddd;
-      color: #2a164b;
-      border-left: 1px solid white;
-      border-top: 1px solid white;
-      box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.4);
-      transition: all .5s ease;
-      cursor: pointer; }
-      .menu-sidebar__sign-in-register .menu-sidebar__user:hover {
-        background: #f7f7f7;
-        transition: all .5s ease;
-        box-shadow: 18px 18px 32px rgba(0, 0, 0, 0.2); }
+      font-weight: 700; }
   .menu-sidebar__user {
     font-size: 3rem; }
 
@@ -912,11 +896,50 @@ input.button.update-account {
 .quests {
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-direction: column;
-      flex-direction: column;
-  width: 100%; }
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  -ms-flex-pack: justify;
+      justify-content: space-between; }
   .quests a {
     max-width: 900px; }
+    .quests a:first-child {
+      height: 60vh;
+      max-width: 100%;
+      width: 100%;
+      margin-bottom: 24px;
+      overflow: hidden; }
+      .quests a:first-child .quest {
+        min-height: auto;
+        height: auto;
+        height: 60vh; }
+        .quests a:first-child .quest__hero {
+          width: 75%; }
+        .quests a:first-child .quest__details {
+          width: 25%;
+          display: -ms-flexbox;
+          display: flex;
+          -ms-flex-direction: column;
+              flex-direction: column; }
+          .quests a:first-child .quest__details .title {
+            margin-left: -110px; }
+          .quests a:first-child .quest__details p {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: center;
+                align-items: center;
+            -ms-flex-positive: 1;
+                flex-grow: 1; }
+    .quests a:nth-child(2), .quests a:nth-child(3) {
+      width: calc(50% - 12px); }
+    .quests a:nth-child(4) {
+      width: calc(100% - 48px);
+      max-width: calc(100% - 48px);
+      margin-left: 24px; }
+      .quests a:nth-child(4) .quest__hero, .quests a:nth-child(4) .quest__details {
+        width: 50%; }
     @media all and (max-width: 950px) {
       .quests a {
         margin: 0 24px; } }
@@ -933,8 +956,9 @@ input.button.update-account {
   margin-bottom: 24px;
   width: 100%;
   min-height: 236px;
-  box-shadow: 11px 11px 35px rgba(24, 24, 24, 0.8);
-  color: #ddd; }
+  border: 1px solid #402272;
+  color: #ddd;
+  height: calc(100% - 24px); }
   .quest:hover {
     background: #331b5b;
     box-shadow: 20px 20px 40px rgba(24, 24, 24, 0.6); }
@@ -961,7 +985,7 @@ input.button.update-account {
       top: 0;
       width: 101%;
       height: 101%;
-      background: linear-gradient(to bottom right, #45ebad, #2a164b 61%);
+      background: linear-gradient(to bottom right, rgba(42, 22, 75, 0), #2a164b 61%);
       opacity: .6; }
   .quest__actions {
     position: absolute; }
@@ -980,7 +1004,7 @@ input.button.update-account {
         width: 100%;
         margin-top: -50px; } }
     .quest__details .title {
-      margin-left: -110px;
+      margin-left: -60px;
       text-shadow: 5px 5px 10px rgba(24, 24, 24, 0.8); }
       @media all and (max-width: 900px) {
         .quest__details .title {
@@ -1269,7 +1293,7 @@ input.button.update-account {
     bottom: -2px;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(69, 235, 173, 0.4), rgba(42, 22, 75, 0.4) 35%, #2a164b 87%); }
+    background: linear-gradient(to bottom, rgba(42, 22, 75, 0), rgba(42, 22, 75, 0.4) 35%, #2a164b 87%); }
   .single__hero:after {
     content: '';
     position: absolute;

@@ -22,7 +22,8 @@ router.get('/add',
   questController.addQuest); 
 router.post('/add',
   questController.upload, 
-  catchErrors(questController.resize),
+  catchErrors(questController.resizeThumbnail),
+  catchErrors(questController.resizeMedium),
   catchErrors(questController.resizeLarge), 
   catchErrors(questController.createQuest)
 );
@@ -49,7 +50,7 @@ router.get('/quest/:slug',
 
 router.post('/completedQuest/:id',
   questController.upload,
-  catchErrors(questController.resize), 
+  catchErrors(questController.removeCompletedBookmark),
   catchErrors(questController.completeQuest));
 
 router.get('/tags', 

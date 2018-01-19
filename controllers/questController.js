@@ -31,7 +31,23 @@ exports.addQuest = (req, res) => {
 
 exports.upload = multer(multerOptions).single('photo');
 
-exports.resize = async(req, res, next) => {
+exports.resizeThumbnail = async(req, res, next) => {
+    if(!req.file) {
+        next();
+        return;
+    } 
+    const extension = req.file.mimetype.split('/')[1];
+    req.body.photo = `${uuid.v4()}.${extension}`;
+
+    const photo = await jimp.read(req.file.buffer);
+    await photo.resize(200, jimp.AUTO);
+
+    await photo.write(`./public/uploads/${req.body.photo}`);
+
+    next();
+};
+
+exports.resizeMedium = async(req, res, next) => {
     if(!req.file) {
         next();
         return;
@@ -170,6 +186,18 @@ exports.heartQuest = async(req, res) => {
     );
     res.json(user);
 };
+
+exports.removeCompletedBookmark = async(req, res, next) => {
+    const hearts = req.user.bookmarked.map(obj => obj.toString());
+
+    const user = await User
+        .findByIdAndUpdate(
+            req.user._id, 
+            { "$pull": {bookmarked: req.params.id} },
+            { new: true }
+    );
+    next();
+}
 
 exports.completeQuest = async(req, res) => {
     const complet = req.user.completed.map(obj => obj.toString());
