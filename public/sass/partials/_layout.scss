@@ -12,9 +12,7 @@ body {
 }
 
 .inner {
-  width: 66vw;
-  margin: 0 auto;
-
+  width: calc(87vw - 28px);
 
   @media screen and(max-width: 1300px) {
     width: auto;
@@ -31,8 +29,8 @@ body {
 }
 
 .content {
-  margin-left: 33vw;
-  width: 66vw;
+  margin-left: 13vw;
+  width: calc(87vw - 28px);
   background: $color-main;
   transition: all .25s ease;    
   
@@ -40,7 +38,7 @@ body {
     &.single__hero {
       position: absolute;
       left: -40px;
-      width: calc(66vw + 45px);
+      width: calc(87vw + 45px);
       overflow: hidden;
       
 
@@ -58,8 +56,8 @@ body {
   }
   
   @media screen and(max-width: 1300px) {
-    margin-left: 270px;
-    width: calc(100vw - 270px);
+    margin-left: 185px;
+    width: calc(100vw - 185px);
   }
 
   @media screen and(max-width: 950px) {

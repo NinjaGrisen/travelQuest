@@ -8,7 +8,7 @@ block content
     .inner
         h2 #{title}
         .quests
-            each quest in quests
-                +questCard(quest)
+            each quest, index in quests
+                +questCard(quest, index)
 
         +pagination(page, pages, count, '/bookmarked')

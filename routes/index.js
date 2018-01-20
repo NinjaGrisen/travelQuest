@@ -22,9 +22,9 @@ router.get('/add',
   questController.addQuest); 
 router.post('/add',
   questController.upload, 
-  catchErrors(questController.resizeThumbnail),
-  catchErrors(questController.resizeMedium),
-  catchErrors(questController.resizeLarge), 
+  catchErrors(questController.resizeImage('quest')),
+  catchErrors(questController.resizeImageMedium('quest')),
+  catchErrors(questController.resizeImageLarge('quest')), 
   catchErrors(questController.createQuest)
 );
 
@@ -42,7 +42,9 @@ router.get('/city/:city/tags/:tag',
 
 router.post('/add/:id',
   questController.upload, 
-  catchErrors(questController.resize), 
+  catchErrors(questController.resizeImage('quest')),
+  catchErrors(questController.resizeImageMedium('quest')),
+  catchErrors(questController.resizeImageLarge('quest')), 
   catchErrors(questController.updateQuest));
 
 router.get('/quest/:slug', 
@@ -50,6 +52,9 @@ router.get('/quest/:slug',
 
 router.post('/completedQuest/:id',
   questController.upload,
+  catchErrors(questController.resizeImage('completed')),
+  catchErrors(questController.resizeImageMedium('completed')),
+  catchErrors(questController.resizeImageLarge('completed')), 
   catchErrors(questController.removeCompletedBookmark),
   catchErrors(questController.completeQuest));
 
@@ -57,7 +62,10 @@ router.get('/tags',
   catchErrors(questController.getQuestByTag));
 
 router.get('/tags/:tag', 
-  catchErrors(questController.getQuestByTag));  
+  catchErrors(questController.getQuestByTag));
+  
+router.get('/tags/:tag/:page', 
+catchErrors(questController.getQuestByTag));
 
 //Login routes
 router.get('/login', userController.loginForm); 

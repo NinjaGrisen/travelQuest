@@ -2,9 +2,9 @@ extends layout
 
 include mixins/_completedQuest
 
-block content       
+block content
     .single
-        .single__hero(style=`background-image: url(/uploads/${quest.photoBig || quest.photo})`)
+        .single__hero(style=`background-image: url(/uploads/quest/${quest.photoBig || quest.photo})`)
             h2.title.title--single
                 a(href=`/quest/${quest.slug}`) #{quest.name}
         .single__top-wrapper

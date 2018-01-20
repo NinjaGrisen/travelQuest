@@ -22,7 +22,7 @@ block content
         
     .container
         .quests
-            each quest in quests
-                +questCard(quest)
+            each quest, index in quests
+                +questCard(quest, index)
         if quests[0] != undefined
             +pagination(page, pages, count, `/city/${quests[0].location.city}/page`)

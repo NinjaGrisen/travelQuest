@@ -2,69 +2,219 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 100%;
+  width: calc(100% - 24px);
   justify-content: space-between;
+  @media all and (max-width: 950px) {
+    width: 100%;
+  }
 
   a {
     max-width: 900px;
 
     &:first-child {
-      height: 60vh;
-      max-width: 100%;
       width: 100%;
+      min-width: 100%;
+      max-height: 630px;
+      height: calc(.4*100vw);
       margin-bottom: 24px;
-      overflow: hidden;
+
+      @media all and (max-width: 950px) {
+        min-width: calc(100% - 48px);
+      }
 
       .quest {
         min-height: auto;
-        height: auto;
-        height: 60vh;
+        max-height: 630px;
+        height: calc(.4*100vw);
 
         &__hero {
           width: 75%;
+
+          @media all and (max-width: 727px) {
+            height: auto;
+          }
+          @media all and (max-width: 625px) {
+            width: 55%;
+          }
         }
 
         &__details {
           width: 25%;
           display: flex;
           flex-direction: column;
+
+          @media all and (max-width: 727px) {
+            margin-top: 0;
+          }
+          @media all and (max-width: 625px) {
+            width: 45%;
+          }
           
           .title {
             margin-left: -110px;
           }
-          p {
-            display: flex;
-            align-items: center;
-            flex-grow: 1;
-          }
+
         }
       }
     }
-
+    
     &:nth-child(2),
     &:nth-child(3) {
       width: calc(50% - 12px);
-    }
+      @media screen and(min-width: 1627px){
+        width: calc(33% - 12px);
+      }
+      @media screen and(max-width: 1260px){
+        max-height: 300px;
+      }
 
+      @media all and (max-width: 625px) {
+        max-height: none;
+      }
+     
+      .quest {
+        &__hero {
+          @media screen and(max-width: 1260px){
+            width: 45%;              
+          }
+          @media all and (max-width: 625px) {
+            width: 100%;
+            height: 150px;
+          }
+        }
+        &__info {
+          @media all and (max-width: 625px) {
+            max-height: 120px;
+          }
+        }
+        &__details {
+          @media screen and(max-width: 1260px){
+            width: 55%;
+          }
+          @media all and (max-width: 625px) {
+            width: 100%;
+          }
+        }
+        &__info {
+          @media screen and(max-width: 1260px){
+            overflow: hidden;
+          }
+          
+        }
+      }
+    }
+    @media all and (max-width: 950px) {
+      &:nth-child(2) {
+        width: calc(50% - 36px);
+        margin: 0 12px 0 24px;
+      }
+  
+      &:nth-child(3) {
+        width: calc(50% - 36px);
+        margin: 0 24px 0 12px;
+      }
+      
+    }
+    
     &:nth-child(4) {
-      width: calc(100% - 48px);
-      max-width: calc(100% - 48px);
-      margin-left: 24px;
+      width: 100%;
+      max-width: 100%;
+
+      @media screen and(min-width: 1627px){
+        width: calc(33% - 12px);
+      }
+
       .quest {
         &__hero,
         &__details {
           width: 50%;
         }
+
+        &__hero {
+          @media all and (max-width: 727px) {
+            height: auto;
+          }
+        }
+
+        &__details {
+          @media all and (max-width: 727px) {
+            margin-top: 0;
+          }
+        }
       }
     }
 
+    &:nth-child(5),
+    &:nth-child(6) {
+      width: calc(50% - 12px);
+      max-width: calc(50% - 12px);
+
+      @media screen and(max-width: 1260px){
+        max-height: 300px;
+        .quest {
+          &__hero {
+            width: 45%;
+          }
+
+          &__details {
+            width: 55%;
+          }
+          &__info {
+            overflow: hidden;
+          }
+        }
+      }
+      @media all and (max-width: 625px) {
+        max-height: none;
+      }
+
+      .quest {
+        &__hero {
+          @media screen and(max-width: 1260px){
+            width: 45%;              
+          }
+          @media all and (max-width: 625px) {
+            width: 100%;
+            height: 150px;
+          }
+        }
+        &__info {
+          @media all and (max-width: 625px) {
+            max-height: 120px;
+          }
+        }
+        &__details {
+          @media screen and(max-width: 1260px){
+            width: 55%;
+          }
+          @media all and (max-width: 625px) {
+            width: 100%;
+          }
+        }
+        &__info {
+          @media screen and(max-width: 1260px){
+            overflow: hidden;
+          }
+          
+        }
+      }
+    }
+    @media all and (max-width: 950px) {
+      &:nth-child(5) {
+        width: calc(50% - 36px);
+        margin: 0 12px 0 24px;
+      }
+  
+      &:nth-child(6) {
+        width: calc(50% - 36px);
+        margin: 0 24px 0 12px;
+      }
+      
+    }
     @media all and (max-width: 950px) {
       margin: 0 24px;
     }
   }
-
-  
-
 }
 
 .quest {
@@ -79,10 +229,35 @@
   border: 1px solid lighten($color-main, 10);
   color: $color-white;
   height: calc(100% - 24px);
+  transition: transform .25s ease;
 
   &:hover {
     background: lighten($color-main, 4);
     box-shadow: 20px 20px 40px rgba($color-black, .6);
+    transform: scale(1.025);
+    transition: transform .25s ease;
+  
+    .quest__info {
+      &:after {
+        background: linear-gradient(rgba(lighten($color-main, 4), 0) 60%, lighten($color-main, 4));
+      }
+    }
+  }
+
+  &__info {
+    position: relative;
+    flex-grow: 1;
+    overflow: hidden;
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 34px;
+      background: linear-gradient(rgba($color-main, 0) 60%, $color-main);
+    }
   }
 
   a {
@@ -99,7 +274,6 @@
     
     @media all and (max-width: 727px) {
       width: 100%;
-      height: 240px;
     }
 
     @media all and (max-width: 445px) {
@@ -136,18 +310,25 @@
   &__details {
     width: 45%;
     padding: 2rem;
+    display: flex;
+    flex-direction: column;
 
     @media all and (max-width: 727px) {
       width: 100%;
-      margin-top: -50px; 
     }
 
     .title {
       margin-left: -60px;
       text-shadow: 5px 5px 10px rgba($color-black, .8);
 
+      @media screen and(max-width: 1090px){
+        font-size: 28px;
+      }
+
       @media all and (max-width: 900px) {
         margin-left: 0;
+        font-size: 20px;
+        text-align: right;
       }
     }
   }

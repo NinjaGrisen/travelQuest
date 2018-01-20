@@ -14,5 +14,9 @@ block content
                     span.tag__count= tag.count
     
     .quests
-        each quest in quests
-            +questCard(quest)
+        each quest, index in quests
+            +questCard(quest, index)
+    if tag
+        +pagination(page, pages, count, `/tags/${tag}`)
+    else
+        +pagination(page, pages, count, `/tags`)

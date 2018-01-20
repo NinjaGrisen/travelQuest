@@ -7,7 +7,7 @@ mixin questForm(quest = {})
         label.photo-label(for="photo") Photo
             input(type="file" name="photo" id="photo" accept="image/png, image/jpeg")
             if quest.photo
-                img(src=`/uploads/${quest.photo}`, alt=quest.name width=200)
+                img(src=`/uploads/quest/${quest.photo}`, alt=quest.name width=200)
         
         label(for="address") Address
         input(type="text" id="address" name="location[address]" 

@@ -31,52 +31,62 @@ exports.addQuest = (req, res) => {
 
 exports.upload = multer(multerOptions).single('photo');
 
-exports.resizeThumbnail = async(req, res, next) => {
-    if(!req.file) {
+exports.resizeImage = (location) => {
+    return resizeThumbnail = async(req, res, next) => {
+        if(!req.file) {
+            next();
+            return;
+        } 
+        const extension = req.file.mimetype.split('/')[1];
+        req.body.photoThumbnail = `${uuid.v4()}.${extension}`;
+    
+        const photo = await jimp.read(req.file.buffer);
+        await photo.resize(200, jimp.AUTO);
+    
+        await photo.write(`./public/uploads/${location}/${req.body.photoThumbnail}`);
+    
         next();
-        return;
-    } 
-    const extension = req.file.mimetype.split('/')[1];
-    req.body.photo = `${uuid.v4()}.${extension}`;
+    };
+}
+// catchErrors(questController.resizeImage('quest')),
+// catchErrors(questController.resizeImageMedium('quest')),
+// catchErrors(questController.resizeImageLarge('quest')), 
 
-    const photo = await jimp.read(req.file.buffer);
-    await photo.resize(200, jimp.AUTO);
 
-    await photo.write(`./public/uploads/${req.body.photo}`);
-
-    next();
-};
-
-exports.resizeMedium = async(req, res, next) => {
-    if(!req.file) {
+exports.resizeImageMedium = (location) => {
+    return resizeMedium = async(req, res, next) => {
+        if(!req.file) {
+            next();
+            return;
+        } 
+        const extension = req.file.mimetype.split('/')[1];
+        req.body.photo = `${uuid.v4()}.${extension}`;
+    
+        const photo = await jimp.read(req.file.buffer);
+        await photo.resize(800, jimp.AUTO);
+    
+        await photo.write(`./public/uploads/${location}/${req.body.photo}`);
+    
         next();
-        return;
-    } 
-    const extension = req.file.mimetype.split('/')[1];
-    req.body.photo = `${uuid.v4()}.${extension}`;
+    };
+}
 
-    const photo = await jimp.read(req.file.buffer);
-    await photo.resize(800, jimp.AUTO);
-
-    await photo.write(`./public/uploads/${req.body.photo}`);
-
-    next();
-};
-
-exports.resizeLarge = async(req, res, next) => {
-    if(!req.file) {
+exports.resizeImageLarge = (location) => {
+    return resizeLarge = async(req, res, next) => {
+        if(!req.file) {
+            next();
+            return;
+        } 
+        const extension = req.file.mimetype.split('/')[1];
+        req.body.photoBig = `${uuid.v4()}.${extension}`;
+    
+        const photo = await jimp.read(req.file.buffer);
+        await photo.cover(1300, 700);
+        await photo.write(`./public/uploads/${location}/${req.body.photoBig}`);
+    
         next();
-        return;
-    } 
-    const extension = req.file.mimetype.split('/')[1];
-    req.body.photoBig = `${uuid.v4()}.${extension}`;
-
-    const photo = await jimp.read(req.file.buffer);
-    await photo.cover(1300, 700);
-    await photo.write(`./public/uploads/${req.body.photoBig}`);
-
-    next();
-};
+    };
+}
 
 exports.createQuest = async (req, res) => {
     req.body.author = req.user._id;
@@ -88,7 +98,7 @@ exports.createQuest = async (req, res) => {
 
 exports.getQuests = async (req, res) => {
     const page = req.params.page || 1;
-    const limit = 4;
+    const limit = 6;
     const skip = (page * limit) - limit;
 
     const questsPromise = Quest
@@ -146,14 +156,79 @@ exports.getQuestBySlug = async (req, res, next) => {
 };
 
 exports.getQuestByTag = async (req, res) => {
+    //kristofer
+    // const tag = req.params.tag;
+    // const tagQuery = tag || { $exists: true };
+    // const tagsPromise = Quest.getTagsList();
+    // const questPromise = Quest.find({ tags:  tagQuery});
+    // const [tags, quests] = await Promise.all([tagsPromise, questPromise]);
+
+    // res.render('tag', {tags, title: 'Tags', tag, quests});
+////////////////////////////////////////////////////////////////////////////////////////////
+    
+    const page = req.params.page || 1;
+    const limit = 6;
+    const skip = (page * limit) - limit;
 
     const tag = req.params.tag;
     const tagQuery = tag || { $exists: true };
     const tagsPromise = Quest.getTagsList();
-    const questPromise = Quest.find({ tags:  tagQuery});
-    const [tags, quests] = await Promise.all([tagsPromise, questPromise]);
+    const questPromise = Quest
+        .find({ 
+            tags:  tagQuery
+        })
+        .skip(skip)
+        .limit(limit)
+        .sort({ created: 'desc'});
 
-    res.render('tag', {tags, title: 'Tags', tag, quests});
+    const countPromise = Quest
+        .find({ 
+            tags:  tagQuery
+        }).count();
+    const [tags, quests, count] = await Promise.all([tagsPromise, questPromise, countPromise]);
+    const pages = Math.ceil(count / limit);
+
+    if(!quests.length && skip) {
+        req.flash('info', `Hey you asked for page ${page}. That does not exist so I put you on ${pages}`)
+        res.redirect(`/bookmarked/${pages}`);
+        return;
+    }
+
+    res.render('tag', {tags, title: 'Tags', tag, quests, page, pages, count});
+
+
+
+
+    /*
+    const page = req.params.page || 1;
+    const limit = 4;
+    const skip = (page * limit) - limit;
+
+    const questsPromise = Quest
+        .find({
+            _id: { $in: req.user.bookmarked }
+        })
+        .skip(skip)
+        .limit(limit)
+        .sort({ created: 'desc'});
+
+    const countPromise = Quest
+        .find({
+            _id: { $in: req.user.bookmarked }
+        }).count();
+
+    const [quests, count] = await Promise.all([questsPromise, countPromise]);
+    const pages = Math.ceil(count / limit);
+
+    if(!quests.length && skip) {
+        req.flash('info', `Hey you asked for page ${page}. That does not exist so I put you on ${pages}`)
+        res.redirect(`/bookmarked/${pages}`);
+        return;
+    }
+    
+    res.render('bookmarked', {title: 'Bookmarked quests', quests, page, pages, count} );
+    
+    */
 
 };
 
@@ -221,7 +296,7 @@ exports.completeQuest = async(req, res) => {
 
 exports.getBookmarks = async(req, res) => {
     const page = req.params.page || 1;
-    const limit = 4;
+    const limit = 6;
     const skip = (page * limit) - limit;
 
     const questsPromise = Quest
@@ -273,7 +348,7 @@ exports.citySearch = async (req, res) => {
         .distinct('tags');
     
     const page = req.params.page || 1;
-    const limit = 4;
+    const limit = 6;
     const skip = (page * limit) - limit;
         
   

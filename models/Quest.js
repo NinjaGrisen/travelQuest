@@ -41,6 +41,7 @@ const questSchema = new mongoose.Schema( {
     },
     photo: String,
     photoBig: String,
+    photoThumbnail: String,
     price: {
         type: String
     },
