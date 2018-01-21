@@ -49,44 +49,25 @@
     }
   }
   &__link {
-    //background:$color-main;
-    //color:$color-white;
+    background: $color-white;
+    color: $color-main;
     display: flex;
-    padding-left: 10px;
+    padding: 0 6px;
     position: relative;
     font-weight: 800;
-    color: $color-white;
+    transition: all .25s ease;
 
     &:hover {
-      &:after {
-        content: '#';
-        position: absolute;
-        left: 1px;
-        top: -20px;
-        width: 30px;
-        height: 30px;
-        font-size: 5rem;
-        color: rgba($color-white, .3);
-        font-weight: 800;
-        text-shadow: none;
-      }
+      background: $color-main;
+      color: $color-white;
+      box-shadow: 6px 6px 15px rgba($color-black, .5);
+      transition: all .25s ease;
     }
     
     &--active {
+      background:$color-main;
+      color:$color-white;
       text-shadow: 4px 3px 8px $color-black;
-      
-      &:after {
-        content: '#';
-        position: absolute;
-        left: 1px;
-        top: -20px;
-        width: 30px;
-        height: 30px;
-        font-size: 5rem;
-        color: rgba($color-white, .3);
-        font-weight: 800;
-        text-shadow: none;
-      }
     }
   }
   &__text {
@@ -95,6 +76,7 @@
     position: relative;
     z-index: 99;
   }
+
   &__count {
     padding: 1rem 0rem;
     //background: white;

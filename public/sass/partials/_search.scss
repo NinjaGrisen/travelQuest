@@ -14,8 +14,14 @@
     opacity: 0;
     height: 0;
     font-size: 3rem;
+    font-weight: 900;
+    text-shadow: 5px 5px 15px rgba($color-black, .7);
     transition: all .5s ease;
     pointer-events: none;
+
+    a {
+      color: #dddddd;    
+    }
 
     &__visible {
       opacity: 1;
@@ -32,7 +38,6 @@
 
   &__link {
     &.tag__link {
-      color: $color-main;
 
       &:after {
         color: rgba($color-main, .3);

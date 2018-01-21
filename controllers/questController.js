@@ -156,20 +156,10 @@ exports.getQuestBySlug = async (req, res, next) => {
 };
 
 exports.getQuestByTag = async (req, res) => {
-    //kristofer
-    // const tag = req.params.tag;
-    // const tagQuery = tag || { $exists: true };
-    // const tagsPromise = Quest.getTagsList();
-    // const questPromise = Quest.find({ tags:  tagQuery});
-    // const [tags, quests] = await Promise.all([tagsPromise, questPromise]);
-
-    // res.render('tag', {tags, title: 'Tags', tag, quests});
-////////////////////////////////////////////////////////////////////////////////////////////
-    
     const page = req.params.page || 1;
     const limit = 6;
     const skip = (page * limit) - limit;
-
+    const param = req.params.tag;
     const tag = req.params.tag;
     const tagQuery = tag || { $exists: true };
     const tagsPromise = Quest.getTagsList();
@@ -194,42 +184,7 @@ exports.getQuestByTag = async (req, res) => {
         return;
     }
 
-    res.render('tag', {tags, title: 'Tags', tag, quests, page, pages, count});
-
-
-
-
-    /*
-    const page = req.params.page || 1;
-    const limit = 4;
-    const skip = (page * limit) - limit;
-
-    const questsPromise = Quest
-        .find({
-            _id: { $in: req.user.bookmarked }
-        })
-        .skip(skip)
-        .limit(limit)
-        .sort({ created: 'desc'});
-
-    const countPromise = Quest
-        .find({
-            _id: { $in: req.user.bookmarked }
-        }).count();
-
-    const [quests, count] = await Promise.all([questsPromise, countPromise]);
-    const pages = Math.ceil(count / limit);
-
-    if(!quests.length && skip) {
-        req.flash('info', `Hey you asked for page ${page}. That does not exist so I put you on ${pages}`)
-        res.redirect(`/bookmarked/${pages}`);
-        return;
-    }
-    
-    res.render('bookmarked', {title: 'Bookmarked quests', quests, page, pages, count} );
-    
-    */
-
+    res.render('tag', {tags, title: 'Tags', tag, quests, page, pages, count, param});
 };
 
 exports.searchQuests = async (req, res) => {
@@ -340,29 +295,29 @@ exports.searchCity = async(req, res) => {
 }
 
 exports.citySearch = async (req, res) => {
+    const page = req.params.page || 1;
+    const limit = 6;
+    const skip = (page * limit) - limit;
+
     const param = req.params.tag;
     const tagQuery = param || { $exists: true };
     const tagsPromise = Quest.getTagsList();
     const existingTagsPromise = Quest
-        .find({'location.city': req.params.city})
-        .distinct('tags');
-    
-    const page = req.params.page || 1;
-    const limit = 6;
-    const skip = (page * limit) - limit;
-        
+        .find({
+            'location.city': req.params.city
+        }).distinct('tags');
   
-        const questsPromise = Quest
-            .find({ $and: 
-                [ 
-                    {'location.city': req.params.city},
-                    { tags:  tagQuery}
-                ]
-            })
-            .find()
-            .skip(skip)
-            .limit(limit)
-            .sort({ created: 'desc'});
+    const questsPromise = Quest
+        .find({ $and: 
+            [ 
+                {'location.city': req.params.city},
+                { tags:  tagQuery}
+            ]
+        })
+        .find()
+        .skip(skip)
+        .limit(limit)
+        .sort({ created: 'desc'});
     
     const countPromise = Quest
     .find({ $and: 

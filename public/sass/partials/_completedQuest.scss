@@ -70,11 +70,7 @@
     background: none;
     margin-right: 24px;
     padding: 6px 6px 3px 6px;
-    background: darken($color-main, 2);
-    border-left: 2px solid lighten($color-main, 2);
-    border-top: 2px solid lighten($color-main, 2);
     font-size: 3rem;
-    box-shadow: 3px 3px 10px rgba($color-black, .9);
     cursor: pointer;
     transition: all .25s ease;
 
@@ -86,34 +82,19 @@
         margin-right: 0;
     }
 
-    &:hover {
-        box-shadow: 6px 6px 25px rgba($color-black, .6);
-        background: lighten($color-main, 1);
-        border-left: 2px solid lighten($color-main, 4);
-        border-top: 2px solid lighten($color-main, 4);
-        transition: all .25s ease;
-    }
+
 
     &__icon {
         color: lighten($color-main, 10);
         font-weight: 600;
-        font-size: 6rem;
-
-        @media screen and (max-width: 1409px) {
-            font-size: 3rem;
-        }
+        font-size: 3rem;
     }
 
     &__text {
-        margin-left: -27px;
-        font-size: 1.6rem;
+        margin-left: -5px;
         font-weight: 400;
         color: $color-white;
-
-        @media screen and (max-width: 1409px) {
-            margin-left: -5px;
-            font-size: 1.2rem;
-        }
+        font-size: 1.2rem;
     }
 }
 
