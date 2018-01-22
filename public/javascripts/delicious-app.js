@@ -8,12 +8,18 @@ import citySearch from './modules/citySearch';
 import loadPlaces from './modules/map';
 import completedQuest from './modules/completedQuest';
 import mobileToggle from './modules/mobileToggle';
+import toggleDescription from './modules/descriptionToggle';
 
 autocomplete($('#address'), $('#lat'), $('#lng'));
 autocomplete($('#city'), $('#cityLat'), $('#cityLng'));
 typeAhead($('.search'));
 
-mobileToggle($('.mobile-menu'), $('.menu-sidebar'), $('.content'));
+mobileToggle($('.menu-btn'), $('.menu-sidebar'), $('.menu-btn__icon'));
+
+if($('.single__description-toggle') && $('.single__description')) {
+    toggleDescription($('.single__description-toggle'), $('.single__description'));
+}
+
 
 if($('#complete-quest')) {
     completedQuest($('#complete-quest'), $('#completed-quest-form'), $('.completed-quest__close'));

@@ -20,12 +20,12 @@
     pointer-events: none;
 
     a {
-      color: #dddddd;    
+      color: $color-cta;    
     }
 
     &__visible {
       opacity: 1;
-      max-height: 30px;
+      height: auto;
       transition: all .5s ease;
       pointer-events: auto;
       margin: 0 25px 25px 25px;
@@ -34,8 +34,13 @@
 
   &__heading {
     color: $color-main;
-  }
 
+    @media screen and (max-width:950px) {
+      margin-left: 24px;
+    }
+  }
+  
+ 
   &__link {
     &.tag__link {
 
@@ -53,4 +58,12 @@
       }
     } 
   }
+}
+
+.tags.tags--city-page {
+  @media screen and (max-width:950px) {
+    margin-left: 24px;
+    width: calc(100% - 48px);
+  }
+
 }

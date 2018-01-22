@@ -15,9 +15,10 @@ block content
                     if quest.estimatedTime 
                         span.single__quick-info__item.single__time= quest.estimatedTime
                     if quest.location.city
-                        span.single__quick-info__item.single__location= quest.location.city
+                        a.single__quick-info__item.single__location(href=`/city/${quest.location.city}`)= quest.location.city
                     if quest.location.address
                         span.single__quick-info__item.single__address= quest.location.address
+
             .single__user-options
                 if user
                     .quest__action.quest__action--heart
@@ -45,6 +46,7 @@ block content
                                 span.edit-quest__text Edit
                         
         p.single__description= quest.description
+            span.single__description-toggle
 
         if quest.tags
             ul.tags

@@ -11,7 +11,7 @@ block content
     .content
     .container
         h2.city__heading #{title}
-    ul.tags
+    ul.tags.tags--city-page
         li.tag
             a.tag__link.city__link(href=`/city/${quests[0].location.city}` class=(param === undefined ? 'tag__link--active': ''))
                 span.tag__text All

@@ -1144,18 +1144,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _bling = __webpack_require__(1);
 
-function mobileToggle(mobileButton, sideMenu, container) {
+function mobileToggle(mobileButton, sideMenu, icon) {
     mobileButton.on('click', function () {
-        toggleMobileMenu(sideMenu, container);
-        console.log(container);
+        toggleMobileMenu(sideMenu, icon);
     });
 }
 
-function toggleMobileMenu(sideMenu, container) {
+function toggleMobileMenu(sideMenu, icon) {
     sideMenu.classList.toggle('menu-sidebar--show');
-    container.classList.toggle('content--show');
-
-    (0, _bling.$)('body').classList.toggle('body--show');
+    icon.classList.toggle('menu-btn__icon__active');
 }
 
 exports.default = mobileToggle;
@@ -3179,13 +3176,21 @@ var _mobileToggle = __webpack_require__(15);
 
 var _mobileToggle2 = _interopRequireDefault(_mobileToggle);
 
+var _descriptionToggle = __webpack_require__(45);
+
+var _descriptionToggle2 = _interopRequireDefault(_descriptionToggle);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (0, _autocomplete2.default)((0, _bling.$)('#address'), (0, _bling.$)('#lat'), (0, _bling.$)('#lng'));
 (0, _autocomplete2.default)((0, _bling.$)('#city'), (0, _bling.$)('#cityLat'), (0, _bling.$)('#cityLng'));
 (0, _typeAhead2.default)((0, _bling.$)('.search'));
 
-(0, _mobileToggle2.default)((0, _bling.$)('.mobile-menu'), (0, _bling.$)('.menu-sidebar'), (0, _bling.$)('.content'));
+(0, _mobileToggle2.default)((0, _bling.$)('.menu-btn'), (0, _bling.$)('.menu-sidebar'), (0, _bling.$)('.menu-btn__icon'));
+
+if ((0, _bling.$)('.single__description-toggle') && (0, _bling.$)('.single__description')) {
+    (0, _descriptionToggle2.default)((0, _bling.$)('.single__description-toggle'), (0, _bling.$)('.single__description'));
+}
 
 if ((0, _bling.$)('#complete-quest')) {
     (0, _completedQuest2.default)((0, _bling.$)('#complete-quest'), (0, _bling.$)('#completed-quest-form'), (0, _bling.$)('.completed-quest__close'));
@@ -3203,6 +3208,33 @@ heartForms.on('submit', _heart2.default);
 
 var completeForms = (0, _bling.$$)('form.completet');
 completeForms.on('submit', _heart2.default);
+
+/***/ }),
+/* 40 */,
+/* 41 */,
+/* 42 */,
+/* 43 */,
+/* 44 */,
+/* 45 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _bling = __webpack_require__(1);
+
+function toggleDescription(toggleButton, toggleContainer) {
+    toggleButton.on('click', function () {
+        toggleButton.classList.toggle('single__description-toggle--expanded');
+        toggleContainer.classList.toggle('single__description--expanded');
+    });
+}
+
+exports.default = toggleDescription;
 
 /***/ })
 /******/ ]);

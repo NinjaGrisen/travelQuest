@@ -4,9 +4,11 @@
     height: 60vh;
     height: calc((7/13)*90vw);
     max-height: 80vh;
+    margin-left: -24px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    margin-top: 103px;
 
     @media all and (max-width: 900px) {
       top: -2px;
@@ -73,7 +75,7 @@
 
       .heart__button--hearted--inactive,
       .heart__button--hearted--active {
-        color: lighten($color-main, 10);
+        color: $color-cta;
         font-size: 3rem;
 
         .heart__text {
@@ -106,11 +108,64 @@
     }
   }
 
-  
-
   &__description {
+    position: relative;
     max-width: 900px;
     width: 100%;
+    padding: 0 24px;
+
+    &--expanded {
+      &.single__description {
+        max-height: none;
+        padding-bottom: 60px;
+        overflow: hidden;
+        transition: all .25s ease;
+      }
+    }
+
+    @media screen and (max-width: 950px) {
+      max-height: 300px;
+      overflow: hidden;
+
+    }
+
+    &-toggle {
+      position: absolute;
+      width: 100%;
+      height: 60px;
+      background: linear-gradient(to bottom, rgba(42, 22, 75, 0), #2a164b );
+      left: 0;
+      bottom: 0;
+      cursor: pointer;
+
+      &:after {
+        content: '⌄';
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        height: 30px;
+        width: 30px;
+        background: $color-white;
+        border-radius: 50%;
+        transform: rotate(0) translateX(-50%);
+        transform-origin: center left;
+        color: $color-main;
+        font-size: 35px;
+        line-height: 6px;
+        text-align: center;
+        transform-style: preserve-3d;
+
+      }
+      &--expanded {
+        &:after {
+          transform-origin: 25% 25%;
+          transform: rotate(180deg) translateX(-50%);
+        }
+      }
+      @media screen and (min-width: 950px) {
+        display: none;
+      }
+    }
 
     @media all and (max-width: 950px) {
       padding: 0 24px
@@ -141,14 +196,18 @@
     height: 100%;
     max-width: 1000px;
     padding: 24px;
+    font-size: 6rem;
+    margin-top: -9rem;
+    text-align: center;
+
     a {
       margin-bottom: 60px;
-      margin-left: -50px;
       color: $color-white;
       text-shadow: 5px 5px 10px rgba(24, 24, 24, 0.8);
 
       @media all and (max-width: 900px) {
         margin-left: 0;
+        font-size: 4rem;
       }
     }
   }

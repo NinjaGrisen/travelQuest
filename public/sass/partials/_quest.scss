@@ -54,11 +54,6 @@
           @media all and (max-width: 625px) {
             width: 45%;
           }
-          
-          .title {
-            margin-left: -30%;
-          }
-
         }
       }
     }
@@ -340,8 +335,8 @@
           font-size: 1.4rem;
         }
         @media (max-width: 625px) {
-          line-height: 1.7rem;
-          font-size: 1.2rem;
+          line-height: 1.9rem;
+          font-size: 1.4rem;
         }
       }    
   }
@@ -405,19 +400,17 @@
     }
 
     .title {
-      margin-left: -60px;
+      margin-left: -9px;
       text-shadow: 5px 5px 10px rgba($color-black, .8);
 
-      @media screen and(max-width: 1090px){
-        font-size: 2.8rem;
-      }
+
       @media all and (max-width: 900px) {
         margin-left: 0;
         font-size: 2rem;
       }
       @media all and (max-width: 625px) {
         margin-left: 0;
-        font-size: 1.4rem;
+        font-size: 1.9rem;
       }
     }
   }

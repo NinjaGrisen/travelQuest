@@ -5,6 +5,21 @@
   display: flex;
   margin: 2rem 0;
   flex-wrap: wrap;
+  @media only screen and  (orientation : landscape) {
+    white-space: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    flex-wrap: nowrap;
+  }
+
+  @media only screen and (max-width: 768px) {
+    white-space: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    flex-wrap: nowrap;
+  }
 }
 
 .tag {
@@ -65,8 +80,8 @@
     }
     
     &--active {
-      background:$color-main;
-      color:$color-white;
+      background: $color-cta;
+      color: $color-main;
       text-shadow: 4px 3px 8px $color-black;
     }
   }

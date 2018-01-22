@@ -12,7 +12,7 @@ body {
 }
 
 .inner {
-  width: calc(87vw - 28px);
+  width: 100vw;
 
   @media screen and(max-width: 1300px) {
     width: auto;
@@ -29,51 +29,39 @@ body {
 }
 
 .content {
-  margin-left: 13vw;
-  width: calc(87vw - 28px);
+  width: calc(100vw - 48px);
+  margin-left: 24px;
   background: $color-main;
-  transition: all .25s ease;    
+  margin-top: 40px;
+  //transition: all .25s ease;    
+  
   
   &__background-map {
     &.single__hero {
       position: absolute;
-      left: -40px;
-      width: calc(87vw + 45px);
+      width: calc(100% + 24px);
+      margin-left: -24px;
       overflow: hidden;
       
-
-      @media screen and (max-width: 1300px) {
-        left: 0;
-        margin-left: 0;
-        width: 100vw;
-      }
-
-      @media screen and (max-width: 950px) {
-        width: 105vw;
-        margin-left: 0;
-      }
     }
   }
   
   @media screen and(max-width: 1300px) {
-    margin-left: 185px;
-    width: calc(100vw - 185px);
+    
+    width: 100vw;
   }
 
   @media screen and(max-width: 950px) {
     margin-left: auto;
     width: 100vw;
-    padding-bottom: 70px;
     overflow-x: hidden;
   }
 
-  &--show {
-    height: 80vh;
-    overflow: hidden;
-    margin-top: 5vh;
-    width: calc(100vw - 270px);
-    box-shadow: 12px 12px 20px rgba($color-black, .6);
-    filter: blur(6px);
+  &__search {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 0;
   }
 }
 

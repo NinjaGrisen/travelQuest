@@ -1,18 +1,14 @@
 import { $ } from './bling';
 
-function mobileToggle(mobileButton, sideMenu, container) {
+function mobileToggle(mobileButton, sideMenu, icon) {
     mobileButton.on('click', () => {
-        toggleMobileMenu(sideMenu, container);
-        console.log(container);
+        toggleMobileMenu(sideMenu, icon);
     });
 }
 
-function toggleMobileMenu(sideMenu, container) {
+function toggleMobileMenu(sideMenu, icon) {
     sideMenu.classList.toggle('menu-sidebar--show');
-    container.classList.toggle('content--show');
-
-    $('body').classList.toggle('body--show');
-    
+    icon.classList.toggle('menu-btn__icon__active');
 }
 
 export default mobileToggle;

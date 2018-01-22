@@ -20,33 +20,35 @@ html
     block topContent
     .wrapper
       .menu-sidebar
-        if user
-          .menu-sidebar__user-wrapper
-            a.menu-sidebar__user.menu-sidebar__bookmarked(href="/bookmarked", class=(currentPath.startsWith('/bookmarked') ? 'menu-sidebar__bookmarked--active' : ''))
-              span ☆
-              span.heart-count #{user.bookmarked && user.bookmarked.length}
-            a.menu-sidebar__user.menu-sidebar__bookmarked(href="/account", class=(currentPath.startsWith('/account') ? 'menu-sidebar__bookmarked--active' : ''))
-              img.avatar(src=user.gravatar + '&d=retro')
-        each item in h.menu
-          if item.title === 'Add'
-              if user != null && user.admin === 3 || user != null && user.admin === 4
-                a.menu-sidebar__link(href=item.slug, class=(currentPath.startsWith(item.slug) ? 'menu-sidebar__link--active' : ''))
-                  span #{item.title}
+        .menu-sidebar--wrapper
+          if user
+            .menu-sidebar__user-wrapper
+              a.menu-sidebar__user.menu-sidebar__bookmarked(href="/bookmarked", class=(currentPath.startsWith('/bookmarked') ? 'menu-sidebar__bookmarked--active' : ''))
+                span ☆
+                span.heart-count #{user.bookmarked && user.bookmarked.length}
+              a.menu-sidebar__user.menu-sidebar__bookmarked(href="/account", class=(currentPath.startsWith('/account') ? 'menu-sidebar__bookmarked--active' : ''))
+                img.avatar(src=user.gravatar + '&d=retro')
+          each item in h.menu
+            if item.title === 'Add'
+                if user != null && user.admin === 3 || user != null && user.admin === 4
+                  a.menu-sidebar__link(href=item.slug, class=(currentPath.startsWith(item.slug) ? 'menu-sidebar__link--active' : ''))
+                    span #{item.title}
 
-          else
-            a.menu-sidebar__link(href=item.slug, class=(currentPath.startsWith(item.slug) ? 'menu-sidebar__link--active' : ''))
-              span #{item.title}
+            else
+              a.menu-sidebar__link(href=item.slug, class=(currentPath.startsWith(item.slug) ? 'menu-sidebar__link--active' : ''))
+                span #{item.title}
 
-        
-        if !user
-          .menu-sidebar__sign-in-register
-            a.menu-sidebar__user(href="/register", class=(currentPath.startsWith('/register') ? 'menu-top__link--active' : '')) Register
-            a.menu-sidebar__user(href="/login", class=(currentPath.startsWith('/login') ? 'menu-top__link--active' : '')) Log In
+          
+          if !user
+            .menu-sidebar__sign-in-register
+              a.menu-sidebar__user(href="/register", class=(currentPath.startsWith('/register') ? 'menu-top__link--active' : '')) Register
+              a.menu-sidebar__user(href="/login", class=(currentPath.startsWith('/login') ? 'menu-top__link--active' : '')) Log In
               
       .content
         block content
-    .mobile-menu
-      span.mobile-menu__icon
+    .menu
+      .menu-btn
+        span.menu-btn__icon
 
     block scripts
       script(src=`https://maps.googleapis.com/maps/api/js?key=${process.env.MAP_KEY}&libraries=places&language=en`)

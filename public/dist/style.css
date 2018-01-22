@@ -422,7 +422,7 @@ body {
   overflow-x: hidden; }
 
 .inner {
-  width: calc(87vw - 28px); }
+  width: 100vw; }
   @media screen and (max-width: 1300px) {
     .inner {
       width: auto; } }
@@ -437,41 +437,31 @@ body {
       flex-direction: row; }
 
 .content {
-  margin-left: 13vw;
-  width: calc(87vw - 28px);
+  width: calc(100vw - 48px);
+  margin-left: 24px;
   background: #2a164b;
-  transition: all .25s ease; }
+  margin-top: 40px; }
   .content__background-map.single__hero {
     position: absolute;
-    left: -40px;
-    width: calc(87vw + 45px);
+    width: calc(100% + 24px);
+    margin-left: -24px;
     overflow: hidden; }
-    @media screen and (max-width: 1300px) {
-      .content__background-map.single__hero {
-        left: 0;
-        margin-left: 0;
-        width: 100vw; } }
-    @media screen and (max-width: 950px) {
-      .content__background-map.single__hero {
-        width: 105vw;
-        margin-left: 0; } }
   @media screen and (max-width: 1300px) {
     .content {
-      margin-left: 185px;
-      width: calc(100vw - 185px); } }
+      width: 100vw; } }
   @media screen and (max-width: 950px) {
     .content {
       margin-left: auto;
       width: 100vw;
-      padding-bottom: 70px;
       overflow-x: hidden; } }
-  .content--show {
-    height: 80vh;
-    overflow: hidden;
-    margin-top: 5vh;
-    width: calc(100vw - 270px);
-    box-shadow: 12px 12px 20px rgba(24, 24, 24, 0.6);
-    filter: blur(6px); }
+  .content__search {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    margin-top: 0; }
 
 @font-face {
   font-family: 'panama';
@@ -488,7 +478,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   position: relative;
-  font-size: 5rem;
+  font-size: 4rem;
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   letter-spacing: -1px;
@@ -499,7 +489,7 @@ p, span, a {
 
 a {
   text-decoration: none;
-  color: #45ebad; }
+  color: #e8d223; }
 
 p {
   line-height: 2;
@@ -516,22 +506,13 @@ p {
   position: relative;
   z-index: 2;
   margin: 0;
-  font-size: 40px;
+  font-size: 2rem;
   line-height: 1.1;
   line-height: 1.1; }
   .title--long {
     font-size: 30px; }
   .title a {
     border-bottom: 0; }
-
-.title--single {
-  max-width: 600px;
-  margin-top: -9rem;
-  font-size: 10rem;
-  text-align: center; }
-  @media all and (max-width: 900px) {
-    .title--single {
-      font-size: 5rem; } }
 
 input, textarea {
   width: 100%;
@@ -549,15 +530,15 @@ input, textarea {
     font-weight: bold;
     margin-top: 24px;
     display: block;
-    background: #45ebad;
+    background: #e8d223;
     color: #2a164b;
-    border-left: 1px solid #a1f5d6;
-    border-top: 1px solid #a1f5d6;
+    border-left: 1px solid #f2e57f;
+    border-top: 1px solid #f2e57f;
     box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.4);
     transition: all .5s ease;
     cursor: pointer; }
     input.button:hover, textarea.button:hover {
-      background: #73f0c1;
+      background: #eddb51;
       transition: all .5s ease;
       box-shadow: 18px 18px 32px rgba(0, 0, 0, 0.2); }
   input.input--error, textarea.input--error {
@@ -629,7 +610,7 @@ input.button.update-account {
     margin-top: 4rem; }
   .form h2 {
     margin: 0;
-    font-size: 5rem;
+    font-size: 4rem;
     padding-bottom: 2rem; }
 
 .hiddenForm {
@@ -670,16 +651,19 @@ input.button.update-account {
   transition: all .5s ease;
   pointer-events: none; }
   .city-search a {
-    color: #dddddd; }
+    color: #e8d223; }
   .city-search__visible {
     opacity: 1;
-    max-height: 30px;
+    height: auto;
     transition: all .5s ease;
     pointer-events: auto;
     margin: 0 25px 25px 25px; }
 
 .city__heading {
   color: #2a164b; }
+  @media screen and (max-width: 950px) {
+    .city__heading {
+      margin-left: 24px; } }
 
 .city__link.tag__link:after {
   color: rgba(42, 22, 75, 0.3); }
@@ -688,6 +672,11 @@ input.button.update-account {
   text-shadow: none; }
   .city__link.tag__link:hover:after, .city__link.tag__link--active:after {
     color: rgba(42, 22, 75, 0.3); }
+
+@media screen and (max-width: 950px) {
+  .tags.tags--city-page {
+    margin-left: 24px;
+    width: calc(100% - 48px); } }
 
 @keyframes slideIn {
   0% {
@@ -731,7 +720,7 @@ input.button.update-account {
     .flash__remove:hover {
       color: #FFC40E; }
   .flash--success {
-    background: #45ebad; }
+    background: #e8d223; }
   .flash--error {
     background: #fd4848;
     color: white; }
@@ -741,24 +730,26 @@ input.button.update-account {
     margin: 0; }
 
 .menu-sidebar {
-  width: 12vw;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-direction: column;
-      flex-direction: column;
-  position: fixed;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-      transform: translateY(-50%);
+  -ms-flex-align: center;
+      align-items: center;
+  position: absolute;
+  left: 0;
+  top: -100%;
+  width: 100%;
+  height: 100%;
+  background: #2a164b;
+  z-index: 9999;
   transition: all .25s ease; }
-  @media screen and (max-width: 1300px) {
-    .menu-sidebar {
-      width: 185px; } }
-  @media screen and (max-width: 950px) {
-    .menu-sidebar {
-      left: -185px; } }
+  .menu-sidebar--wrapper {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    width: 100%; }
   .menu-sidebar--show {
-    left: 0; }
+    top: 0; }
   .menu-sidebar__link {
     width: 100%;
     max-width: 190px;
@@ -780,10 +771,10 @@ input.button.update-account {
         border-radius: 50%;
         height: 3px;
         top: 100%;
-        background: #45ebad;
+        background: #e8d223;
         -ms-transform: translate(-50%, 3px);
             transform: translate(-50%, 3px);
-        box-shadow: 9px 0px 0 #45ebad, -9px 0 0 #45ebad; }
+        box-shadow: 9px 0px 0 #e8d223, -9px 0 0 #e8d223; }
     .menu-sidebar__link--active:hover span:after, .menu-sidebar__link:hover:hover span:after {
       background: #ddd;
       box-shadow: 9px 0px 0 #ddd, -9px 0 0 #ddd; }
@@ -813,20 +804,20 @@ input.button.update-account {
       .menu-sidebar__bookmarked img:hover {
         opacity: .9; }
     .menu-sidebar__bookmarked--active {
-      background: #45ebad;
+      background: #e8d223;
       color: #2a164b;
-      border-left: 1px solid #a1f5d6;
-      border-top: 1px solid #a1f5d6;
+      border-left: 1px solid #f2e57f;
+      border-top: 1px solid #f2e57f;
       box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.4);
       transition: all .5s ease;
       cursor: pointer;
       border: none; }
       .menu-sidebar__bookmarked--active:hover {
-        background: #73f0c1;
+        background: #eddb51;
         transition: all .5s ease;
         box-shadow: 18px 18px 32px rgba(0, 0, 0, 0.2); }
       .menu-sidebar__bookmarked--active img {
-        border: 3px solid #45ebad; }
+        border: 3px solid #e8d223; }
   .menu-sidebar__sign-in-register {
     display: -ms-flexbox;
     display: flex;
@@ -849,50 +840,64 @@ input.button.update-account {
   .menu-sidebar__user {
     font-size: 3rem; }
 
-.mobile-menu {
+.menu {
   position: fixed;
+  top: 0;
+  z-index: 99999;
+  width: 100%;
+  height: 50px;
+  background: #2a164b;
+  box-shadow: 5px 5px 15px rgba(24, 24, 24, 0.7); }
+
+.menu-btn {
   display: inline-block;
   bottom: 26px;
   left: 26px;
-  height: 60px;
-  width: 60px;
-  background: #45ebad;
-  color: #2a164b;
-  border-radius: 50%;
-  box-shadow: 5px 5px 15px black;
+  height: 50px;
+  width: 50px;
+  color: #e8d223;
   cursor: pointer;
   z-index: 99999; }
-  @media screen and (min-width: 900px) {
-    .mobile-menu {
-      display: none; } }
-  .mobile-menu__icon {
+  .menu-btn__icon {
     position: relative;
     display: block;
     width: 30px;
-    height: 4px;
-    margin: 50% auto 0 auto;
-    background: #2a164b;
+    height: 2px;
+    margin: 50% 0 0 0;
+    background: rgba(255, 0, 0, 0);
+    border-radius: 2px;
     -ms-transform: translateY(-50%);
-        transform: translateY(-50%); }
-    .mobile-menu__icon:after, .mobile-menu__icon:before {
+    transform: translateY(-50%);
+    transition: all .25s ease;
+    box-shadow: 11px -1px 0 #e8d223, 22px -1px 0 #e8d223, 32px -1px 0 #e8d223;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%; }
+    .menu-btn__icon:after, .menu-btn__icon:before {
       content: '';
       position: absolute;
-      left: 0;
-      top: -8px;
-      width: 100%;
-      height: 4px;
-      background: #2a164b; }
-    .mobile-menu__icon:after {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 8px;
-      width: 100%;
-      height: 4px;
-      background: #2a164b; }
-
-.body--show {
-  background: #402272; }
+      left: 9px;
+      top: -9px;
+      width: 30px;
+      height: 3px;
+      background: #e8d223;
+      border-radius: 2px;
+      transition: all .25s ease; }
+    .menu-btn__icon:after {
+      top: 8px; }
+    .menu-btn__icon__active {
+      background: #2a164b;
+      transition: all .25s ease; }
+      .menu-btn__icon__active:before {
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+        top: 0;
+        transition: all .25s ease; }
+      .menu-btn__icon__active:after {
+        -ms-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+        top: 0;
+        transition: all .25s ease; }
 
 .menu-top {
   display: -ms-flexbox;
@@ -950,8 +955,6 @@ input.button.update-account {
           @media all and (max-width: 625px) {
             .quests a:first-child .quest__details {
               width: 45%; } }
-          .quests a:first-child .quest__details .title {
-            margin-left: -30%; }
     .quests a:nth-child(2), .quests a:nth-child(3) {
       width: calc(50% - 12px); }
       @media screen and (min-width: 1627px) {
@@ -1138,8 +1141,8 @@ input.button.update-account {
         font-size: 1.4rem; } }
     @media (max-width: 625px) {
       .quest__info p {
-        line-height: 1.7rem;
-        font-size: 1.2rem; } }
+        line-height: 1.9rem;
+        font-size: 1.4rem; } }
   .quest a {
     color: #ddd; }
   .quest__hero {
@@ -1184,11 +1187,8 @@ input.button.update-account {
         width: 100%;
         padding: 1rem; } }
     .quest__details .title {
-      margin-left: -60px;
+      margin-left: -9px;
       text-shadow: 5px 5px 10px rgba(24, 24, 24, 0.8); }
-      @media screen and (max-width: 1090px) {
-        .quest__details .title {
-          font-size: 2.8rem; } }
       @media all and (max-width: 900px) {
         .quest__details .title {
           margin-left: 0;
@@ -1196,7 +1196,7 @@ input.button.update-account {
       @media all and (max-width: 625px) {
         .quest__details .title {
           margin-left: 0;
-          font-size: 1.4rem; } }
+          font-size: 1.9rem; } }
 
 .quest__action {
   display: inline-block; }
@@ -1209,15 +1209,15 @@ input.button.update-account {
     text-align: center;
     font-weight: 600;
     border: none;
-    background: #45ebad;
+    background: #e8d223;
     color: #2a164b;
-    border-left: 1px solid #a1f5d6;
-    border-top: 1px solid #a1f5d6;
+    border-left: 1px solid #f2e57f;
+    border-top: 1px solid #f2e57f;
     box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.4);
     transition: all .5s ease;
     cursor: pointer; }
     .quest__action a > p:hover {
-      background: #73f0c1;
+      background: #eddb51;
       transition: all .5s ease;
       box-shadow: 18px 18px 32px rgba(0, 0, 0, 0.2); }
 
@@ -1298,9 +1298,9 @@ input.button.update-account {
       margin-right: 0; } }
   .complete-quest__icon,
   .edit-quest__icon {
-    color: #402272;
+    color: #e8d223;
     font-weight: 600;
-    font-size: 3rem; }
+    font-size: 2.5rem; }
   .complete-quest__text,
   .edit-quest__text {
     margin-left: -5px;
@@ -1362,6 +1362,22 @@ input.button.update-account {
   margin: 2rem 0;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap; }
+  @media only screen and (orientation: landscape) {
+    .tags {
+      white-space: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      -ms-overflow-style: -ms-autohiding-scrollbar;
+      -ms-flex-wrap: nowrap;
+          flex-wrap: nowrap; } }
+  @media only screen and (max-width: 768px) {
+    .tags {
+      white-space: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      -ms-overflow-style: -ms-autohiding-scrollbar;
+      -ms-flex-wrap: nowrap;
+          flex-wrap: nowrap; } }
 
 .tag {
   position: relative;
@@ -1415,8 +1431,8 @@ input.button.update-account {
       box-shadow: 6px 6px 15px rgba(24, 24, 24, 0.5);
       transition: all .25s ease; }
     .tag__link--active {
-      background: #2a164b;
-      color: #ddd;
+      background: #e8d223;
+      color: #2a164b;
       text-shadow: 4px 3px 8px #181818; }
   .tag__text {
     padding: 1rem 1rem;
@@ -1434,9 +1450,11 @@ input.button.update-account {
   height: 60vh;
   height: calc((7/13)*90vw);
   max-height: 80vh;
+  margin-left: -24px;
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  margin-top: 103px; }
   @media all and (max-width: 900px) {
     .single__hero {
       top: -2px;
@@ -1495,7 +1513,7 @@ input.button.update-account {
       margin-right: 0; } }
   .single__heart.heart__button .heart__button--hearted--inactive,
   .single__heart.heart__button .heart__button--hearted--active {
-    color: #402272;
+    color: #e8d223;
     font-size: 3rem; }
     .single__heart.heart__button .heart__button--hearted--inactive .heart__text,
     .single__heart.heart__button .heart__button--hearted--active .heart__text {
@@ -1523,8 +1541,53 @@ input.button.update-account {
     overflow: hidden; }
 
 .single__description {
+  position: relative;
   max-width: 900px;
-  width: 100%; }
+  width: 100%;
+  padding: 0 24px; }
+  .single__description--expanded.single__description {
+    max-height: none;
+    padding-bottom: 60px;
+    overflow: hidden;
+    transition: all .25s ease; }
+  @media screen and (max-width: 950px) {
+    .single__description {
+      max-height: 300px;
+      overflow: hidden; } }
+  .single__description-toggle {
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(to bottom, rgba(42, 22, 75, 0), #2a164b);
+    left: 0;
+    bottom: 0;
+    cursor: pointer; }
+    .single__description-toggle:after {
+      content: '\2304';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      height: 30px;
+      width: 30px;
+      background: #ddd;
+      border-radius: 50%;
+      -ms-transform: rotate(0) translateX(-50%);
+          transform: rotate(0) translateX(-50%);
+      -ms-transform-origin: center left;
+          transform-origin: center left;
+      color: #2a164b;
+      font-size: 35px;
+      line-height: 6px;
+      text-align: center;
+      transform-style: preserve-3d; }
+    .single__description-toggle--expanded:after {
+      -ms-transform-origin: 25% 25%;
+          transform-origin: 25% 25%;
+      -ms-transform: rotate(180deg) translateX(-50%);
+          transform: rotate(180deg) translateX(-50%); }
+    @media screen and (min-width: 950px) {
+      .single__description-toggle {
+        display: none; } }
   @media all and (max-width: 950px) {
     .single__description {
       padding: 0 24px; } }
@@ -1548,15 +1611,18 @@ input.button.update-account {
       align-items: flex-end;
   height: 100%;
   max-width: 1000px;
-  padding: 24px; }
+  padding: 24px;
+  font-size: 6rem;
+  margin-top: -9rem;
+  text-align: center; }
   .title--single a {
     margin-bottom: 60px;
-    margin-left: -50px;
     color: #ddd;
     text-shadow: 5px 5px 10px rgba(24, 24, 24, 0.8); }
     @media all and (max-width: 900px) {
       .title--single a {
-        margin-left: 0; } }
+        margin-left: 0;
+        font-size: 4rem; } }
 
 .heart__button {
   background: none;
@@ -1573,7 +1639,7 @@ input.button.update-account {
     position: absolute;
     opacity: 0;
     top: 0;
-    color: #45ebad; }
+    color: #e8d223; }
   .heart__button svg {
     width: 25px;
     fill: gold; }
@@ -1582,7 +1648,7 @@ input.button.update-account {
   .heart__button--hearted .heart__button--hearted--active {
     display: block; }
   .heart__button--hearted svg {
-    fill: #45ebad; }
+    fill: #e8d223; }
   .heart__button--float:after {
     animation: fly 2.5s 1 ease-out; }
 
