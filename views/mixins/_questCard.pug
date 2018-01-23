@@ -1,5 +1,5 @@
 mixin questCard(quest = {}, index = null)
-    a(href=`/quest/${quest.slug}`)
+    a(href=`/quest/${quest.slug}`)   
         .quest
             .quest__hero(style=`background-image: url(/uploads/quest/${quest.photo || 'store.png'})`)
                 .quest__actions

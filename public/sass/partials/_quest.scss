@@ -1,3 +1,10 @@
+h2.quests--layout-option  {
+  @media screen and (max-width: 900px) {
+    margin: 12px;
+    overflow: hidden;
+  }
+}
+
 .quests {
   display: flex;
   flex-direction: row;
@@ -6,6 +13,65 @@
   justify-content: space-between;
   @media all and (max-width: 950px) {
     width: 100%;
+  }
+  
+  &--layout-option {
+    @media screen and (max-width: 400px) {
+      white-space: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      -ms-overflow-style: -ms-autohiding-scrollbar;
+      -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+      margin-top: -36px;
+
+      &.quests {      
+        a {
+          
+          &:first-child,
+          &:nth-child(2),
+          &:nth-child(3),
+          &:nth-child(4),
+          &:nth-child(5),
+          &:nth-child(5):last-child {
+            min-width: 53%;
+            width: 53%;
+            margin: 0 6px;
+            .quest {
+              min-height: 190px;
+              border-radius: 7px;
+              overflow: hidden;
+
+             &__hero {
+               width: 100%;
+               height: 190px;
+             }
+             &__details {
+                padding: 0 12px;
+                width: 100%;
+                overflow: hidden;
+                position: absolute;
+                width: auto;
+                bottom: 6px;
+                left: 0px;
+                border-radius: 7px;
+
+                .title {
+                  color: $color-cta;
+                }
+             }
+
+             &__info {
+               display: none;
+             }
+            }
+          }
+          &:first-child {
+            margin-left: 33%;
+          }
+        }
+      }
+    }
   }
 
   a {
@@ -53,6 +119,52 @@
           }
           @media all and (max-width: 625px) {
             width: 45%;
+          }
+        }
+      }
+
+      &:last-child {
+        min-width: 100%;
+        margin: 0 0 24px 0;
+        max-height: none;
+        height: auto;
+
+        .quest {
+          height: auto;
+          max-height: none;
+          border: none;
+
+          &:hover {
+            transform: scale(1);
+          }
+          &__hero {
+            height: 26vh;
+            width: 100%;
+          }
+
+          &__details {
+            width: 100%;
+
+            &:before {
+              content: '';
+              position: absolute;
+              left: 0;
+              bottom: 14px;
+              height: 30px;
+              width: 100%;
+              background: linear-gradient(to bottom, rgba(42, 22, 75, 0), #2a164b);
+            }
+          }
+          &__info {
+            &:after {
+              content: '';
+              position: absolute;
+              left: 0;
+              bottom: 14px;
+              height: 30px;
+              width: 100%;
+              background: linear-gradient(to bottom, rgba(42, 22, 75, 0), #2a164b);
+            }
           }
         }
       }

@@ -8,11 +8,16 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    margin-top: 103px;
+    margin-top: 53px;
+
+    @media screen and(min-width: 900px) {
+      margin-top: 8px;
+    }
 
     @media all and (max-width: 900px) {
       top: -2px;
       height: 60vh;
+      
     }
 
     &:before {
