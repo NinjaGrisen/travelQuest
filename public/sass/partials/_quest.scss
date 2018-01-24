@@ -16,24 +16,23 @@ h2.quests--layout-option  {
   }
   
   &--layout-option {
-    @media screen and (max-width: 400px) {
+    margin-top: 60vh;
       white-space: nowrap;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       -ms-overflow-style: -ms-autohiding-scrollbar;
       -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
-      margin-top: -36px;
 
       &.quests {      
         a {
           
-          &:first-child,
           &:nth-child(2),
           &:nth-child(3),
           &:nth-child(4),
           &:nth-child(5),
-          &:nth-child(5):last-child {
+          &:nth-child(5),
+          &:last-child {
             min-width: 53%;
             width: 53%;
             margin: 0 6px;
@@ -67,11 +66,51 @@ h2.quests--layout-option  {
             }
           }
           &:first-child {
-            margin-left: 33%;
+            position: absolute;
+            top: 101px;
+            left: 0;
+            margin-left: 1px;
+            height: 60vh;
+            background: red;
+            border: none;
+
+            .quest {
+              height: 100%;
+              border: none;
+
+              &__hero {
+                width: 100%;
+                height: 55vh;
+                position: relative;
+
+                &:before,
+                &:after {
+                  content: '';
+                  position: absolute;
+                  left: 0;
+                  bottom: -1px;
+                  height: 185px;
+                  width: 100%;
+                  top: auto;
+                  background: linear-gradient(to bottom, rgba(42, 22, 75, 0),rgba(42, 22, 75, .7) 60%, #2a164b);
+                  opacity: 1;
+                  z-index: 99;
+                }
+
+                &:after {
+                  bottom: auto;
+                  top: -1px;
+                  background: linear-gradient(to top, rgba(42, 22, 75, 0),rgba(42, 22, 75, .7) 60%, #2a164b);
+                }
+              }
+            }
           }
         }
+
+        a:nth-child(2) {
+          margin-left: 33%;
+        }
       }
-    }
   }
 
   a {
@@ -119,52 +158,6 @@ h2.quests--layout-option  {
           }
           @media all and (max-width: 625px) {
             width: 45%;
-          }
-        }
-      }
-
-      &:last-child {
-        min-width: 100%;
-        margin: 0 0 24px 0;
-        max-height: none;
-        height: auto;
-
-        .quest {
-          height: auto;
-          max-height: none;
-          border: none;
-
-          &:hover {
-            transform: scale(1);
-          }
-          &__hero {
-            height: 26vh;
-            width: 100%;
-          }
-
-          &__details {
-            width: 100%;
-
-            &:before {
-              content: '';
-              position: absolute;
-              left: 0;
-              bottom: 14px;
-              height: 30px;
-              width: 100%;
-              background: linear-gradient(to bottom, rgba(42, 22, 75, 0), #2a164b);
-            }
-          }
-          &__info {
-            &:after {
-              content: '';
-              position: absolute;
-              left: 0;
-              bottom: 14px;
-              height: 30px;
-              width: 100%;
-              background: linear-gradient(to bottom, rgba(42, 22, 75, 0), #2a164b);
-            }
           }
         }
       }

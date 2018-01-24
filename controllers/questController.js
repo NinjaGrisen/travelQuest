@@ -100,6 +100,7 @@ exports.getQuests = async (req, res) => {
     const page = req.params.page || 1;
     const limit = 6;
     const skip = (page * limit) - limit;
+    const isMobile = req.device.type === 'phone' || req.device.type === 'tablet';
 
     const questsPromise = Quest
         .find()
@@ -118,7 +119,7 @@ exports.getQuests = async (req, res) => {
         return;
     }
 
-    res.render('quests', {title: 'Quests', quests, page, pages, count});
+    res.render('quests', {title: 'Quests', quests, page, pages, count, isMobile});
 };
 const confirmOwnerOrAdmin = (quest, user) => {
     if(!user.admin === 4) {
