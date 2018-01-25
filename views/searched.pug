@@ -5,7 +5,7 @@ include mixins/_pagination
 
 
 block topContent
-    .content.content__background-map.single__hero(style=`background-image: url(${h.staticMap(quests[0].location.cityCoodrinates) || ''})`)
+    .content.content__background-map.single__hero.single__hero--map(style=`background-image: url(${h.staticMap(quests[0].location.cityCoodrinates) || ''})`)
 
 block content
     .content

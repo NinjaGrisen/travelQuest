@@ -1,10 +1,24 @@
-mixin pagination(page, pages, count, url)
-    .pagination
-        .pagination__prev
-            if page > 1
-                a(href=`${url}/${page - 1}`) Prev
-        .pagination__text
-            p Page #{page} of #{pages} - #{count} total results
-        .pagination__next
-            if page < pages
-                a(href=`${url}/${parseFloat(page)+1}`) Next
+mixin pagination(page, pages, count, isMobile = false, url)
+
+    if isMobile
+        .pagination.pagination--mobile
+            .pagination__prev
+                if page > 1
+                    a(href=`${url}/${page - 1}`) Prev
+            if !isMobile
+                .pagination__text
+                    p Page #{page} of #{pages} - #{count} total results
+            .pagination__next
+                if page < pages
+                    a(href=`${url}/${parseFloat(page)+1}`) Next
+    else
+        .pagination
+            .pagination__prev
+                if page > 1
+                    a(href=`${url}/${page - 1}`) Prev
+            if !isMobile
+                .pagination__text
+                    p Page #{page} of #{pages} - #{count} total results
+            .pagination__next
+                if page < pages
+                    a(href=`${url}/${parseFloat(page)+1}`) Next

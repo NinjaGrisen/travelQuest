@@ -29,7 +29,7 @@ body {
 }
 
 .content {
-  width: calc(100vw - 48px);
+  width: 100vw;
   margin-left: 24px;
   background: $color-main;
   //margin-top: 40px;
@@ -42,6 +42,12 @@ body {
       width: calc(100% + 24px);
       margin-left: -24px;
       overflow: hidden;
+
+      &--map {
+        @media (min-width: 900px) {
+          margin-top: 7px;
+        }
+      }
       
     }
   }
@@ -53,8 +59,7 @@ body {
 
   @media screen and(max-width: 950px) {
     margin-left: auto;
-    width: 100vw;
-    overflow-x: hidden;
+    width: calc(100vw - 24px);
   }
 
   &__search {

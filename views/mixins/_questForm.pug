@@ -1,5 +1,6 @@
-mixin questForm(quest = {})
+mixin questForm(quest = {}, title)
     form.card(action=`/add/${quest._id || ''}` method="POST" enctype="multipart/form-data")
+        h1= title
         label(for="name") Name
         input(type="text" name="name" value=quest.name placeholder="Enter quest name")
         label(for="description") Description

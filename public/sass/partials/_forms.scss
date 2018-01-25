@@ -2,8 +2,8 @@ input, textarea {
     width: 100%;
     max-width: 900px;
     padding: 10px;
-    color: #dddddd;
-    background: #2f1a50;
+    color: $color-white;
+    background: #3c295d;
     border: none;
     border-left: 1px solid rgba(lighten($color-main, 20), .5);
     border-top: 1px solid rgba(lighten($color-main, 20), .5);
@@ -39,6 +39,17 @@ form {
   @media screen and(max-width: 950px){
     padding: 0 24px;
   }
+
+  &.card {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;    
+
+    @media screen and(max-width: 950px){
+      padding: 0 24px;
+    }
+  }
 }
 
 input.button.update-account {
@@ -72,7 +83,7 @@ input.button.update-account {
   width: 100%;
   max-width: 900px;
   padding: 2rem;
-  box-shadow: $grad;
+  margin: 0 auto;
   
   & + .form {
     margin-top: 4rem;

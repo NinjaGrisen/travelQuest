@@ -3,6 +3,7 @@ const router = express.Router();
 const questController = require('../controllers/questController');
 const userController = require('../controllers/userController');
 const authController = require('../controllers/authController');
+const helperController = require('../controllers/helperController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
 

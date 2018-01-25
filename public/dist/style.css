@@ -437,7 +437,7 @@ body {
       flex-direction: row; }
 
 .content {
-  width: calc(100vw - 48px);
+  width: 100vw;
   margin-left: 24px;
   background: #2a164b; }
   .content__background-map.single__hero {
@@ -445,14 +445,16 @@ body {
     width: calc(100% + 24px);
     margin-left: -24px;
     overflow: hidden; }
+    @media (min-width: 900px) {
+      .content__background-map.single__hero--map {
+        margin-top: 7px; } }
   @media screen and (max-width: 1300px) {
     .content {
       width: 100vw; } }
   @media screen and (max-width: 950px) {
     .content {
       margin-left: auto;
-      width: 100vw;
-      overflow-x: hidden; } }
+      width: calc(100vw - 24px); } }
   .content__search {
     display: -ms-flexbox;
     display: flex;
@@ -517,8 +519,8 @@ input, textarea {
   width: 100%;
   max-width: 900px;
   padding: 10px;
-  color: #dddddd;
-  background: #2f1a50;
+  color: #ddd;
+  background: #3c295d;
   border: none;
   border-left: 1px solid rgba(86, 45, 154, 0.5);
   border-top: 1px solid rgba(86, 45, 154, 0.5);
@@ -555,6 +557,14 @@ form {
   @media screen and (max-width: 950px) {
     form {
       padding: 0 24px; } }
+  form.card {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0; }
+    @media screen and (max-width: 950px) {
+      form.card {
+        padding: 0 24px; } }
 
 input.button.update-account {
   display: inline-block;
@@ -604,7 +614,7 @@ input.button.update-account {
   width: 100%;
   max-width: 900px;
   padding: 2rem;
-  box-shadow: linear-gradient(90deg, #48ded4 0%, #a026bf 20%, #e82c75 60%, #FFC40E 85%, #48ded4 95%); }
+  margin: 0 auto; }
   .form + .form {
     margin-top: 4rem; }
   .form h2 {
@@ -639,7 +649,7 @@ input.button.update-account {
   @media screen and (max-width: 950px) {
     #searchForm {
       margin: 25px;
-      width: calc(100vw - 50px); } }
+      width: calc(100% - 50px); } }
 
 .city-search {
   opacity: 0;
@@ -659,7 +669,8 @@ input.button.update-account {
     margin: 0 25px 25px 25px; }
 
 .city__heading {
-  color: #2a164b; }
+  color: #ddd;
+  text-shadow: 1px 1px 0 #2a164b, 2px 2px 0 #311957, 3px 3px 0 #371d63, 4px 4px 0 #3e206e, 5px 5px 0 #44247a, 6px 6px 6px rgba(42, 22, 75, 0.4), 7px 7px 7px rgba(42, 22, 75, 0.3), 8px 8px 8px rgba(42, 22, 75, 0.2), 9px 9px 9px rgba(42, 22, 75, 0.1); }
   @media screen and (max-width: 950px) {
     .city__heading {
       margin-left: 24px; } }
@@ -734,7 +745,7 @@ input.button.update-account {
   display: flex;
   -ms-flex-align: center;
       align-items: center;
-  position: absolute;
+  position: fixed;
   left: 0;
   top: -100%;
   width: 100%;
@@ -906,7 +917,8 @@ input.button.update-account {
 @media screen and (max-width: 900px) {
   h2.quests--layout-option {
     margin: 12px;
-    overflow: hidden; } }
+    overflow: hidden;
+    font-size: 3rem; } }
 
 .quests {
   display: -ms-flexbox;
@@ -922,7 +934,7 @@ input.button.update-account {
     .quests {
       width: 100%; } }
   .quests--layout-option {
-    margin-top: 60vh;
+    margin-top: 44vh;
     white-space: nowrap;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -930,11 +942,13 @@ input.button.update-account {
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap; }
     .quests--layout-option.quests a:nth-child(2), .quests--layout-option.quests a:nth-child(3), .quests--layout-option.quests a:nth-child(4), .quests--layout-option.quests a:nth-child(5), .quests--layout-option.quests a:nth-child(5), .quests--layout-option.quests a:last-child {
-      min-width: 53%;
-      width: 53%;
+      min-width: 53vw;
+      width: 53vw;
       margin: 0 6px; }
       .quests--layout-option.quests a:nth-child(2) .quest, .quests--layout-option.quests a:nth-child(3) .quest, .quests--layout-option.quests a:nth-child(4) .quest, .quests--layout-option.quests a:nth-child(5) .quest, .quests--layout-option.quests a:nth-child(5) .quest, .quests--layout-option.quests a:last-child .quest {
-        min-height: 190px;
+        position: relative;
+        height: 84%;
+        min-height: 53vw;
         border-radius: 7px;
         overflow: hidden; }
         .quests--layout-option.quests a:nth-child(2) .quest__hero, .quests--layout-option.quests a:nth-child(3) .quest__hero, .quests--layout-option.quests a:nth-child(4) .quest__hero, .quests--layout-option.quests a:nth-child(5) .quest__hero, .quests--layout-option.quests a:nth-child(5) .quest__hero, .quests--layout-option.quests a:last-child .quest__hero {
@@ -948,7 +962,11 @@ input.button.update-account {
           width: auto;
           bottom: 6px;
           left: 0px;
-          border-radius: 7px; }
+          border-radius: 7px;
+          position: absolute;
+          bottom: 12px;
+          width: 100%;
+          z-index: 999; }
           .quests--layout-option.quests a:nth-child(2) .quest__details .title, .quests--layout-option.quests a:nth-child(3) .quest__details .title, .quests--layout-option.quests a:nth-child(4) .quest__details .title, .quests--layout-option.quests a:nth-child(5) .quest__details .title, .quests--layout-option.quests a:nth-child(5) .quest__details .title, .quests--layout-option.quests a:last-child .quest__details .title {
             color: #e8d223; }
         .quests--layout-option.quests a:nth-child(2) .quest__info, .quests--layout-option.quests a:nth-child(3) .quest__info, .quests--layout-option.quests a:nth-child(4) .quest__info, .quests--layout-option.quests a:nth-child(5) .quest__info, .quests--layout-option.quests a:nth-child(5) .quest__info, .quests--layout-option.quests a:last-child .quest__info {
@@ -958,15 +976,23 @@ input.button.update-account {
       top: 101px;
       left: 0;
       margin-left: 1px;
-      height: 60vh;
-      background: red;
+      height: 44vh;
       border: none; }
       .quests--layout-option.quests a:first-child .quest {
         height: 100%;
-        border: none; }
+        border: none;
+        position: relative;
+        height: 44vh; }
+        .quests--layout-option.quests a:first-child .quest__details {
+          width: 100%;
+          margin-top: -57px;
+          z-index: 99; }
+          .quests--layout-option.quests a:first-child .quest__details h2 {
+            color: #e8d223;
+            font-size: 2.4rem; }
         .quests--layout-option.quests a:first-child .quest__hero {
           width: 100%;
-          height: 55vh;
+          height: 37vh;
           position: relative; }
           .quests--layout-option.quests a:first-child .quest__hero:before, .quests--layout-option.quests a:first-child .quest__hero:after {
             content: '';
@@ -980,6 +1006,7 @@ input.button.update-account {
             opacity: 1;
             z-index: 99; }
           .quests--layout-option.quests a:first-child .quest__hero:after {
+            display: none;
             bottom: auto;
             top: -1px;
             background: linear-gradient(to top, rgba(42, 22, 75, 0), rgba(42, 22, 75, 0.7) 60%, #2a164b); }
@@ -1526,7 +1553,7 @@ input.button.update-account {
   margin-top: 53px; }
   @media screen and (min-width: 900px) {
     .single__hero {
-      margin-top: 8px; } }
+      margin-top: 97px; } }
   @media all and (max-width: 900px) {
     .single__hero {
       top: -2px;
@@ -1538,7 +1565,10 @@ input.button.update-account {
     bottom: -2px;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(42, 22, 75, 0), rgba(42, 22, 75, 0.4) 75%, #2a164b 87%); }
+    background: linear-gradient(to bottom, rgba(42, 22, 75, 0) 31%, #2a164b 83%); }
+  .single__hero--map:before {
+    background: linear-gradient(to bottom, #2a164b, rgba(232, 210, 35, 0.2) 45%, #2a164b 87%);
+    top: 0; }
   .single__hero:after {
     content: '';
     position: absolute;
@@ -1674,7 +1704,9 @@ input.button.update-account {
         transform: scale(1.1); }
 
 #map {
-  height: 500px; }
+  height: 500px;
+  left: -24px;
+  width: 100vw; }
 
 .title--single {
   display: -ms-flexbox;
@@ -1751,10 +1783,17 @@ form.heart {
   padding: 0; }
 
 .pagination {
+  position: relative;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: baseline;
-      align-items: baseline; }
+      align-items: baseline;
+  z-index: 1; }
+  .pagination.pagination--mobile {
+    margin-left: -24px;
+    width: 100vw;
+    -ms-flex-pack: distribute;
+        justify-content: space-around; }
   .pagination__next {
     margin: 0 24px; }
     .pagination__next a:after {
