@@ -4,11 +4,15 @@ const User = mongoose.model('User');
 const promisify = require('es6-promisify');
 
 exports.loginForm = (req, res) => {
-    res.render('login', {title: 'Login'});
+    const isMobile = req.device.type === 'phone' || req.device.type === 'tablet';
+
+    res.render('login', {title: 'Login', isMobile});
 }
 
 exports.registerForm = (req, res) => {
-    res.render('register', {title: 'Register'});
+    const isMobile = req.device.type === 'phone' || req.device.type === 'tablet';
+
+    res.render('register', {title: 'Register', isMobile});
 }
 
 exports.validateRegister = (req, res, next) => {
@@ -47,7 +51,9 @@ exports.register = async (req, res, next) => {
 };
 
 exports.account = (req, res) => {
-    res.render('account')
+    const isMobile = req.device.type === 'phone' || req.device.type === 'tablet';
+
+    res.render('account', {title: 'Login', isMobile })
 }
 
 exports.updateAccount = async (req, res) => {

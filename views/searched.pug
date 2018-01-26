@@ -1,6 +1,8 @@
 extends layout
 
 include mixins/_questCard
+include mixins/_questCardMobile
+
 include mixins/_pagination
 
 
@@ -22,7 +24,16 @@ block content
         
     .container
         .quests
-            each quest, index in quests
-                +questCard(quest, index)
+            //- each quest, index in quests
+            //-     +questCard(quest, index)
+            if isMobile
+                .quests.quests--layout-option.only-slides
+                    each quest, index in quests
+                        +questCardMobile(quest, index)
+                
+            else
+                .quests
+                    each quest, index in quests
+                        +questCard(quest, index)
         if quests[0] != undefined
-            +pagination(page, pages, count, `/city/${quests[0].location.city}/page`)
+            +pagination(page, pages, count, isMobile, `/city/${quests[0].location.city}/page`)

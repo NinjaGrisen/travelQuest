@@ -20,13 +20,13 @@ const multerOptions = {
 };
 
 exports.homePage = (req, res) => {
-    res.render('index');
+    const isMobile = req.device.type === 'phone' || req.device.type === 'tablet';
+    res.render('index', isMobile);
 };
 
 exports.addQuest = (req, res) => {
-    res.render('editQuest', {
-        title: 'Add quest'
-    });
+    const isMobile = req.device.type === 'phone' || req.device.type === 'tablet';
+    res.render('editQuest', {title: 'Add quest', isMobile});
 };
 
 exports.upload = multer(multerOptions).single('photo');
@@ -48,10 +48,6 @@ exports.resizeImage = (location) => {
         next();
     };
 }
-// catchErrors(questController.resizeImage('quest')),
-// catchErrors(questController.resizeImageMedium('quest')),
-// catchErrors(questController.resizeImageLarge('quest')), 
-
 
 exports.resizeImageMedium = (location) => {
     return resizeMedium = async(req, res, next) => {
@@ -129,10 +125,10 @@ const confirmOwnerOrAdmin = (quest, user) => {
     }
 }
 exports.editQuest = async (req, res) => {
-    
+    const isMobile = req.device.type === 'phone' || req.device.type === 'tablet';
     const quest = await Quest.findOne({_id: req.params.id});
     confirmOwnerOrAdmin(quest, req.user);
-    res.render('editquest', {title: `Edit ${quest.name}`, quest});
+    res.render('editquest', {title: `Edit ${quest.name}`, quest, isMobile});
 };
 
 
@@ -149,14 +145,16 @@ exports.updateQuest = async (req, res) => {
 };
 
 exports.getQuestBySlug = async (req, res, next) => {
+    const isMobile = req.device.type === 'phone' || req.device.type === 'tablet';
     const quest = await Quest.findOne({ slug: req.params.slug });
     if(!quest) {
         return next();
     }
-    res.render('quest', {quest, title: quest.name});
+    res.render('quest', {quest, title: quest.name, isMobile});
 };
 
 exports.getQuestByTag = async (req, res) => {
+    const isMobile = req.device.type === 'phone' || req.device.type === 'tablet';
     const page = req.params.page || 1;
     const limit = 6;
     const skip = (page * limit) - limit;
@@ -185,10 +183,11 @@ exports.getQuestByTag = async (req, res) => {
         return;
     }
 
-    res.render('tag', {tags, title: 'Tags', tag, quests, page, pages, count, param});
+    res.render('tag', {tags, title: 'Tags', tag, quests, page, pages, count, param, isMobile});
 };
 
 exports.searchQuests = async (req, res) => {
+    const isMobile = req.device.type === 'phone' || req.device.type === 'tablet';
     const quests = await Quest
     .find({
         $text: {
@@ -251,6 +250,8 @@ exports.completeQuest = async(req, res) => {
 }
 
 exports.getBookmarks = async(req, res) => {
+    //Check why broken
+    const isMobile = req.device.type === 'phone' || req.device.type === 'tablet';
     const page = req.params.page || 1;
     const limit = 6;
     const skip = (page * limit) - limit;
@@ -273,14 +274,15 @@ exports.getBookmarks = async(req, res) => {
 
     if(!quests.length && skip) {
         req.flash('info', `Hey you asked for page ${page}. That does not exist so I put you on ${pages}`)
-        res.redirect(`/bookmarked/${pages}`);
+        res.redirect(`/bookmarked/${pages}`, isMobile);
         return;
     }
     
-    res.render('bookmarked', {title: 'Bookmarked quests', quests, page, pages, count} );
+    res.render('bookmarked', {title: 'Bookmarked quests', quests, page, pages, count , isMobile} );
 };
 
 exports.getCompletedQuests = async(req, res) => {
+    const isMobile = req.device.type === 'phone' || req.device.type === 'tablet';
     const completedQuests = await CompletedQuest.find({
         quest: {$in: req.user.completed}
     });
@@ -289,13 +291,14 @@ exports.getCompletedQuests = async(req, res) => {
 }
 
 exports.searchCity = async(req, res) => {
-    //const cities = await Quest.find();
+    const isMobile = req.device.type === 'phone' || req.device.type === 'tablet';
     const cities = await Quest.distinct('location.city');
   
-    res.render('search', {title: 'Search after a city', cities});
+    res.render('search', {title: 'Search after a city', cities, isMobile});
 }
 
 exports.citySearch = async (req, res) => {
+    const isMobile = req.device.type === 'phone' || req.device.type === 'tablet';
     const page = req.params.page || 1;
     const limit = 6;
     const skip = (page * limit) - limit;
@@ -337,7 +340,7 @@ exports.citySearch = async (req, res) => {
         return;
     }
 
-    res.render('searched', {title: req.params.city, existingTags, tags, quests, page, pages, count, param});
+    res.render('searched', {title: req.params.city, existingTags, tags, quests, page, pages, count, param, isMobile});
 
 }
 

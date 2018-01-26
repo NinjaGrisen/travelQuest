@@ -91,10 +91,12 @@
     }
 
     &__text {
-        margin-left: -5px;
+        display: block;
+        width: 100%;
         font-weight: 400;
         color: $color-white;
         font-size: 1.2rem;
+        
     }
 }
 
