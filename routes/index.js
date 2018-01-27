@@ -56,6 +56,7 @@ router.post('/completedQuest/:id',
   catchErrors(questController.resizeImageMedium('completed')),
   catchErrors(questController.resizeImageLarge('completed')), 
   catchErrors(questController.removeCompletedBookmark),
+  catchErrors(questController.incrementCompletedAmount),
   catchErrors(questController.completeQuest));
 
 router.get('/tags', 

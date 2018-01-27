@@ -172,7 +172,7 @@ h2.quests--layout-option  {
                   height: 185px;
                   width: 100%;
                   top: auto;
-                  background: linear-gradient(to bottom, rgba(42, 22, 75, 0),rgba(42, 22, 75, .7) 60%, #2a164b);
+                  background: linear-gradient(to bottom, rgba($color-main, 0),rgba($color-main, .7) 60%, $color-main);
                   opacity: 1;
                   z-index: 99;
                 }
@@ -181,7 +181,7 @@ h2.quests--layout-option  {
                   display: none;
                   bottom: auto;
                   top: -1px;
-                  background: linear-gradient(to top, rgba(42, 22, 75, 0),rgba(42, 22, 75, .7) 60%, #2a164b);
+                  background: linear-gradient(to top, rgba($color-main, 0),rgba($color-main, .7) 60%, $color-main);
                 }
               }
             }

@@ -86,7 +86,7 @@ exports.resizeImageLarge = (location) => {
 
 exports.createQuest = async (req, res) => {
     req.body.author = req.user._id;
-
+    req.body.completed = 0;
     const quest = await (new Quest(req.body)).save();
     req.flash('success', `Successfully Created ${quest.name}`);
     res.redirect(`/quest/${quest.slug}`);
@@ -105,6 +105,7 @@ exports.getQuests = async (req, res) => {
         .sort({ created: 'desc'});
     
     const countPromise = Quest.count();
+    
 
     const [quests, count] = await Promise.all([questsPromise, countPromise]);
     const pages = Math.ceil(count / limit);
@@ -114,7 +115,6 @@ exports.getQuests = async (req, res) => {
         res.redirect(`/quests/page/${pages}`);
         return;
     }
-
     res.render('quests', {title: 'Quests', quests, page, pages, count, isMobile});
 };
 const confirmOwnerOrAdmin = (quest, user) => {
@@ -138,6 +138,7 @@ exports.updateQuest = async (req, res) => {
         new: true,
         runValidators: true
     }).exec();
+
     req.flash('success', 
         `Successfully updated <strong>${quest.name} 
         </strong> <a href="/quest/${quest.slug}">View quest</a>`);
@@ -226,6 +227,14 @@ exports.removeCompletedBookmark = async(req, res, next) => {
             { "$pull": {bookmarked: req.params.id} },
             { new: true }
     );
+    next();
+}
+
+exports.incrementCompletedAmount = async(req, res, next) => {
+    const questUpdate = await Quest.findOneAndUpdate({_id: req.params.id},
+        { $inc: { completed: 1 }
+    }).exec();
+
     next();
 }
 

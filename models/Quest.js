@@ -39,6 +39,17 @@ const questSchema = new mongoose.Schema( {
             required: 'You must supply an address!'
         }
     },
+    publish: {
+        type: Boolean,
+        default: true
+    },
+    completed: {
+        type: Number
+    },
+    score: {
+        type: Number,
+        default: 50
+    },
     photo: String,
     photoBig: String,
     photoThumbnail: String,
