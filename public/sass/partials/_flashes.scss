@@ -10,8 +10,16 @@
   }
 }
 
+.mobile {
+  .flash {
+    position: absolute;
+    top: 50px;
+    width: calc(100% - 24px);
+  }
+}
+
 .flash {
-  box-shadow: 12px 12px 10px rgba($color-black, .5);
+  box-shadow: 7px 5px 10px rgba($color-black, .2);
   margin: 12px 12px 0 0;
   color: $color-main;  
   font-weight: 700;  

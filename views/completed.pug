@@ -1,10 +1,15 @@
 extends layout
 
 block content
-    each completed in completedQuests
-        .completed-list__wrapper
-            h2.completed-list__heading= completed.quest.name
-            .completed-list__user-info
-                if completed.photo != undefined
-                    .completed-list__background(style=`background-image: url(/uploads/completed/${completed.photo || ''})`)
-                p.completed-list__text=completed.text
+    .completed-list__flex-wrapper
+        each completed in completedQuests
+            .completed-list__wrapper
+                h2.completed-list__heading= completed.quest.name
+                    if completed.photo != undefined
+                        img.completed-list__photo(src=`/uploads/completed/${completed.photo}`, alt=`Completed quest ${completed.quest.name}`)
+                .completed-list__user-info
+                    if completed.photo != undefined
+                        .completed-list__background(style=`background-image: url(/uploads/completed/${completed.photo || ''})`)
+                    p.completed-list__text=completed.text
+                    span.completed-list__expand-toggle Expand
+                    

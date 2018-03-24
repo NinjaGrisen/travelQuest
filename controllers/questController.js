@@ -292,9 +292,9 @@ exports.getBookmarks = async(req, res) => {
 
 exports.getCompletedQuests = async(req, res) => {
     const isMobile = req.device.type === 'phone' || req.device.type === 'tablet';
-    const completedQuests = await CompletedQuest.find({
-        quest: {$in: req.user.completed}
-    });
+    const completedQuests = await CompletedQuest
+        .find({quest: {$in: req.user.completed}})
+        .sort({ completed: 'desc'});
 
     res.render('completed', {title: 'Completed Quests', completedQuests})
 }

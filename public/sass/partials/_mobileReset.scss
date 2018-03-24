@@ -9,6 +9,12 @@
         margin-left: 12px;
     }
 
+    h2 {
+        &.quests--layout-option {
+            display: none;
+        }
+    }
+
     .quest__action--heart,
     .complete-quest,
     .edit-quest {

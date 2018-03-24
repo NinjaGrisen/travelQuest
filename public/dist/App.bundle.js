@@ -3202,6 +3202,10 @@ var _descriptionToggle = __webpack_require__(13);
 
 var _descriptionToggle2 = _interopRequireDefault(_descriptionToggle);
 
+var _toggleCompletedQuest = __webpack_require__(46);
+
+var _toggleCompletedQuest2 = _interopRequireDefault(_toggleCompletedQuest);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (0, _autocomplete2.default)((0, _bling.$)('#address'), (0, _bling.$)('#lat'), (0, _bling.$)('#lng'));
@@ -3213,6 +3217,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 if ((0, _bling.$)('.single__description-toggle') && (0, _bling.$)('.single__description')) {
     (0, _descriptionToggle2.default)((0, _bling.$)('.single__description-toggle'), (0, _bling.$)('.single__description'));
 }
+
+_toggleCompletedQuest2.default.toggle();
 
 if ((0, _bling.$)('#complete-quest')) {
     (0, _completedQuest2.default)((0, _bling.$)('#complete-quest'), (0, _bling.$)('#completed-quest-form'), (0, _bling.$)('.completed-quest__close'));
@@ -3230,6 +3236,39 @@ heartForms.on('submit', _heart2.default);
 
 var completeForms = (0, _bling.$$)('form.completet');
 completeForms.on('submit', _heart2.default);
+
+/***/ }),
+/* 41 */,
+/* 42 */,
+/* 43 */,
+/* 44 */,
+/* 45 */,
+/* 46 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _bling = __webpack_require__(1);
+
+exports.toggle = function () {
+   var toggleCompleted = (0, _bling.$$)('.completed-list__expand-toggle');
+
+   toggleCompleted.on('click', function (e) {
+      e.preventDefault();
+      var completedWrapper = e.target.parentElement.parentElement;
+      var completedWrapperId = Array.prototype.slice.call((0, _bling.$$)('.completed-list__wrapper'));
+      var completedWrapperIndex = completedWrapperId.indexOf(completedWrapper);
+
+      for (var i = 0; i < (0, _bling.$$)('.completed-list__wrapper').length; i++) {
+         if (i != completedWrapperIndex) {
+            (0, _bling.$$)('.completed-list__wrapper')[i].classList.toggle('completed-list__wrapper--hidden');
+         }
+      }
+
+      completedWrapper.classList.toggle('completed-list__wrapper--expanded');
+   });
+};
 
 /***/ })
 /******/ ]);

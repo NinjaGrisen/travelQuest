@@ -31,10 +31,7 @@ body {
 .content {
   width: 100vw;
   margin-left: 24px;
-  background: $color-main;
-  //margin-top: 40px;
-  //transition: all .25s ease;    
-  
+  background: $color-main;  
   
   &__background-map {
     &.single__hero {
@@ -58,7 +55,7 @@ body {
   }
 
   @media screen and(max-width: 950px) {
-    margin-left: auto;
+    margin-left: 12px;
     width: calc(100vw - 24px);
   }
 
@@ -70,3 +67,6 @@ body {
   }
 }
 
+.mobile {
+  margin-top: 64px;
+}

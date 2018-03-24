@@ -9,6 +9,7 @@ import loadPlaces from './modules/map';
 import completedQuest from './modules/completedQuest';
 import mobileToggle from './modules/mobileToggle';
 import toggleDescription from './modules/descriptionToggle';
+import toggleCompletedQuest from './modules/toggleCompletedQuest';
 
 autocomplete($('#address'), $('#lat'), $('#lng'));
 autocomplete($('#city'), $('#cityLat'), $('#cityLng'));
@@ -20,6 +21,7 @@ if($('.single__description-toggle') && $('.single__description')) {
     toggleDescription($('.single__description-toggle'), $('.single__description'));
 }
 
+toggleCompletedQuest.toggle();
 
 if($('#complete-quest')) {
     completedQuest($('#complete-quest'), $('#completed-quest-form'), $('.completed-quest__close'));
