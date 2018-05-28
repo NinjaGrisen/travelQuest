@@ -5,9 +5,14 @@ include mixins/_completedQuest
 block content
     .single
         .single__hero(style=`background-image: url(/uploads/quest/${quest.photoBig || quest.photo})`)
-            h2.title.title--single
-                a(href=`/quest/${quest.slug}`) #{quest.name}
+            if !isMobile
+               h2.title.title--single
+                  a(href=`/quest/${quest.slug}`) #{quest.name}
+               
         .single__top-wrapper
+            if isMobile
+               h2.title.title--single
+                  a(href=`/quest/${quest.slug}`) #{quest.name}
             .single__details
                 .single__quick-info
                     if quest.price
@@ -44,16 +49,16 @@ block content
                         a(href=`/quests/${quest._id}/edit`)
                             span.edit-quest__icon ✎
                                 span.edit-quest__text Edit
-                        
+            if quest.tags
+               ul.tags
+                     each tag in quest.tags
+                        li.tag.single__tag
+                           a.tag__link(href=`/city/${quest.location.city}/tags/${tag}`)
+                                 span.tag__text #{tag}               
         p.single__description= quest.description
             span.single__description-toggle
 
-        if quest.tags
-            ul.tags
-                each tag in quest.tags
-                    li.tag.single__tag
-                        a.tag__link(href=`/city/${quest.location.city}/tags/${tag}`)
-                            span.tag__text #{tag}
+
 
         div#map(data-lng=`${quest.location.coodrinates[0]}` data-lat=`${quest.location.coodrinates[1]}`)
                     

@@ -463,7 +463,7 @@ body {
       width: 100vw; } }
   @media screen and (max-width: 950px) {
     .content {
-      margin-left: 12px;
+      margin-left: 7px;
       width: calc(100vw - 24px); } }
   .content__search {
     display: -ms-flexbox;
@@ -478,7 +478,7 @@ body {
   margin-top: 64px; }
 
 @font-face {
-  font-family: 'panama';
+  font-family: "panama";
   src: url("/fonts/panama-bold-webfont.woff2") format("woff2"), url("/fonts/panama-bold-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal; }
@@ -488,18 +488,25 @@ html {
 
 body {
   font-size: 1.5rem;
-  color: #ddd; }
+  color: white; }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   position: relative;
   font-size: 4rem;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 600;
   letter-spacing: -1px;
-  color: #ddd; }
+  color: white; }
 
-p, span, a {
-  font-family: 'Montserrat', sans-serif; }
+p,
+span,
+a {
+  font-family: "Montserrat", sans-serif; }
 
 a {
   text-decoration: none;
@@ -513,7 +520,8 @@ p {
       font-size: 1.5rem; } }
   @media screen and (max-width: 500px) {
     p {
-      font-size: 1.4rem; } }
+      font-size: 1.4rem;
+      line-height: 1.5; } }
 
 .title {
   word-wrap: break-word;
@@ -532,7 +540,7 @@ input, textarea {
   width: 100%;
   max-width: 900px;
   padding: 10px;
-  color: #ddd;
+  color: white;
   background: #3c295d;
   border: none;
   border-left: 1px solid rgba(86, 45, 154, 0.5);
@@ -585,7 +593,7 @@ input.button.update-account {
   margin-left: 12px;
   border: none;
   background: #351c5f;
-  color: #ddd;
+  color: white;
   border-left: 1px solid #6133ae;
   border-top: 1px solid #6133ae;
   box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.4);
@@ -608,7 +616,7 @@ input.button.update-account {
   font-weight: bold;
   text-align: center;
   background: #351c5f;
-  color: #ddd;
+  color: white;
   border-left: 1px solid #6133ae;
   border-top: 1px solid #6133ae;
   box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.4);
@@ -645,16 +653,16 @@ input.button.update-account {
   display: block; }
 
 ::-webkit-input-placeholder {
-  color: rgba(221, 221, 221, 0.5); }
+  color: rgba(255, 255, 255, 0.5); }
 
 ::-moz-placeholder {
-  color: rgba(221, 221, 221, 0.5); }
+  color: rgba(255, 255, 255, 0.5); }
 
 :-ms-input-placeholder {
-  color: rgba(221, 221, 221, 0.5); }
+  color: rgba(255, 255, 255, 0.5); }
 
 :-moz-placeholder {
-  color: rgba(221, 221, 221, 0.5); }
+  color: rgba(255, 255, 255, 0.5); }
 
 #searchForm {
   margin: 50px 0;
@@ -682,7 +690,7 @@ input.button.update-account {
     margin: 0 25px 25px 25px; }
 
 .city__heading {
-  color: #ddd;
+  color: white;
   text-shadow: 1px 1px 0 #2a164b, 2px 2px 0 #311957, 3px 3px 0 #371d63, 4px 4px 0 #3e206e, 5px 5px 0 #44247a, 6px 6px 6px rgba(42, 22, 75, 0.4), 7px 7px 7px rgba(42, 22, 75, 0.3), 8px 8px 8px rgba(42, 22, 75, 0.2), 9px 9px 9px rgba(42, 22, 75, 0.1); }
   @media screen and (max-width: 950px) {
     .city__heading {
@@ -747,7 +755,7 @@ input.button.update-account {
     background: none;
     border: 0; }
     .flash__remove:hover {
-      color: #FFC40E; }
+      color: #ffc40e; }
   .flash--success {
     background: #e8d223; }
   .flash--error {
@@ -786,12 +794,12 @@ input.button.update-account {
     margin: 21px auto 0px auto;
     text-align: center;
     font-weight: 600;
-    color: #ddd;
+    color: white;
     text-shadow: 3px 3px 10px #181818; }
     .menu-sidebar__link--active span, .menu-sidebar__link:hover span {
       padding: 0 10px;
       position: relative;
-      color: #ddd; }
+      color: white; }
       .menu-sidebar__link--active span:after, .menu-sidebar__link:hover span:after {
         content: '';
         position: absolute;
@@ -805,8 +813,8 @@ input.button.update-account {
             transform: translate(-50%, 3px);
         box-shadow: 9px 0px 0 #e8d223, -9px 0 0 #e8d223; }
     .menu-sidebar__link--active:hover span:after, .menu-sidebar__link:hover:hover span:after {
-      background: #ddd;
-      box-shadow: 9px 0px 0 #ddd, -9px 0 0 #ddd; }
+      background: white;
+      box-shadow: 9px 0px 0 white, -9px 0 0 white; }
   .menu-sidebar__user-wrapper {
     display: -ms-flexbox;
     display: flex;
@@ -821,7 +829,7 @@ input.button.update-account {
   .menu-sidebar__bookmarked {
     padding: 8px 12px;
     border: none;
-    color: #ddd;
+    color: white;
     padding: 0;
     height: 60px;
     width: 60px;
@@ -1277,7 +1285,7 @@ input.button.update-account {
   width: 100%;
   min-height: 236px;
   border: 1px solid #402272;
-  color: #ddd;
+  color: white;
   height: calc(100% - 24px);
   transition: transform .25s ease; }
   .quest:hover {
@@ -1310,7 +1318,7 @@ input.button.update-account {
         line-height: 1.9rem;
         font-size: 1.4rem; } }
   .quest a {
-    color: #ddd; }
+    color: white; }
   .quest__hero {
     position: relative;
     display: block;
@@ -1472,7 +1480,7 @@ input.button.update-account {
     display: block;
     width: 100%;
     font-weight: 400;
-    color: #ddd;
+    color: white;
     font-size: 1.2rem; }
 
 .edit-quest__text {
@@ -1492,7 +1500,7 @@ input.button.update-account {
   padding: 24px 12px 0 12px;
   margin: 24px 12px;
   background: #2a164b;
-  color: #ddd;
+  color: white;
   border-left: 1px solid #351c5f;
   border-top: 1px solid #351c5f;
   box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.4);
@@ -1640,7 +1648,7 @@ input.button.update-account {
           font-weight: 800;
           text-shadow: none; }
   .tag__link {
-    background: #ddd;
+    background: white;
     color: #2a164b;
     display: -ms-flexbox;
     display: flex;
@@ -1650,7 +1658,7 @@ input.button.update-account {
     transition: all .25s ease; }
     .tag__link:hover {
       background: #2a164b;
-      color: #ddd;
+      color: white;
       box-shadow: 6px 6px 15px rgba(24, 24, 24, 0.5);
       transition: all .25s ease; }
     .tag__link--active {
@@ -1671,7 +1679,7 @@ input.button.update-account {
 .single__hero {
   position: relative;
   height: 60vh;
-  height: calc((7/13)*90vw);
+  height: calc((7 / 13) * 90vw);
   max-height: 80vh;
   margin-left: -24px;
   background-size: cover;
@@ -1684,27 +1692,7 @@ input.button.update-account {
   @media all and (max-width: 900px) {
     .single__hero {
       top: -2px;
-      height: 60vh; } }
-  .single__hero:before {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(42, 22, 75, 0) 31%, #2a164b 83%); }
-  .single__hero--map:before {
-    background: linear-gradient(to bottom, #2a164b, rgba(232, 210, 35, 0.2) 45%, #2a164b 87%);
-    top: 0; }
-  .single__hero:after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 10%;
-    width: 100%;
-    background: #2a164b;
-    box-shadow: -5px -38px 94px #2a164b; }
+      height: 40vh; } }
 
 .single__top-wrapper {
   display: -ms-flexbox;
@@ -1714,6 +1702,28 @@ input.button.update-account {
   position: relative;
   margin-top: -62px;
   z-index: 999; }
+  @media all and (max-width: 900px) {
+    .single__top-wrapper {
+      background: #2a164b;
+      width: calc(100vw - 30px);
+      margin: -32px auto 0px;
+      padding: 13px;
+      border-radius: 6px; } }
+  .single__top-wrapper .tags {
+    margin: 0; }
+  .single__top-wrapper .tag {
+    margin: 14px 0 0 15px;
+    border: 1px solid white;
+    border-radius: 13px; }
+    .single__top-wrapper .tag__link {
+      padding: 0;
+      background: none;
+      font-weight: 200;
+      font-size: 12px;
+      text-transform: uppercase;
+      color: white; }
+    .single__top-wrapper .tag__text {
+      padding: 5px 9px; }
 
 .single__user-options, .single__details {
   width: 100%; }
@@ -1736,7 +1746,7 @@ input.button.update-account {
   margin-right: 24px;
   padding: 0 12px;
   cursor: pointer;
-  transition: all .25s ease; }
+  transition: all 0.25s ease; }
   @media screen and (max-width: 500px) {
     .single__heart.heart__button {
       margin-right: 0; } }
@@ -1764,12 +1774,17 @@ input.button.update-account {
     display: flex;
     margin: 0 12px;
     padding: 0 3px;
-    color: #ddd;
+    color: white;
     font-size: 12px;
     font-style: italic;
     min-height: 15px;
     z-index: 8;
     overflow: hidden; }
+    @media (max-width: 900px) {
+      .single__quick-info__item {
+        margin: 0 12px 4px;
+        color: #b0a6c0;
+        font-style: normal; } }
 
 .single__description {
   position: relative;
@@ -1780,7 +1795,7 @@ input.button.update-account {
     max-height: none;
     padding-bottom: 60px;
     overflow: hidden;
-    transition: all .25s ease; }
+    transition: all 0.25s ease; }
   @media screen and (max-width: 950px) {
     .single__description {
       max-height: 170px;
@@ -1795,13 +1810,13 @@ input.button.update-account {
     bottom: 0;
     cursor: pointer; }
     .single__description-toggle:after {
-      content: '\2304';
+      content: "\2304";
       position: absolute;
       left: 50%;
       top: 50%;
       height: 30px;
       width: 30px;
-      background: #ddd;
+      background: white;
       border-radius: 50%;
       -ms-transform: rotate(0) translateX(-50%);
           transform: rotate(0) translateX(-50%);
@@ -1827,7 +1842,7 @@ input.button.update-account {
 .single__tag {
   margin: 0 0 12px 12px; }
   .single__tag .tag__link:hover {
-    background: #ddd;
+    background: white;
     color: #2a164b;
     box-shadow: 5px 5px 15px rgba(24, 24, 24, 0.5);
     -ms-transform: scale(1.1);
@@ -1851,12 +1866,20 @@ input.button.update-account {
   text-align: center; }
   .title--single a {
     margin-bottom: 60px;
-    color: #ddd;
+    color: white;
     text-shadow: 5px 5px 10px rgba(24, 24, 24, 0.8); }
-    @media all and (max-width: 900px) {
-      .title--single a {
-        margin-left: 0;
-        font-size: 4rem; } }
+
+.mobile .title--single {
+  font-size: 3rem;
+  margin: 0;
+  padding: 2px 2px 15px; }
+  .mobile .title--single a {
+    margin: 0;
+    text-align: center;
+    text-shadow: none; }
+
+.mobile .single__hero {
+  margin-top: -9px; }
 
 .heart__button {
   background: none;
@@ -1888,7 +1911,7 @@ input.button.update-account {
 
 .heart__text {
   font-size: 1.6rem;
-  color: #ddd;
+  color: white;
   width: 100%; }
 
 @keyframes fly {

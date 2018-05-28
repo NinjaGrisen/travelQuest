@@ -2,7 +2,7 @@
   &__hero {
     position: relative;
     height: 60vh;
-    height: calc((7/13)*90vw);
+    height: calc((7 / 13) * 90vw);
     max-height: 80vh;
     margin-left: -24px;
     background-size: cover;
@@ -16,37 +16,45 @@
 
     @media all and (max-width: 900px) {
       top: -2px;
-      height: 60vh;
-      
+      height: 40vh;
     }
 
-    &:before {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: -2px;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom, rgba($color-main, 0) 31%, $color-main 83%);
-    }
+    //  &:before {
+    //    content: "";
+    //    position: absolute;
+    //    left: 0;
+    //    bottom: -2px;
+    //    width: 100%;
+    //    height: 100%;
+    //    background: linear-gradient(
+    //      to bottom,
+    //      rgba($color-main, 0) 31%,
+    //      $color-main 83%
+    //    );
+    //  }
 
-    &--map {
-      &:before {
-        background: linear-gradient(to bottom, $color-main, rgba(232, 210, 35, .2) 45%, $color-main 87%);
-        top: 0;
-      }
-    }
+    //  &--map {
+    //    &:before {
+    //      background: linear-gradient(
+    //        to bottom,
+    //        $color-main,
+    //        rgba(232, 210, 35, 0.2) 45%,
+    //        $color-main 87%
+    //      );
+    //      top: 0;
+    //    }
+    //  }
 
-    &:after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      height: 10%;
-      width: 100%;
-      background: $color-main;
-      box-shadow: -5px -38px 94px $color-main;
-    }
+    //  &:after {
+    //    content: "";
+    //    position: absolute;
+    //    left: 0;
+    //    bottom: 0;
+    //    height: 10%;
+    //    width: 100%;
+    //    background: $color-main;
+    //    box-shadow: -5px -38px 94px $color-main;
+    //  }
   }
 
   &__top-wrapper {
@@ -55,10 +63,39 @@
     position: relative;
     margin-top: -62px;
     z-index: 999;
+
+    @media all and (max-width: 900px) {
+      background: $color-main;
+      width: calc(100vw - 30px);
+      margin: -32px auto 0px;
+      padding: 13px;
+      border-radius: 6px;
+    }
+    .tags {
+      margin: 0;
+    }
+    .tag {
+      margin: 14px 0 0 15px;
+      border: 1px solid $color-white;
+      border-radius: 13px;
+
+      &__link {
+        padding: 0;
+        background: none;
+        font-weight: 200;
+        font-size: 12px;
+        text-transform: uppercase;
+        color: $color-white;
+      }
+
+      &__text {
+        padding: 5px 9px;
+      }
+    }
   }
   &__user-options,
   &__details {
-      width: 100%;
+    width: 100%;
   }
 
   &__user-options {
@@ -73,13 +110,11 @@
   }
 
   &__heart {
-    
     &.heart__button {
-      
       margin-right: 24px;
       padding: 0 12px;
       cursor: pointer;
-      transition: all .25s ease;
+      transition: all 0.25s ease;
 
       @media screen and (max-width: 500px) {
         margin-right: 0;
@@ -119,6 +154,12 @@
       min-height: 15px;
       z-index: 8;
       overflow: hidden;
+
+      @media (max-width: 900px) {
+        margin: 0 12px 4px;
+        color: #b0a6c0;
+        font-style: normal;
+      }
     }
   }
 
@@ -133,7 +174,7 @@
         max-height: none;
         padding-bottom: 60px;
         overflow: hidden;
-        transition: all .25s ease;
+        transition: all 0.25s ease;
       }
     }
 
@@ -141,20 +182,19 @@
       max-height: 170px;
       overflow: hidden;
       margin: 35px 0 58px 0;
-
     }
 
     &-toggle {
       position: absolute;
       width: 100%;
       height: 60px;
-      background: linear-gradient(to bottom, rgba(42, 22, 75, 0), $color-main );
+      background: linear-gradient(to bottom, rgba(42, 22, 75, 0), $color-main);
       left: 0;
       bottom: 0;
       cursor: pointer;
 
       &:after {
-        content: '⌄';
+        content: "⌄";
         position: absolute;
         left: 50%;
         top: 50%;
@@ -169,7 +209,6 @@
         line-height: 6px;
         text-align: center;
         transform-style: preserve-3d;
-
       }
       &--expanded {
         &:after {
@@ -183,7 +222,7 @@
     }
 
     @media all and (max-width: 950px) {
-      padding: 0 24px
+      padding: 0 24px;
     }
   }
 
@@ -193,12 +232,12 @@
       &:hover {
         background: $color-white;
         color: $color-main;
-        box-shadow: 5px 5px 15px rgba($color-black, .5);
+        box-shadow: 5px 5px 15px rgba($color-black, 0.5);
         transform: scale(1.1);
       }
     }
   }
- }
+}
 
 #map {
   height: 500px;
@@ -206,7 +245,7 @@
   width: 100vw;
 }
 
-.title{
+.title {
   &--single {
     display: flex;
     align-items: flex-end;
@@ -221,11 +260,27 @@
       margin-bottom: 60px;
       color: $color-white;
       text-shadow: 5px 5px 10px rgba(24, 24, 24, 0.8);
+    }
+  }
+}
 
-      @media all and (max-width: 900px) {
-        margin-left: 0;
-        font-size: 4rem;
+.mobile {
+  .title {
+    &--single {
+      font-size: 3rem;
+      margin: 0;
+      padding: 2px 2px 15px;
+
+      a {
+        margin: 0;
+        text-align: center;
+        text-shadow: none;
       }
+    }
+  }
+  .single {
+    &__hero {
+      margin-top: -9px;
     }
   }
 }
