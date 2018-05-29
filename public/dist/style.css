@@ -432,7 +432,7 @@ body {
   overflow-x: hidden; }
 
 .inner {
-  width: 100vw; }
+  width: 100%; }
   @media screen and (max-width: 1300px) {
     .inner {
       width: auto; } }
@@ -447,7 +447,7 @@ body {
       flex-direction: row; }
 
 .content {
-  width: 100vw;
+  width: calc(100vw - 14px);
   margin-left: 24px;
   background: #2a164b; }
   .content__background-map.single__hero {
@@ -458,9 +458,6 @@ body {
     @media (min-width: 900px) {
       .content__background-map.single__hero--map {
         margin-top: 7px; } }
-  @media screen and (max-width: 1300px) {
-    .content {
-      width: 100vw; } }
   @media screen and (max-width: 950px) {
     .content {
       margin-left: 7px;
@@ -536,7 +533,8 @@ p {
   .title a {
     border-bottom: 0; }
 
-input, textarea {
+input,
+textarea {
   width: 100%;
   max-width: 900px;
   padding: 10px;
@@ -547,7 +545,8 @@ input, textarea {
   border-top: 1px solid rgba(86, 45, 154, 0.5);
   box-shadow: 5px 5px 32px rgba(24, 24, 24, 0.2);
   outline: none; }
-  input.button, textarea.button {
+  input.button,
+  textarea.button {
     max-width: 300px;
     font-weight: bold;
     margin-top: 24px;
@@ -559,11 +558,17 @@ input, textarea {
     box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.4);
     transition: all .5s ease;
     cursor: pointer; }
-    input.button:hover, textarea.button:hover {
+    input.button:hover,
+    textarea.button:hover {
       background: #eddb51;
       transition: all .5s ease;
       box-shadow: 18px 18px 32px rgba(0, 0, 0, 0.2); }
-  input.input--error, textarea.input--error {
+    @media (max-width: 700px) {
+      input.button,
+      textarea.button {
+        margin: 24px auto 0; } }
+  input.input--error,
+  textarea.input--error {
     border-color: red; }
 
 textarea {
@@ -678,20 +683,19 @@ input.button.update-account {
   font-size: 3rem;
   font-weight: 900;
   text-shadow: 5px 5px 15px rgba(24, 24, 24, 0.7);
-  transition: all .5s ease;
+  transition: all 0.5s ease;
   pointer-events: none; }
   .city-search a {
     color: #e8d223; }
   .city-search__visible {
     opacity: 1;
     height: auto;
-    transition: all .5s ease;
+    transition: all 0.5s ease;
     pointer-events: auto;
     margin: 0 25px 25px 25px; }
 
 .city__heading {
-  color: white;
-  text-shadow: 1px 1px 0 #2a164b, 2px 2px 0 #311957, 3px 3px 0 #371d63, 4px 4px 0 #3e206e, 5px 5px 0 #44247a, 6px 6px 6px rgba(42, 22, 75, 0.4), 7px 7px 7px rgba(42, 22, 75, 0.3), 8px 8px 8px rgba(42, 22, 75, 0.2), 9px 9px 9px rgba(42, 22, 75, 0.1); }
+  color: white; }
   @media screen and (max-width: 950px) {
     .city__heading {
       margin-left: 24px; } }
