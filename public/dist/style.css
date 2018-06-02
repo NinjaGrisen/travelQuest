@@ -432,10 +432,9 @@ body {
   overflow-x: hidden; }
 
 .inner {
+  max-width: 1300px;
+  margin: 0 auto;
   width: 100%; }
-  @media screen and (max-width: 1300px) {
-    .inner {
-      width: auto; } }
 
 .top {
   height: 70px; }
@@ -695,7 +694,11 @@ input.button.update-account {
     margin: 0 25px 25px 25px; }
 
 .city__heading {
-  color: white; }
+  display: inline-block;
+  width: auto !important;
+  color: #2a164b;
+  background: white;
+  padding: 12px 24px; }
   @media screen and (max-width: 950px) {
     .city__heading {
       margin-left: 24px; } }
@@ -972,10 +975,10 @@ input.button.update-account {
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap; }
     .quests--layout-option.only-slides {
-      margin-top: 15vh; }
+      margin-top: 12vh; }
       .quests--layout-option.only-slides.quests a:first-child {
-        min-width: 53vw;
-        width: 53vw;
+        min-width: 72vw;
+        width: 72vw;
         margin: 0 6px;
         position: static;
         top: auto;
@@ -1014,8 +1017,8 @@ input.button.update-account {
       .quests--layout-option.only-slides.quests a:nth-child(2) {
         margin-left: 6px; }
     .quests--layout-option.quests a:nth-child(2), .quests--layout-option.quests a:nth-child(3), .quests--layout-option.quests a:nth-child(4), .quests--layout-option.quests a:nth-child(5), .quests--layout-option.quests a:nth-child(5), .quests--layout-option.quests a:last-child {
-      min-width: 53vw;
-      width: 53vw;
+      min-width: 72vw;
+      width: 72vw;
       margin: 0 6px; }
       .quests--layout-option.quests a:nth-child(2) .quest, .quests--layout-option.quests a:nth-child(3) .quest, .quests--layout-option.quests a:nth-child(4) .quest, .quests--layout-option.quests a:nth-child(5) .quest, .quests--layout-option.quests a:nth-child(5) .quest, .quests--layout-option.quests a:last-child .quest {
         position: relative;
@@ -1038,9 +1041,19 @@ input.button.update-account {
           position: absolute;
           bottom: 12px;
           width: 100%;
-          z-index: 999; }
+          z-index: 999;
+          display: -ms-flexbox;
+          display: flex;
+          -ms-flex-direction: row;
+              flex-direction: row; }
           .quests--layout-option.quests a:nth-child(2) .quest__details .title, .quests--layout-option.quests a:nth-child(3) .quest__details .title, .quests--layout-option.quests a:nth-child(4) .quest__details .title, .quests--layout-option.quests a:nth-child(5) .quest__details .title, .quests--layout-option.quests a:nth-child(5) .quest__details .title, .quests--layout-option.quests a:last-child .quest__details .title {
-            color: #e8d223; }
+            width: auto;
+            padding: 6px;
+            background: white;
+            color: #2a164b;
+            text-shadow: unset;
+            text-overflow: ellipsis;
+            overflow: hidden; }
         .quests--layout-option.quests a:nth-child(2) .quest__info, .quests--layout-option.quests a:nth-child(3) .quest__info, .quests--layout-option.quests a:nth-child(4) .quest__info, .quests--layout-option.quests a:nth-child(5) .quest__info, .quests--layout-option.quests a:nth-child(5) .quest__info, .quests--layout-option.quests a:last-child .quest__info {
           display: none; }
     .quests--layout-option.quests a:first-child {
@@ -1070,7 +1083,7 @@ input.button.update-account {
           height: 37vh;
           position: relative; }
           .quests--layout-option.quests a:first-child .quest__hero:before, .quests--layout-option.quests a:first-child .quest__hero:after {
-            content: '';
+            content: "";
             position: absolute;
             left: 0;
             bottom: -1px;
@@ -1085,6 +1098,8 @@ input.button.update-account {
             bottom: auto;
             top: -1px;
             background: linear-gradient(to top, rgba(42, 22, 75, 0), rgba(42, 22, 75, 0.7) 60%, #2a164b); }
+    .quests--layout-option.quests a:last-child .quest__details .title {
+      max-width: calc(100% - 24px); }
     .quests--layout-option.quests a:nth-child(2) {
       margin-left: 24px; }
   .quests a {
@@ -1093,25 +1108,25 @@ input.button.update-account {
       width: 100%;
       min-width: 100%;
       max-height: 630px;
-      height: calc(.4*100vw);
+      height: calc(0.4 * 100vw);
       margin-bottom: 24px; }
       @media all and (max-width: 950px) {
         .quests a:first-child {
           min-width: calc(100% - 48px); } }
-      @media (max-width: 625px) {
+      @media (max-width: 705px) {
         .quests a:first-child {
           min-width: calc(100% - 24px);
           margin: 0 12px 24px 12px; } }
       .quests a:first-child .quest {
         min-height: auto;
         max-height: 630px;
-        height: calc(.4*100vw); }
+        height: calc(0.4 * 100vw); }
         .quests a:first-child .quest__hero {
           width: 75%; }
           @media all and (max-width: 727px) {
             .quests a:first-child .quest__hero {
               height: auto; } }
-          @media all and (max-width: 625px) {
+          @media all and (max-width: 705px) {
             .quests a:first-child .quest__hero {
               width: 55%; } }
         .quests a:first-child .quest__details {
@@ -1123,34 +1138,31 @@ input.button.update-account {
           @media all and (max-width: 727px) {
             .quests a:first-child .quest__details {
               margin-top: 0; } }
-          @media all and (max-width: 625px) {
+          @media all and (max-width: 705px) {
             .quests a:first-child .quest__details {
               width: 45%; } }
     .quests a:nth-child(2), .quests a:nth-child(3) {
       width: calc(50% - 12px); }
-      @media screen and (min-width: 1627px) {
-        .quests a:nth-child(2), .quests a:nth-child(3) {
-          width: calc(33% - 12px); } }
       @media screen and (max-width: 1260px) {
         .quests a:nth-child(2), .quests a:nth-child(3) {
           max-height: 300px; } }
-      @media all and (max-width: 625px) {
+      @media all and (max-width: 705px) {
         .quests a:nth-child(2), .quests a:nth-child(3) {
           max-height: none; } }
       @media screen and (max-width: 1260px) {
         .quests a:nth-child(2) .quest__hero, .quests a:nth-child(3) .quest__hero {
           width: 45%; } }
-      @media all and (max-width: 625px) {
+      @media all and (max-width: 705px) {
         .quests a:nth-child(2) .quest__hero, .quests a:nth-child(3) .quest__hero {
           width: 100%;
           height: 150px; } }
-      @media all and (max-width: 625px) {
+      @media all and (max-width: 705px) {
         .quests a:nth-child(2) .quest__info, .quests a:nth-child(3) .quest__info {
           max-height: 120px; } }
       @media screen and (max-width: 1260px) {
         .quests a:nth-child(2) .quest__details, .quests a:nth-child(3) .quest__details {
           width: 55%; } }
-      @media all and (max-width: 625px) {
+      @media all and (max-width: 705px) {
         .quests a:nth-child(2) .quest__details, .quests a:nth-child(3) .quest__details {
           width: 100%; } }
       @media screen and (max-width: 1260px) {
@@ -1163,7 +1175,7 @@ input.button.update-account {
         .quests a:nth-child(2):last-child {
           width: calc(100% - 48px);
           max-width: calc(100% - 48px); } }
-      @media all and (max-width: 625px) {
+      @media all and (max-width: 705px) {
         .quests a:nth-child(2):last-child {
           width: calc(100% - 24px);
           max-width: calc(100% - 24px); } }
@@ -1179,13 +1191,18 @@ input.button.update-account {
           width: calc(50% - 36px);
           margin: 0 24px 0 12px; } }
     @media all and (max-width: 950px) {
+      .quests a:last-child {
+        min-width: calc(72vw + 24px) !important; }
+        .quests a:last-child .quest__hero {
+          margin-right: 24px;
+          border-radius: 7px; }
       .quests a:nth-child(2) {
         width: calc(50% - 36px);
         margin: 0 12px 0 24px; }
       .quests a:nth-child(3) {
         width: calc(50% - 36px);
         margin: 0 24px 0 12px; } }
-    @media all and (max-width: 625px) {
+    @media all and (max-width: 705px) {
       .quests a:nth-child(2) {
         width: calc(50% - 18px);
         margin: 0 6px 0 12px; }
@@ -1195,10 +1212,7 @@ input.button.update-account {
     .quests a:nth-child(4) {
       width: 100%;
       max-width: 100%; }
-      @media screen and (min-width: 1627px) {
-        .quests a:nth-child(4) {
-          width: calc(33% - 12px); } }
-      @media all and (max-width: 625px) {
+      @media all and (max-width: 705px) {
         .quests a:nth-child(4) {
           width: calc(100% - 24px);
           margin: 0 12px; } }
@@ -1222,23 +1236,23 @@ input.button.update-account {
             width: 55%; }
           .quests a:nth-child(5) .quest__info, .quests a:nth-child(6) .quest__info {
             overflow: hidden; } }
-      @media all and (max-width: 625px) {
+      @media all and (max-width: 705px) {
         .quests a:nth-child(5), .quests a:nth-child(6) {
           max-height: none; } }
       @media screen and (max-width: 1260px) {
         .quests a:nth-child(5) .quest__hero, .quests a:nth-child(6) .quest__hero {
           width: 45%; } }
-      @media all and (max-width: 625px) {
+      @media all and (max-width: 705px) {
         .quests a:nth-child(5) .quest__hero, .quests a:nth-child(6) .quest__hero {
           width: 100%;
           height: 150px; } }
-      @media all and (max-width: 625px) {
+      @media all and (max-width: 705px) {
         .quests a:nth-child(5) .quest__info, .quests a:nth-child(6) .quest__info {
           max-height: 120px; } }
       @media screen and (max-width: 1260px) {
         .quests a:nth-child(5) .quest__details, .quests a:nth-child(6) .quest__details {
           width: 55%; } }
-      @media all and (max-width: 625px) {
+      @media all and (max-width: 705px) {
         .quests a:nth-child(5) .quest__details, .quests a:nth-child(6) .quest__details {
           width: 100%; } }
       @media screen and (max-width: 1260px) {
@@ -1258,7 +1272,7 @@ input.button.update-account {
       .quests a:nth-child(6) {
         width: calc(50% - 36px);
         margin: 0 24px 0 12px; } }
-    @media all and (max-width: 625px) {
+    @media all and (max-width: 705px) {
       .quests a:nth-child(5) {
         width: calc(50% - 18px);
         margin: 0 6px 0 12px; }
@@ -1291,13 +1305,13 @@ input.button.update-account {
   border: 1px solid #402272;
   color: white;
   height: calc(100% - 24px);
-  transition: transform .25s ease; }
+  transition: transform 0.25s ease; }
   .quest:hover {
     background: #331b5b;
     box-shadow: 20px 20px 40px rgba(24, 24, 24, 0.6);
     -ms-transform: scale(1.025);
         transform: scale(1.025);
-    transition: transform .25s ease; }
+    transition: transform 0.25s ease; }
     .quest:hover .quest__info:after {
       background: linear-gradient(rgba(51, 27, 91, 0) 60%, #331b5b); }
   .quest__info {
@@ -1306,7 +1320,7 @@ input.button.update-account {
         flex-grow: 1;
     overflow: hidden; }
     .quest__info:after {
-      content: '';
+      content: "";
       position: absolute;
       left: 0;
       bottom: 0;
@@ -1317,7 +1331,7 @@ input.button.update-account {
       .quest__info p {
         line-height: 2rem;
         font-size: 1.4rem; } }
-    @media (max-width: 625px) {
+    @media (max-width: 705px) {
       .quest__info p {
         line-height: 1.9rem;
         font-size: 1.4rem; } }
@@ -1337,13 +1351,13 @@ input.button.update-account {
       .quest__hero {
         height: 150px; } }
     .quest__hero:before {
-      content: '';
+      content: "";
       position: absolute;
       left: 0;
       top: 0;
       width: 101%;
       height: 101%;
-      opacity: .6; }
+      opacity: 0.6; }
   .quest__actions {
     position: absolute; }
     .quest__actions button {
@@ -1371,7 +1385,7 @@ input.button.update-account {
         .quest__details .title {
           margin-left: 0;
           font-size: 2rem; } }
-      @media all and (max-width: 625px) {
+      @media all and (max-width: 705px) {
         .quest__details .title {
           margin-left: 0;
           font-size: 1.9rem; } }
@@ -1616,7 +1630,8 @@ input.button.update-account {
   position: relative;
   display: block;
   margin-right: 1rem;
-  z-index: 2; }
+  z-index: 2;
+  box-shadow: 4px 3px 3px rgba(0, 0, 0, 0.4); }
   .tag:first-child {
     margin-left: 24px; }
   .tag__choice {
@@ -1641,7 +1656,7 @@ input.button.update-account {
         position: relative;
         text-shadow: 4px 3px 8px #181818; }
         .tag__choice input:checked + label:after {
-          content: '#';
+          content: "#";
           position: absolute;
           left: 1px;
           top: -20px;
@@ -1659,12 +1674,12 @@ input.button.update-account {
     padding: 0 6px;
     position: relative;
     font-weight: 800;
-    transition: all .25s ease; }
+    transition: all 0.25s ease; }
     .tag__link:hover {
       background: #2a164b;
       color: white;
       box-shadow: 6px 6px 15px rgba(24, 24, 24, 0.5);
-      transition: all .25s ease; }
+      transition: all 0.25s ease; }
     .tag__link--active {
       background: #e8d223;
       color: #2a164b;
@@ -1714,7 +1729,8 @@ input.button.update-account {
       padding: 13px;
       border-radius: 6px; } }
   .single__top-wrapper .tags {
-    margin: 0; }
+    margin: 0;
+    padding-bottom: 16px; }
   .single__top-wrapper .tag {
     margin: 14px 0 0 15px;
     border: 1px solid white;
@@ -1795,62 +1811,12 @@ input.button.update-account {
   max-width: 900px;
   width: 100%;
   padding: 0 24px; }
-  .single__description--expanded.single__description {
-    max-height: none;
-    padding-bottom: 60px;
-    overflow: hidden;
-    transition: all 0.25s ease; }
-  @media screen and (max-width: 950px) {
-    .single__description {
-      max-height: 170px;
-      overflow: hidden;
-      margin: 35px 0 58px 0; } }
-  .single__description-toggle {
-    position: absolute;
-    width: 100%;
-    height: 60px;
-    background: linear-gradient(to bottom, rgba(42, 22, 75, 0), #2a164b);
-    left: 0;
-    bottom: 0;
-    cursor: pointer; }
-    .single__description-toggle:after {
-      content: "\2304";
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      height: 30px;
-      width: 30px;
-      background: white;
-      border-radius: 50%;
-      -ms-transform: rotate(0) translateX(-50%);
-          transform: rotate(0) translateX(-50%);
-      -ms-transform-origin: center left;
-          transform-origin: center left;
-      color: #2a164b;
-      font-size: 35px;
-      line-height: 6px;
-      text-align: center;
-      transform-style: preserve-3d; }
-    .single__description-toggle--expanded:after {
-      -ms-transform-origin: 25% 25%;
-          transform-origin: 25% 25%;
-      -ms-transform: rotate(180deg) translateX(-50%);
-          transform: rotate(180deg) translateX(-50%); }
-    @media screen and (min-width: 950px) {
-      .single__description-toggle {
-        display: none; } }
   @media all and (max-width: 950px) {
     .single__description {
       padding: 0 24px; } }
 
 .single__tag {
   margin: 0 0 12px 12px; }
-  .single__tag .tag__link:hover {
-    background: white;
-    color: #2a164b;
-    box-shadow: 5px 5px 15px rgba(24, 24, 24, 0.5);
-    -ms-transform: scale(1.1);
-        transform: scale(1.1); }
 
 #map {
   height: 500px;
@@ -1947,7 +1913,6 @@ form.heart {
       align-items: baseline;
   z-index: 1; }
   .pagination.pagination--mobile {
-    margin-left: -24px;
     width: 100vw;
     -ms-flex-pack: distribute;
         justify-content: space-around; }
@@ -1955,19 +1920,24 @@ form.heart {
     margin: 0 24px; }
     .pagination__next a:after {
       margin-left: 1rem;
-      content: '\2192'; }
+      content: "\2192"; }
   .pagination__prev {
     margin: 0 24px; }
     .pagination__prev a:before {
       margin-right: 1rem;
-      content: '\2190'; }
+      content: "\2190"; }
 
 .mobile .content {
   margin-left: auto;
   width: 100vw; }
 
 .mobile .title--single,
-.mobile h1, .mobile h2, .mobile h3, .mobile h4, .mobile h5, .mobile h6 {
+.mobile h1,
+.mobile h2,
+.mobile h3,
+.mobile h4,
+.mobile h5,
+.mobile h6 {
   width: calc(100% - 12px);
   margin-left: 12px; }
 
@@ -1994,17 +1964,18 @@ form.heart {
   width: calc(100% - 24px);
   padding: 0; }
 
-.mobile .quest:hover .quest__info:after {
-  display: none; }
-
-.mobile .quest__details .title {
-  text-shadow: 3px 2px 6px #181818; }
-
-.mobile .quest__hero .quest__action--heart {
-  margin-left: 12px; }
+.mobile .quest {
+  border: none; }
+  .mobile .quest:hover .quest__info:after {
+    display: none; }
+  .mobile .quest__details .title {
+    text-shadow: 3px 2px 6px #181818; }
+  .mobile .quest__hero .quest__action--heart {
+    margin-left: 12px; }
 
 .mobile .tags.tags--city-page {
   width: 100%;
-  margin-left: 0; }
+  margin-left: 0;
+  padding-bottom: 12px; }
 
 /*# sourceMappingURL=style.css.map*/

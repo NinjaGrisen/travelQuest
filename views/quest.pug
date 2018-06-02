@@ -56,9 +56,6 @@ block content
                            a.tag__link(href=`/city/${quest.location.city}/tags/${tag}`)
                                  span.tag__text #{tag}               
         p.single__description= quest.description
-            span.single__description-toggle
-
-
 
         div#map(data-lng=`${quest.location.coodrinates[0]}` data-lat=`${quest.location.coodrinates[1]}`)
                     

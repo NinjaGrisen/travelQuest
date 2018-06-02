@@ -3,9 +3,8 @@
   display: flex;
   align-items: baseline;
   z-index: 1;
-  
+
   &.pagination--mobile {
-    margin-left: -24px;
     width: 100vw;
     justify-content: space-around;
   }
@@ -14,15 +13,14 @@
     margin: 0 24px;
     a:after {
       margin-left: 1rem;
-      content: '→'
+      content: "→";
     }
   }
   &__prev {
     margin: 0 24px;
     a:before {
       margin-right: 1rem;
-      content: '←'
+      content: "←";
     }
   }
-
 }

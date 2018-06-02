@@ -1,4 +1,4 @@
-h2.quests--layout-option  {
+h2.quests--layout-option {
   @media screen and (max-width: 900px) {
     margin: 12px;
     overflow: hidden;
@@ -15,90 +15,30 @@ h2.quests--layout-option  {
   @media all and (max-width: 950px) {
     width: 100%;
   }
-  
+
   &--layout-option {
-      margin-top: 44vh;
-      white-space: nowrap;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      -ms-overflow-style: -ms-autohiding-scrollbar;
-      -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
+    margin-top: 44vh;
+    white-space: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
 
-      &.only-slides {
-        margin-top: 15vh;
-        &.quests {
-          a {
-            
-            &:first-child {
-              min-width: 53vw;
-              width: 53vw;
-              margin: 0 6px;
-              position: static;
-              top: auto;
-              left: auto;
-              margin-left: 24px;
-              height: auto;
-              border: none;
-              .quest {
-                position: relative;
-                height: 84%;
-                min-height: 53vw;
-                border-radius: 7px;
-                overflow: hidden;
-  
-               &__hero {
-                 width: 100%;
-                 height: 100%;
-
-                 &:before {
-                   display: none;
-                 }
-               }
-               &__details {
-                  padding: 0 12px;
-                  width: 100%;
-                  overflow: hidden;
-                  position: absolute;
-                  width: auto;
-                  bottom: 6px;
-                  left: 0px;
-                  border-radius: 7px;
-                  position: absolute;
-                  bottom: 12px;
-                  width: 100%;
-                  z-index: 999;
-  
-                  .title {
-                    color: $color-cta;
-                  }
-               }
-  
-               &__info {
-                 display: none;
-               }
-              }
-            }
-          }
-  
-          a:nth-child(2) {
-            margin-left: 6px;
-          }
-        }
-      }
-
+    &.only-slides {
+      margin-top: 12vh;
       &.quests {
         a {
-          
-          &:nth-child(2),
-          &:nth-child(3),
-          &:nth-child(4),
-          &:nth-child(5),
-          &:nth-child(5),
-          &:last-child {
-            min-width: 53vw;
-            width: 53vw;
+          &:first-child {
+            min-width: 72vw;
+            width: 72vw;
             margin: 0 6px;
+            position: static;
+            top: auto;
+            left: auto;
+            margin-left: 24px;
+            height: auto;
+            border: none;
             .quest {
               position: relative;
               height: 84%;
@@ -106,11 +46,15 @@ h2.quests--layout-option  {
               border-radius: 7px;
               overflow: hidden;
 
-             &__hero {
-               width: 100%;
-               height: 100%;
-             }
-             &__details {
+              &__hero {
+                width: 100%;
+                height: 100%;
+
+                &:before {
+                  display: none;
+                }
+              }
+              &__details {
                 padding: 0 12px;
                 width: 100%;
                 overflow: hidden;
@@ -127,74 +71,151 @@ h2.quests--layout-option  {
                 .title {
                   color: $color-cta;
                 }
-             }
-
-             &__info {
-               display: none;
-             }
-            }
-          }
-          &:first-child {
-            position: absolute;
-            top: 51px;
-            left: 0;
-            margin-left: 1px;
-            height: 44vh;
-            border: none;
-
-            .quest {
-              height: 100%;
-              border: none;
-              position: relative;
-              height: 44vh;
-              
-              &__details {
-                width: 100%;
-                margin-top: -57px;
-                z-index: 99;
-
-                h2 {
-                  color: $color-cta;
-                  font-size: 2.4rem;
-                  white-space: nowrap;
-                  overflow: hidden;
-                  text-overflow: ellipsis;
-                }
               }
-              &__hero {
-                width: 100%;
-                height: 37vh;
-                position: relative;          
-              
-                &:before,
-                &:after {
-                  content: '';
-                  position: absolute;
-                  left: 0;
-                  bottom: -1px;
-                  height: 185px;
-                  width: 100%;
-                  top: auto;
-                  background: linear-gradient(to bottom, rgba($color-main, 0),rgba($color-main, .7) 60%, $color-main);
-                  opacity: 1;
-                  z-index: 99;
-                }
 
-                &:after {
-                  display: none;
-                  bottom: auto;
-                  top: -1px;
-                  background: linear-gradient(to top, rgba($color-main, 0),rgba($color-main, .7) 60%, $color-main);
-                }
+              &__info {
+                display: none;
               }
             }
           }
         }
 
         a:nth-child(2) {
-          margin-left: 24px;
+          margin-left: 6px;
         }
       }
+    }
+
+    &.quests {
+      a {
+        &:nth-child(2),
+        &:nth-child(3),
+        &:nth-child(4),
+        &:nth-child(5),
+        &:nth-child(5),
+        &:last-child {
+          min-width: 72vw;
+          width: 72vw;
+          margin: 0 6px;
+          .quest {
+            position: relative;
+            height: 84%;
+            min-height: 53vw;
+            border-radius: 7px;
+            overflow: hidden;
+
+            &__hero {
+              width: 100%;
+              height: 100%;
+            }
+            &__details {
+              padding: 0 12px;
+              width: 100%;
+              overflow: hidden;
+              position: absolute;
+              width: auto;
+              bottom: 6px;
+              left: 0px;
+              border-radius: 7px;
+              position: absolute;
+              bottom: 12px;
+              width: 100%;
+              z-index: 999;
+              display: flex;
+              flex-direction: row;
+
+              .title {
+                width: auto;
+                padding: 6px;
+                background: $color-white;
+                color: $color-main;
+                text-shadow: unset;
+                text-overflow: ellipsis;
+                overflow: hidden;
+              }
+            }
+
+            &__info {
+              display: none;
+            }
+          }
+        }
+        &:first-child {
+          position: absolute;
+          top: 51px;
+          left: 0;
+          margin-left: 1px;
+          height: 44vh;
+          border: none;
+
+          .quest {
+            height: 100%;
+            border: none;
+            position: relative;
+            height: 44vh;
+
+            &__details {
+              width: 100%;
+              margin-top: -57px;
+              z-index: 99;
+
+              h2 {
+                color: $color-cta;
+                font-size: 2.4rem;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+              }
+            }
+            &__hero {
+              width: 100%;
+              height: 37vh;
+              position: relative;
+
+              &:before,
+              &:after {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: -1px;
+                height: 185px;
+                width: 100%;
+                top: auto;
+                background: linear-gradient(
+                  to bottom,
+                  rgba($color-main, 0),
+                  rgba($color-main, 0.7) 60%,
+                  $color-main
+                );
+                opacity: 1;
+                z-index: 99;
+              }
+
+              &:after {
+                display: none;
+                bottom: auto;
+                top: -1px;
+                background: linear-gradient(
+                  to top,
+                  rgba($color-main, 0),
+                  rgba($color-main, 0.7) 60%,
+                  $color-main
+                );
+              }
+            }
+          }
+        }
+        &:last-child {
+          .quest__details .title {
+            max-width: calc(100% - 24px);
+          }
+        }
+      }
+
+      a:nth-child(2) {
+        margin-left: 24px;
+      }
+    }
   }
 
   a {
@@ -204,14 +225,14 @@ h2.quests--layout-option  {
       width: 100%;
       min-width: 100%;
       max-height: 630px;
-      height: calc(.4*100vw);
+      height: calc(0.4 * 100vw);
       margin-bottom: 24px;
 
       @media all and (max-width: 950px) {
         min-width: calc(100% - 48px);
       }
-      
-      @media (max-width: 625px) {
+
+      @media (max-width: 705px) {
         min-width: calc(100% - 24px);
         margin: 0 12px 24px 12px;
       }
@@ -219,7 +240,7 @@ h2.quests--layout-option  {
       .quest {
         min-height: auto;
         max-height: 630px;
-        height: calc(.4*100vw);
+        height: calc(0.4 * 100vw);
 
         &__hero {
           width: 75%;
@@ -227,7 +248,7 @@ h2.quests--layout-option  {
           @media all and (max-width: 727px) {
             height: auto;
           }
-          @media all and (max-width: 625px) {
+          @media all and (max-width: 705px) {
             width: 55%;
           }
         }
@@ -240,123 +261,119 @@ h2.quests--layout-option  {
           @media all and (max-width: 727px) {
             margin-top: 0;
           }
-          @media all and (max-width: 625px) {
+          @media all and (max-width: 705px) {
             width: 45%;
           }
         }
       }
     }
-    
+
     &:nth-child(2),
     &:nth-child(3) {
       width: calc(50% - 12px);
-      @media screen and(min-width: 1627px){
-        width: calc(33% - 12px);
-      }
-      @media screen and(max-width: 1260px){
+      @media screen and(max-width: 1260px) {
         max-height: 300px;
       }
 
-      @media all and (max-width: 625px) {
+      @media all and (max-width: 705px) {
         max-height: none;
       }
-     
+
       .quest {
         &__hero {
-          @media screen and(max-width: 1260px){
-            width: 45%;              
+          @media screen and(max-width: 1260px) {
+            width: 45%;
           }
-          @media all and (max-width: 625px) {
+          @media all and (max-width: 705px) {
             width: 100%;
             height: 150px;
           }
         }
         &__info {
-          @media all and (max-width: 625px) {
+          @media all and (max-width: 705px) {
             max-height: 120px;
           }
         }
         &__details {
-          @media screen and(max-width: 1260px){
+          @media screen and(max-width: 1260px) {
             width: 55%;
           }
-          @media all and (max-width: 625px) {
+          @media all and (max-width: 705px) {
             width: 100%;
           }
         }
         &__info {
-          @media screen and(max-width: 1260px){
+          @media screen and(max-width: 1260px) {
             overflow: hidden;
           }
-          
         }
       }
     }
     &:nth-child(2):last-child {
       width: 100%;
       max-width: 100%;
-      @media screen and(max-width: 950px){
+      @media screen and(max-width: 950px) {
         width: calc(100% - 48px);
-        max-width: calc(100% - 48px);        
+        max-width: calc(100% - 48px);
       }
-      
-      @media all and (max-width: 625px) {
+
+      @media all and (max-width: 705px) {
         width: calc(100% - 24px);
-        max-width: calc(100% - 24px);  
+        max-width: calc(100% - 24px);
       }
     }
     &:nth-child(3):last-child {
       width: calc(66% - 12px);
       max-width: calc(66% - 12px);
-      
-      @media screen and(max-width:1627px){
+
+      @media screen and(max-width:1627px) {
         width: calc(50% - 12px);
         max-width: calc(50% - 12px);
       }
 
       @media (max-width: 950px) {
-          width: calc(50% - 36px);
-          margin: 0 24px 0 12px;
+        width: calc(50% - 36px);
+        margin: 0 24px 0 12px;
       }
-
     }
+
     @media all and (max-width: 950px) {
+      &:last-child {
+        min-width: calc(72vw + 24px) !important;
+
+        .quest__hero {
+          margin-right: 24px;
+          border-radius: 7px;
+        }
+      }
       &:nth-child(2) {
         width: calc(50% - 36px);
         margin: 0 12px 0 24px;
       }
-  
+
       &:nth-child(3) {
         width: calc(50% - 36px);
         margin: 0 24px 0 12px;
       }
-      
     }
 
-    @media all and (max-width: 625px) {
+    @media all and (max-width: 705px) {
       &:nth-child(2) {
         width: calc(50% - 18px);
         margin: 0 6px 0 12px;
       }
-  
+
       &:nth-child(3) {
         width: calc(50% - 18px);
         margin: 0 12px 0 6px;
       }
-      
     }
 
-    
-    
     &:nth-child(4) {
       width: 100%;
       max-width: 100%;
 
-      @media screen and(min-width: 1627px){
-        width: calc(33% - 12px);
-      }
-
-      @media all and (max-width: 625px) {
+      @media all and (max-width: 705px) {
         width: calc(100% - 24px);
         margin: 0 12px;
       }
@@ -386,7 +403,7 @@ h2.quests--layout-option  {
       width: calc(50% - 12px);
       max-width: calc(50% - 12px);
 
-      @media screen and(max-width: 1260px){
+      @media screen and(max-width: 1260px) {
         max-height: 300px;
         .quest {
           &__hero {
@@ -401,38 +418,37 @@ h2.quests--layout-option  {
           }
         }
       }
-      @media all and (max-width: 625px) {
+      @media all and (max-width: 705px) {
         max-height: none;
       }
 
       .quest {
         &__hero {
-          @media screen and(max-width: 1260px){
-            width: 45%;              
+          @media screen and(max-width: 1260px) {
+            width: 45%;
           }
-          @media all and (max-width: 625px) {
+          @media all and (max-width: 705px) {
             width: 100%;
             height: 150px;
           }
         }
         &__info {
-          @media all and (max-width: 625px) {
+          @media all and (max-width: 705px) {
             max-height: 120px;
           }
         }
         &__details {
-          @media screen and(max-width: 1260px){
+          @media screen and(max-width: 1260px) {
             width: 55%;
           }
-          @media all and (max-width: 625px) {
+          @media all and (max-width: 705px) {
             width: 100%;
           }
         }
         &__info {
-          @media screen and(max-width: 1260px){
+          @media screen and(max-width: 1260px) {
             overflow: hidden;
           }
-          
         }
       }
     }
@@ -440,9 +456,9 @@ h2.quests--layout-option  {
     &:nth-child(5):last-child {
       width: 100%;
       max-width: 100%;
-      @media screen and(max-width: 950px){
+      @media screen and(max-width: 950px) {
         width: calc(100% - 48px);
-        max-width: calc(100% - 48px);        
+        max-width: calc(100% - 48px);
       }
     }
 
@@ -451,24 +467,22 @@ h2.quests--layout-option  {
         width: calc(50% - 36px);
         margin: 0 12px 0 24px;
       }
-  
+
       &:nth-child(6) {
         width: calc(50% - 36px);
         margin: 0 24px 0 12px;
       }
-      
     }
-    @media all and (max-width: 625px) {
+    @media all and (max-width: 705px) {
       &:nth-child(5) {
         width: calc(50% - 18px);
         margin: 0 6px 0 12px;
       }
-  
+
       &:nth-child(6) {
         width: calc(50% - 18px);
         margin: 0 12px 0 6px;
       }
-      
     }
     @media all and (max-width: 950px) {
       margin: 0 24px;
@@ -479,10 +493,9 @@ h2.quests--layout-option  {
 .mobile {
   .quest:hover {
     background: $color-main;
-    box-shadow:none;
+    box-shadow: none;
     transform: scale(1);
     transition: none;
-
   }
 }
 .quest {
@@ -497,17 +510,20 @@ h2.quests--layout-option  {
   border: 1px solid lighten($color-main, 10);
   color: $color-white;
   height: calc(100% - 24px);
-  transition: transform .25s ease;
+  transition: transform 0.25s ease;
 
   &:hover {
     background: lighten($color-main, 4);
-    box-shadow: 20px 20px 40px rgba($color-black, .6);
+    box-shadow: 20px 20px 40px rgba($color-black, 0.6);
     transform: scale(1.025);
-    transition: transform .25s ease;
-  
+    transition: transform 0.25s ease;
+
     .quest__info {
       &:after {
-        background: linear-gradient(rgba(lighten($color-main, 4), 0) 60%, lighten($color-main, 4));
+        background: linear-gradient(
+          rgba(lighten($color-main, 4), 0) 60%,
+          lighten($color-main, 4)
+        );
       }
     }
   }
@@ -518,7 +534,7 @@ h2.quests--layout-option  {
     overflow: hidden;
 
     &:after {
-      content: '';
+      content: "";
       position: absolute;
       left: 0;
       bottom: 0;
@@ -526,30 +542,30 @@ h2.quests--layout-option  {
       height: 34px;
       background: linear-gradient(rgba($color-main, 0) 60%, $color-main);
     }
-      p {
-        @media (max-width: 900px) {
-          line-height: 2rem;
-          font-size: 1.4rem;
-        }
-        @media (max-width: 625px) {
-          line-height: 1.9rem;
-          font-size: 1.4rem;
-        }
-      }    
+    p {
+      @media (max-width: 900px) {
+        line-height: 2rem;
+        font-size: 1.4rem;
+      }
+      @media (max-width: 705px) {
+        line-height: 1.9rem;
+        font-size: 1.4rem;
+      }
+    }
   }
 
   a {
     color: $color-white;
   }
-  
+
   &__hero {
     position: relative;
     display: block;
-    width: 55%; 
+    width: 55%;
     background-size: cover;
     background-position: center;
     overflow: hidden;
-    
+
     @media all and (max-width: 727px) {
       width: 100%;
     }
@@ -559,14 +575,14 @@ h2.quests--layout-option  {
     }
 
     &:before {
-      content: '';
+      content: "";
       position: absolute;
       left: 0;
       top: 0;
       width: 101%;
       height: 101%;
       //background: $color-vertical-overlay;
-      opacity: .6;
+      opacity: 0.6;
     }
   }
 
@@ -576,7 +592,7 @@ h2.quests--layout-option  {
     button {
       color: $color-cta;
       font-size: 3rem;
-      text-shadow: 1px 1px 1px rgba(0,0,0,.4);
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
       cursor: pointer;
 
       &.heart__button--hearted {
@@ -593,19 +609,18 @@ h2.quests--layout-option  {
 
     @media all and (max-width: 727px) {
       width: 100%;
-      padding: 1rem; 
+      padding: 1rem;
     }
 
     .title {
       margin-left: -9px;
-      text-shadow: 5px 5px 10px rgba($color-black, .8);
-
+      text-shadow: 5px 5px 10px rgba($color-black, 0.8);
 
       @media all and (max-width: 900px) {
         margin-left: 0;
         font-size: 2rem;
       }
-      @media all and (max-width: 625px) {
+      @media all and (max-width: 705px) {
         margin-left: 0;
         font-size: 1.9rem;
       }

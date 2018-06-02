@@ -48,8 +48,9 @@ html
       .content
         block content
     .menu
-      .menu-btn
-        span.menu-btn__icon
+      .inner
+         .menu-btn
+           span.menu-btn__icon
 
     block scripts
       script(src=`https://maps.googleapis.com/maps/api/js?key=${process.env.MAP_KEY}&libraries=places&language=en`)

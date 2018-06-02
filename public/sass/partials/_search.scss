@@ -32,7 +32,11 @@
   }
 
   &__heading {
-    color: $color-white;
+    display: inline-block;
+    width: auto !important;
+    color: $color-main;
+    background: white;
+    padding: 12px 24px;
 
     @media screen and (max-width: 950px) {
       margin-left: 24px;

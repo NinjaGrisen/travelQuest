@@ -5,7 +5,7 @@
   display: flex;
   margin: 2rem 0;
   flex-wrap: wrap;
-  @media only screen and  (orientation : landscape) {
+  @media only screen and (orientation: landscape) {
     white-space: nowrap;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -27,11 +27,12 @@
   display: block;
   margin-right: 1rem;
   z-index: 2;
+  box-shadow: 4px 3px 3px rgba(0, 0, 0, 0.4);
 
   &:first-child {
     margin-left: 24px;
   }
-  
+
   &__choice {
     display: flex;
     justify-content: center;
@@ -53,7 +54,7 @@
         text-shadow: 4px 3px 8px $color-black;
 
         &:after {
-          content: '#';
+          content: "#";
           position: absolute;
           left: 1px;
           top: -20px;
@@ -74,15 +75,15 @@
     padding: 0 6px;
     position: relative;
     font-weight: 800;
-    transition: all .25s ease;
+    transition: all 0.25s ease;
 
     &:hover {
       background: $color-main;
       color: $color-white;
-      box-shadow: 6px 6px 15px rgba($color-black, .5);
-      transition: all .25s ease;
+      box-shadow: 6px 6px 15px rgba($color-black, 0.5);
+      transition: all 0.25s ease;
     }
-    
+
     &--active {
       background: $color-cta;
       color: $color-main;
