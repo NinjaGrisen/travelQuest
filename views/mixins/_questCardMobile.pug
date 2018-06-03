@@ -15,9 +15,11 @@ mixin questCardMobile(quest = {}, index = null)
             .quest__details
                 h2.title #{quest.name}
                 if index != null
-                    if index === 0
-                        .quest__info
-                            p= quest.description.split(' ').slice(0,35).join(' ').concat('...')
-                    else 
-                        .quest__info
-                            p= quest.description.split(' ').slice(0,15).join(' ').concat('...')
+                  .quest__info
+                    p= quest.description.split(' ').slice(0,15).join(' ').concat('...')
+                  //-   if index === 0
+                  //-       .quest__info
+                  //-           p= quest.description.split(' ').slice(0,35).join(' ').concat('...')
+                  //-   else 
+                  //-       .quest__info
+                  //-           p= quest.description.split(' ').slice(0,15).join(' ').concat('...')

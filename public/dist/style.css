@@ -2,7 +2,9 @@
 html {
   box-sizing: border-box; }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit; }
 
 img {
@@ -415,13 +417,6 @@ template {
 *:focus {
   outline: none !important; }
 
-* {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none; }
-
 html {
   font-size: 10px; }
 
@@ -785,7 +780,7 @@ input.button.update-account {
   height: 100%;
   background: #2a164b;
   z-index: 9999;
-  transition: all .25s ease; }
+  transition: all 0.25s ease; }
   .menu-sidebar--wrapper {
     display: -ms-flexbox;
     display: flex;
@@ -803,12 +798,12 @@ input.button.update-account {
     font-weight: 600;
     color: white;
     text-shadow: 3px 3px 10px #181818; }
-    .menu-sidebar__link--active span, .menu-sidebar__link:hover span {
+    .menu-sidebar__link--active span {
       padding: 0 10px;
       position: relative;
       color: white; }
-      .menu-sidebar__link--active span:after, .menu-sidebar__link:hover span:after {
-        content: '';
+      .menu-sidebar__link--active span:after {
+        content: "";
         position: absolute;
         left: 50%;
         width: 3px;
@@ -819,9 +814,30 @@ input.button.update-account {
         -ms-transform: translate(-50%, 3px);
             transform: translate(-50%, 3px);
         box-shadow: 9px 0px 0 #e8d223, -9px 0 0 #e8d223; }
-    .menu-sidebar__link--active:hover span:after, .menu-sidebar__link:hover:hover span:after {
-      background: white;
-      box-shadow: 9px 0px 0 white, -9px 0 0 white; }
+    @media (pointer: fine) {
+      .menu-sidebar__link--active:hover span:after {
+        background: white;
+        box-shadow: 9px 0px 0 white, -9px 0 0 white; } }
+    @media (pointer: fine) {
+      .menu-sidebar__link:hover span {
+        padding: 0 10px;
+        position: relative;
+        color: white; }
+        .menu-sidebar__link:hover span:after {
+          content: "";
+          position: absolute;
+          left: 50%;
+          width: 3px;
+          border-radius: 50%;
+          height: 3px;
+          top: 100%;
+          background: #e8d223;
+          -ms-transform: translate(-50%, 3px);
+              transform: translate(-50%, 3px);
+          box-shadow: 9px 0px 0 #e8d223, -9px 0 0 #e8d223; }
+      .menu-sidebar__link:hover:hover span:after {
+        background: white;
+        box-shadow: 9px 0px 0 white, -9px 0 0 white; } }
   .menu-sidebar__user-wrapper {
     display: -ms-flexbox;
     display: flex;
@@ -846,7 +862,7 @@ input.button.update-account {
       width: 60px;
       height: 60px; }
       .menu-sidebar__bookmarked img:hover {
-        opacity: .9; }
+        opacity: 0.9; }
     .menu-sidebar__bookmarked--active {
       background: #e8d223;
       color: #2a164b;
@@ -912,13 +928,13 @@ input.button.update-account {
     border-radius: 2px;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
-    transition: all .25s ease;
+    transition: all 0.25s ease;
     box-shadow: 11px -1px 0 #e8d223, 22px -1px 0 #e8d223, 32px -1px 0 #e8d223;
     width: 4px;
     height: 4px;
     border-radius: 50%; }
     .menu-btn__icon:after, .menu-btn__icon:before {
-      content: '';
+      content: "";
       position: absolute;
       left: 9px;
       top: -9px;
@@ -926,22 +942,22 @@ input.button.update-account {
       height: 3px;
       background: #e8d223;
       border-radius: 2px;
-      transition: all .25s ease; }
+      transition: all 0.25s ease; }
     .menu-btn__icon:after {
       top: 8px; }
     .menu-btn__icon__active {
       background: #2a164b;
-      transition: all .25s ease; }
+      transition: all 0.25s ease; }
       .menu-btn__icon__active:before {
         -ms-transform: rotate(45deg);
             transform: rotate(45deg);
         top: 0;
-        transition: all .25s ease; }
+        transition: all 0.25s ease; }
       .menu-btn__icon__active:after {
         -ms-transform: rotate(-45deg);
             transform: rotate(-45deg);
         top: 0;
-        transition: all .25s ease; }
+        transition: all 0.25s ease; }
 
 .menu-top {
   display: -ms-flexbox;
@@ -967,7 +983,7 @@ input.button.update-account {
     .quests {
       width: 100%; } }
   .quests--layout-option {
-    margin-top: 44vh;
+    margin-top: 24px;
     white-space: nowrap;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -976,60 +992,22 @@ input.button.update-account {
     flex-wrap: nowrap; }
     .quests--layout-option.only-slides {
       margin-top: 12vh; }
-      .quests--layout-option.only-slides.quests a:first-child {
-        min-width: 72vw;
-        width: 72vw;
-        margin: 0 6px;
-        position: static;
-        top: auto;
-        left: auto;
-        margin-left: 24px;
-        height: auto;
-        border: none; }
-        .quests--layout-option.only-slides.quests a:first-child .quest {
-          position: relative;
-          height: 84%;
-          min-height: 53vw;
-          border-radius: 7px;
-          overflow: hidden; }
-          .quests--layout-option.only-slides.quests a:first-child .quest__hero {
-            width: 100%;
-            height: 100%; }
-            .quests--layout-option.only-slides.quests a:first-child .quest__hero:before {
-              display: none; }
-          .quests--layout-option.only-slides.quests a:first-child .quest__details {
-            padding: 0 12px;
-            width: 100%;
-            overflow: hidden;
-            position: absolute;
-            width: auto;
-            bottom: 6px;
-            left: 0px;
-            border-radius: 7px;
-            position: absolute;
-            bottom: 12px;
-            width: 100%;
-            z-index: 999; }
-            .quests--layout-option.only-slides.quests a:first-child .quest__details .title {
-              color: #e8d223; }
-          .quests--layout-option.only-slides.quests a:first-child .quest__info {
-            display: none; }
       .quests--layout-option.only-slides.quests a:nth-child(2) {
         margin-left: 6px; }
-    .quests--layout-option.quests a:nth-child(2), .quests--layout-option.quests a:nth-child(3), .quests--layout-option.quests a:nth-child(4), .quests--layout-option.quests a:nth-child(5), .quests--layout-option.quests a:nth-child(5), .quests--layout-option.quests a:last-child {
+    .quests--layout-option.quests a:first-child, .quests--layout-option.quests a:nth-child(2), .quests--layout-option.quests a:nth-child(3), .quests--layout-option.quests a:nth-child(4), .quests--layout-option.quests a:nth-child(5), .quests--layout-option.quests a:nth-child(5), .quests--layout-option.quests a:last-child {
       min-width: 72vw;
       width: 72vw;
       margin: 0 6px; }
-      .quests--layout-option.quests a:nth-child(2) .quest, .quests--layout-option.quests a:nth-child(3) .quest, .quests--layout-option.quests a:nth-child(4) .quest, .quests--layout-option.quests a:nth-child(5) .quest, .quests--layout-option.quests a:nth-child(5) .quest, .quests--layout-option.quests a:last-child .quest {
+      .quests--layout-option.quests a:first-child .quest, .quests--layout-option.quests a:nth-child(2) .quest, .quests--layout-option.quests a:nth-child(3) .quest, .quests--layout-option.quests a:nth-child(4) .quest, .quests--layout-option.quests a:nth-child(5) .quest, .quests--layout-option.quests a:nth-child(5) .quest, .quests--layout-option.quests a:last-child .quest {
         position: relative;
         height: 84%;
-        min-height: 53vw;
+        min-height: 42vw;
         border-radius: 7px;
         overflow: hidden; }
-        .quests--layout-option.quests a:nth-child(2) .quest__hero, .quests--layout-option.quests a:nth-child(3) .quest__hero, .quests--layout-option.quests a:nth-child(4) .quest__hero, .quests--layout-option.quests a:nth-child(5) .quest__hero, .quests--layout-option.quests a:nth-child(5) .quest__hero, .quests--layout-option.quests a:last-child .quest__hero {
+        .quests--layout-option.quests a:first-child .quest__hero, .quests--layout-option.quests a:nth-child(2) .quest__hero, .quests--layout-option.quests a:nth-child(3) .quest__hero, .quests--layout-option.quests a:nth-child(4) .quest__hero, .quests--layout-option.quests a:nth-child(5) .quest__hero, .quests--layout-option.quests a:nth-child(5) .quest__hero, .quests--layout-option.quests a:last-child .quest__hero {
           width: 100%;
           height: 100%; }
-        .quests--layout-option.quests a:nth-child(2) .quest__details, .quests--layout-option.quests a:nth-child(3) .quest__details, .quests--layout-option.quests a:nth-child(4) .quest__details, .quests--layout-option.quests a:nth-child(5) .quest__details, .quests--layout-option.quests a:nth-child(5) .quest__details, .quests--layout-option.quests a:last-child .quest__details {
+        .quests--layout-option.quests a:first-child .quest__details, .quests--layout-option.quests a:nth-child(2) .quest__details, .quests--layout-option.quests a:nth-child(3) .quest__details, .quests--layout-option.quests a:nth-child(4) .quest__details, .quests--layout-option.quests a:nth-child(5) .quest__details, .quests--layout-option.quests a:nth-child(5) .quest__details, .quests--layout-option.quests a:last-child .quest__details {
           padding: 0 12px;
           width: 100%;
           overflow: hidden;
@@ -1046,7 +1024,7 @@ input.button.update-account {
           display: flex;
           -ms-flex-direction: row;
               flex-direction: row; }
-          .quests--layout-option.quests a:nth-child(2) .quest__details .title, .quests--layout-option.quests a:nth-child(3) .quest__details .title, .quests--layout-option.quests a:nth-child(4) .quest__details .title, .quests--layout-option.quests a:nth-child(5) .quest__details .title, .quests--layout-option.quests a:nth-child(5) .quest__details .title, .quests--layout-option.quests a:last-child .quest__details .title {
+          .quests--layout-option.quests a:first-child .quest__details .title, .quests--layout-option.quests a:nth-child(2) .quest__details .title, .quests--layout-option.quests a:nth-child(3) .quest__details .title, .quests--layout-option.quests a:nth-child(4) .quest__details .title, .quests--layout-option.quests a:nth-child(5) .quest__details .title, .quests--layout-option.quests a:nth-child(5) .quest__details .title, .quests--layout-option.quests a:last-child .quest__details .title {
             width: auto;
             padding: 6px;
             background: white;
@@ -1054,53 +1032,11 @@ input.button.update-account {
             text-shadow: unset;
             text-overflow: ellipsis;
             overflow: hidden; }
-        .quests--layout-option.quests a:nth-child(2) .quest__info, .quests--layout-option.quests a:nth-child(3) .quest__info, .quests--layout-option.quests a:nth-child(4) .quest__info, .quests--layout-option.quests a:nth-child(5) .quest__info, .quests--layout-option.quests a:nth-child(5) .quest__info, .quests--layout-option.quests a:last-child .quest__info {
+        .quests--layout-option.quests a:first-child .quest__info, .quests--layout-option.quests a:nth-child(2) .quest__info, .quests--layout-option.quests a:nth-child(3) .quest__info, .quests--layout-option.quests a:nth-child(4) .quest__info, .quests--layout-option.quests a:nth-child(5) .quest__info, .quests--layout-option.quests a:nth-child(5) .quest__info, .quests--layout-option.quests a:last-child .quest__info {
           display: none; }
-    .quests--layout-option.quests a:first-child {
-      position: absolute;
-      top: 51px;
-      left: 0;
-      margin-left: 1px;
-      height: 44vh;
-      border: none; }
-      .quests--layout-option.quests a:first-child .quest {
-        height: 100%;
-        border: none;
-        position: relative;
-        height: 44vh; }
-        .quests--layout-option.quests a:first-child .quest__details {
-          width: 100%;
-          margin-top: -57px;
-          z-index: 99; }
-          .quests--layout-option.quests a:first-child .quest__details h2 {
-            color: #e8d223;
-            font-size: 2.4rem;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis; }
-        .quests--layout-option.quests a:first-child .quest__hero {
-          width: 100%;
-          height: 37vh;
-          position: relative; }
-          .quests--layout-option.quests a:first-child .quest__hero:before, .quests--layout-option.quests a:first-child .quest__hero:after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: -1px;
-            height: 185px;
-            width: 100%;
-            top: auto;
-            background: linear-gradient(to bottom, rgba(42, 22, 75, 0), rgba(42, 22, 75, 0.7) 60%, #2a164b);
-            opacity: 1;
-            z-index: 99; }
-          .quests--layout-option.quests a:first-child .quest__hero:after {
-            display: none;
-            bottom: auto;
-            top: -1px;
-            background: linear-gradient(to top, rgba(42, 22, 75, 0), rgba(42, 22, 75, 0.7) 60%, #2a164b); }
     .quests--layout-option.quests a:last-child .quest__details .title {
       max-width: calc(100% - 24px); }
-    .quests--layout-option.quests a:nth-child(2) {
+    .quests--layout-option.quests a:first-child {
       margin-left: 24px; }
   .quests a {
     max-width: 900px; }
@@ -1972,6 +1908,9 @@ form.heart {
     text-shadow: 3px 2px 6px #181818; }
   .mobile .quest__hero .quest__action--heart {
     margin-left: 12px; }
+  .mobile .quest__hero--first {
+    height: 210px;
+    margin-top: -14px; }
 
 .mobile .tags.tags--city-page {
   width: 100%;

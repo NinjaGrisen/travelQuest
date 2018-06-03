@@ -9,9 +9,25 @@ block content
     .inner     
         if isMobile
             h2.quests--layout-option #{title}
+            a(href=`/quest/${quests[0].slug}`)   
+               .quest__hero.quest__hero--first(style=`background-image: url(/uploads/quest/${quests[0].photo || 'store.png'})`)
+                  .quest__actions
+                     if user
+                        .quest__action.quest__action--heart
+                           form.heart(method="POST" action=`/api/quests/${quests[0]._id}/heart`)
+                              - const heartStrings = user.bookmarked.map(obj => obj.toString())
+                              - const heartClass = heartStrings.includes(quests[0]._id.toString()) ? 'heart__button--hearted': ''
+                              button.heart__button(type="submit" name="heart" class=heartClass) 
+                                 span.heart__button--hearted--inactive ☆
+                                 span.heart__button--hearted--active ★
+               .quest__details
+                  h2.title #{quests[0].name}
+                  .quest__info
+                     p= quests[0].description.split(' ').slice(0,15).join(' ').concat('...')
             .quests.quests--layout-option
-                each quest, index in quests
-                    +questCardMobile(quest, index)
+               each quest, index in quests
+                  if index != 0
+                     +questCardMobile(quest, index)
             
         else
             h2 #{title}
