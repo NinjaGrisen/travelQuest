@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 41);
+/******/ 	return __webpack_require__(__webpack_require__.s = 43);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -407,7 +407,7 @@ exports.$$ = $$;
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(0);
-var normalizeHeaderName = __webpack_require__(34);
+var normalizeHeaderName = __webpack_require__(36);
 
 var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 var DEFAULT_CONTENT_TYPE = {
@@ -694,7 +694,7 @@ process.umask = function () {
 "use strict";
 
 
-module.exports = __webpack_require__(20);
+module.exports = __webpack_require__(22);
 
 /***/ }),
 /* 5 */
@@ -704,12 +704,12 @@ module.exports = __webpack_require__(20);
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(0);
-var settle = __webpack_require__(26);
-var buildURL = __webpack_require__(29);
-var parseHeaders = __webpack_require__(35);
-var isURLSameOrigin = __webpack_require__(33);
+var settle = __webpack_require__(28);
+var buildURL = __webpack_require__(31);
+var parseHeaders = __webpack_require__(37);
+var isURLSameOrigin = __webpack_require__(35);
 var createError = __webpack_require__(8);
-var btoa = typeof window !== 'undefined' && window.btoa && window.btoa.bind(window) || __webpack_require__(28);
+var btoa = typeof window !== 'undefined' && window.btoa && window.btoa.bind(window) || __webpack_require__(30);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -802,7 +802,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(31);
+      var cookies = __webpack_require__(33);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ? cookies.read(config.xsrfCookieName) : undefined;
@@ -919,7 +919,7 @@ module.exports = function isCancel(value) {
 "use strict";
 
 
-var enhanceError = __webpack_require__(25);
+var enhanceError = __webpack_require__(27);
 
 /**
  * Create an Error with the specified message, config, error code, and response.
@@ -1087,6 +1087,24 @@ exports.default = toggleDescription;
 
 
 Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+function displayDesktopQuest(nodeList) {
+  nodeList.addEventListener("click", function (e) {
+    e.preventDefault();
+  });
+}
+
+exports.default = displayDesktopQuest;
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
@@ -1096,7 +1114,7 @@ var _axios2 = _interopRequireDefault(_axios);
 
 var _bling = __webpack_require__(1);
 
-var _timers = __webpack_require__(39);
+var _timers = __webpack_require__(41);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1121,7 +1139,7 @@ function ajaxHeart(e) {
 exports.default = ajaxHeart;
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1154,7 +1172,7 @@ function loadPlaces() {
 exports.default = loadPlaces;
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1180,7 +1198,78 @@ function toggleMobileMenu(sideMenu, icon) {
 exports.default = mobileToggle;
 
 /***/ }),
-/* 17 */
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _bling = __webpack_require__(1);
+
+var _map = __webpack_require__(16);
+
+var _map2 = _interopRequireDefault(_map);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function setDefaultDesktopQuest(wrapper) {
+  var startElement = document.querySelector(".quests__quest-wrapper a");
+  var allElement = document.querySelectorAll(".quests__quest-wrapper a");
+  var title = void 0;
+  var img = void 0;
+  var tags = void 0;
+  var lng = void 0;
+  var lat = void 0;
+  var price = void 0;
+  var estimatedTime = void 0;
+  var city = void 0;
+  var address = void 0;
+  var description = void 0;
+
+  function setTemplateVariables(startElement) {
+    title = startElement.dataset.title;
+    img = startElement.dataset.img;
+    tags = JSON.parse(startElement.dataset.animals);
+    lng = startElement.dataset.lng;
+    lat = startElement.dataset.lat;
+    price = startElement.dataset.price;
+    estimatedTime = startElement.dataset.estimatedtime;
+    city = startElement.dataset.city;
+    address = startElement.dataset.address;
+    description = startElement.dataset.description;
+
+    (0, _bling.$)(".quests__desktop-wrapper").style.backgroundImage = "\n    linear-gradient(\n      rgba(43, 22, 75, 1), \n      rgba(43, 22, 75, 0.45) 36%, \n      rgb(44, 22, 75) 80%, \n      rgb(43, 22, 75)), \n      url(" + img + ")";
+
+    allElement.forEach(function (e) {
+      if (e.classList.contains("active")) {
+        e.classList.remove("active");
+      }
+    });
+
+    startElement.classList.add("active");
+
+    var template = "\n  <div>\n    <img src=\"" + img + "\"/>\n    <h2>" + title + "</h2>\n    <ul class=\"quests__quick-info\">\n    \n    " + (price ? "<li>Ca price: " + price + "</li>" : "") + "\n    " + (estimatedTime ? "<li>Ca time: " + estimatedTime + "</li>" : "") + "\n    " + (city ? "<li class=\"full-width\">City: " + city + "</li>" : "") + "\n    " + (address ? "<li class=\"full-width\">Address: " + address + "</li>" : "") + "\n    </ul>\n    <ul class=\"quests__tags\">\n    " + tags.join(0).split(0).map(function (tag, i) {
+      return "\n      <li><a href=/city/" + encodeURI(city) + "/tags/" + encodeURI(tag) + ">" + tag + "</a></li>\n    ";
+    }).join("") + "\n    </ul>\n  \n    <p>" + description + "</p>\n\n    <div id=\"map\" \n      data-lng=" + lng + " \n      data-lat=" + lat + "></div>\n  </div>\n  ";
+    wrapper.innerHTML = template;
+    (0, _map2.default)();
+  }
+
+  allElement.addEventListener("click", function (e) {
+    setTemplateVariables(e.target.closest("a"));
+  });
+
+  setTemplateVariables(startElement);
+}
+
+exports.default = setDefaultDesktopQuest;
+
+/***/ }),
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1208,7 +1297,7 @@ exports.toggle = function () {
 };
 
 /***/ }),
-/* 18 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1222,7 +1311,7 @@ var _axios = __webpack_require__(4);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _dompurify = __webpack_require__(37);
+var _dompurify = __webpack_require__(39);
 
 var _dompurify2 = _interopRequireDefault(_dompurify);
 
@@ -1301,13 +1390,13 @@ function typeAhead(search) {
 exports.default = typeAhead;
 
 /***/ }),
-/* 19 */
+/* 21 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 20 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1315,7 +1404,7 @@ exports.default = typeAhead;
 
 var utils = __webpack_require__(0);
 var bind = __webpack_require__(9);
-var Axios = __webpack_require__(22);
+var Axios = __webpack_require__(24);
 var defaults = __webpack_require__(2);
 
 /**
@@ -1350,14 +1439,14 @@ axios.create = function create(instanceConfig) {
 
 // Expose Cancel & CancelToken
 axios.Cancel = __webpack_require__(6);
-axios.CancelToken = __webpack_require__(21);
+axios.CancelToken = __webpack_require__(23);
 axios.isCancel = __webpack_require__(7);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(36);
+axios.spread = __webpack_require__(38);
 
 module.exports = axios;
 
@@ -1365,7 +1454,7 @@ module.exports = axios;
 module.exports.default = axios;
 
 /***/ }),
-/* 21 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1428,7 +1517,7 @@ CancelToken.source = function source() {
 module.exports = CancelToken;
 
 /***/ }),
-/* 22 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1436,10 +1525,10 @@ module.exports = CancelToken;
 
 var defaults = __webpack_require__(2);
 var utils = __webpack_require__(0);
-var InterceptorManager = __webpack_require__(23);
-var dispatchRequest = __webpack_require__(24);
-var isAbsoluteURL = __webpack_require__(32);
-var combineURLs = __webpack_require__(30);
+var InterceptorManager = __webpack_require__(25);
+var dispatchRequest = __webpack_require__(26);
+var isAbsoluteURL = __webpack_require__(34);
+var combineURLs = __webpack_require__(32);
 
 /**
  * Create a new instance of Axios
@@ -1519,7 +1608,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 module.exports = Axios;
 
 /***/ }),
-/* 23 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1577,14 +1666,14 @@ InterceptorManager.prototype.forEach = function forEach(fn) {
 module.exports = InterceptorManager;
 
 /***/ }),
-/* 24 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(0);
-var transformData = __webpack_require__(27);
+var transformData = __webpack_require__(29);
 var isCancel = __webpack_require__(7);
 var defaults = __webpack_require__(2);
 
@@ -1643,7 +1732,7 @@ module.exports = function dispatchRequest(config) {
 };
 
 /***/ }),
-/* 25 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1669,7 +1758,7 @@ module.exports = function enhanceError(error, config, code, response) {
 };
 
 /***/ }),
-/* 26 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1695,7 +1784,7 @@ module.exports = function settle(resolve, reject, response) {
 };
 
 /***/ }),
-/* 27 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1721,7 +1810,7 @@ module.exports = function transformData(data, headers, fns) {
 };
 
 /***/ }),
-/* 28 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1762,7 +1851,7 @@ function btoa(input) {
 module.exports = btoa;
 
 /***/ }),
-/* 29 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1829,7 +1918,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 };
 
 /***/ }),
-/* 30 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1848,7 +1937,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 };
 
 /***/ }),
-/* 31 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1907,7 +1996,7 @@ function nonStandardBrowserEnv() {
 }();
 
 /***/ }),
-/* 32 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1929,7 +2018,7 @@ module.exports = function isAbsoluteURL(url) {
 };
 
 /***/ }),
-/* 33 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1998,7 +2087,7 @@ function nonStandardBrowserEnv() {
 }();
 
 /***/ }),
-/* 34 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2016,7 +2105,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 };
 
 /***/ }),
-/* 35 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2061,7 +2150,7 @@ module.exports = function parseHeaders(headers) {
 };
 
 /***/ }),
-/* 36 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2095,7 +2184,7 @@ module.exports = function spread(callback) {
 };
 
 /***/ }),
-/* 37 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2908,7 +2997,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 });
 
 /***/ }),
-/* 38 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3096,10 +3185,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     attachTo.setImmediate = setImmediate;
     attachTo.clearImmediate = clearImmediate;
 })(typeof self === "undefined" ? typeof global === "undefined" ? undefined : global : self);
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(40), __webpack_require__(3)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(42), __webpack_require__(3)))
 
 /***/ }),
-/* 39 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3153,12 +3242,12 @@ exports._unrefActive = exports.active = function (item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(38);
+__webpack_require__(40);
 exports.setImmediate = setImmediate;
 exports.clearImmediate = clearImmediate;
 
 /***/ }),
-/* 40 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3188,13 +3277,13 @@ try {
 module.exports = g;
 
 /***/ }),
-/* 41 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(19);
+__webpack_require__(21);
 
 var _bling = __webpack_require__(1);
 
@@ -3202,11 +3291,11 @@ var _autocomplete = __webpack_require__(10);
 
 var _autocomplete2 = _interopRequireDefault(_autocomplete);
 
-var _typeAhead = __webpack_require__(18);
+var _typeAhead = __webpack_require__(20);
 
 var _typeAhead2 = _interopRequireDefault(_typeAhead);
 
-var _heart = __webpack_require__(14);
+var _heart = __webpack_require__(15);
 
 var _heart2 = _interopRequireDefault(_heart);
 
@@ -3214,7 +3303,7 @@ var _citySearch = __webpack_require__(11);
 
 var _citySearch2 = _interopRequireDefault(_citySearch);
 
-var _map = __webpack_require__(15);
+var _map = __webpack_require__(16);
 
 var _map2 = _interopRequireDefault(_map);
 
@@ -3222,7 +3311,7 @@ var _completedQuest = __webpack_require__(12);
 
 var _completedQuest2 = _interopRequireDefault(_completedQuest);
 
-var _mobileToggle = __webpack_require__(16);
+var _mobileToggle = __webpack_require__(17);
 
 var _mobileToggle2 = _interopRequireDefault(_mobileToggle);
 
@@ -3230,40 +3319,155 @@ var _descriptionToggle = __webpack_require__(13);
 
 var _descriptionToggle2 = _interopRequireDefault(_descriptionToggle);
 
-var _toggleCompletedQuest = __webpack_require__(17);
+var _toggleCompletedQuest = __webpack_require__(19);
 
 var _toggleCompletedQuest2 = _interopRequireDefault(_toggleCompletedQuest);
 
+var _desktopQuestView = __webpack_require__(14);
+
+var _desktopQuestView2 = _interopRequireDefault(_desktopQuestView);
+
+var _setDefaultDesktopQuest = __webpack_require__(18);
+
+var _setDefaultDesktopQuest2 = _interopRequireDefault(_setDefaultDesktopQuest);
+
+var _moveDesktopQuests = __webpack_require__(49);
+
+var _moveDesktopQuests2 = _interopRequireDefault(_moveDesktopQuests);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(0, _autocomplete2.default)((0, _bling.$)('#address'), (0, _bling.$)('#lat'), (0, _bling.$)('#lng'));
-(0, _autocomplete2.default)((0, _bling.$)('#city'), (0, _bling.$)('#cityLat'), (0, _bling.$)('#cityLng'));
-(0, _typeAhead2.default)((0, _bling.$)('.search'));
+(0, _autocomplete2.default)((0, _bling.$)("#address"), (0, _bling.$)("#lat"), (0, _bling.$)("#lng"));
+(0, _autocomplete2.default)((0, _bling.$)("#city"), (0, _bling.$)("#cityLat"), (0, _bling.$)("#cityLng"));
+(0, _typeAhead2.default)((0, _bling.$)(".search"));
 
-(0, _mobileToggle2.default)((0, _bling.$)('.menu-btn'), (0, _bling.$)('.menu-sidebar'), (0, _bling.$)('.menu-btn__icon'));
+(0, _mobileToggle2.default)((0, _bling.$)(".menu-btn"), (0, _bling.$)(".menu-sidebar"), (0, _bling.$)(".menu-btn__icon"));
 
-if ((0, _bling.$)('.single__description-toggle') && (0, _bling.$)('.single__description')) {
-    (0, _descriptionToggle2.default)((0, _bling.$)('.single__description-toggle'), (0, _bling.$)('.single__description'));
+if ((0, _bling.$)(".single__description-toggle") && (0, _bling.$)(".single__description")) {
+  (0, _descriptionToggle2.default)((0, _bling.$)(".single__description-toggle"), (0, _bling.$)(".single__description"));
+}
+
+if ((0, _bling.$)(".quests__quest-wrapper a")) {
+  (0, _desktopQuestView2.default)((0, _bling.$$)(".quests__quest-wrapper a"));
+}
+
+if ((0, _bling.$)(".quests__display")) {
+  (0, _setDefaultDesktopQuest2.default)((0, _bling.$)(".quests__display"));
+}
+
+if ((0, _bling.$)(".quests__quest-wrapper__move")) {
+  (0, _moveDesktopQuests2.default)((0, _bling.$$)(".quests__quest-wrapper__move"), (0, _bling.$$)(".quests__quest-wrapper a"));
 }
 
 _toggleCompletedQuest2.default.toggle();
 
-if ((0, _bling.$)('#complete-quest')) {
-    (0, _completedQuest2.default)((0, _bling.$)('#complete-quest'), (0, _bling.$)('#completed-quest-form'), (0, _bling.$)('.completed-quest__close'));
+if ((0, _bling.$)("#complete-quest")) {
+  (0, _completedQuest2.default)((0, _bling.$)("#complete-quest"), (0, _bling.$)("#completed-quest-form"), (0, _bling.$)(".completed-quest__close"));
 }
-if ((0, _bling.$)('#searchForm')) {
-    (0, _citySearch2.default)((0, _bling.$)('#searchForm'), (0, _bling.$$)('.city-search'));
-}
-
-if ((0, _bling.$)('#map')) {
-    (0, _map2.default)();
+if ((0, _bling.$)("#searchForm")) {
+  (0, _citySearch2.default)((0, _bling.$)("#searchForm"), (0, _bling.$$)(".city-search"));
 }
 
-var heartForms = (0, _bling.$$)('form.heart');
-heartForms.on('submit', _heart2.default);
+if ((0, _bling.$)("#map")) {
+  (0, _map2.default)();
+}
 
-var completeForms = (0, _bling.$$)('form.completet');
-completeForms.on('submit', _heart2.default);
+var heartForms = (0, _bling.$$)("form.heart");
+heartForms.on("submit", _heart2.default);
+
+var completeForms = (0, _bling.$$)("form.completet");
+completeForms.on("submit", _heart2.default);
+
+/***/ }),
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _bling = __webpack_require__(1);
+
+function moveDesktopQuests(arrows, questItems) {
+  //the size and margin of one element;
+  var size = 230;
+  var containerWidth = (0, _bling.$)(".quests__quest-wrapper").getBoundingClientRect().width;
+  var moveLength = void 0;
+  var currentMovePos = 0;
+  var displayAmount = void 0;
+
+  if (containerWidth >= size * 5) {
+    moveLength = 4 * size;
+    displayAmount = 4;
+  } else if (containerWidth >= size * 4) {
+    moveLength = 3 * size;
+    displayAmount = 3;
+  } else if (containerWidth >= size * 3) {
+    moveLength = 2 * size;
+    displayAmount = 3;
+  } else if (containerWidth >= size * 2) {
+    moveLength = 1 * size;
+    displayAmount = 4;
+  } else {
+    moveLength = size;
+    displayAmount = 5;
+  }
+
+  arrows.forEach(function (element) {
+    element.addEventListener("click", function (e) {
+      if (e.target.classList.contains("quests__quest-wrapper__move--right")) {
+        moveQuestItems("right");
+      } else {
+        moveQuestItems("left");
+      }
+    });
+  });
+
+  function moveQuestItems(direction) {
+    if (direction === "right") {
+      if (currentMovePos < size * displayAmount) {
+        currentMovePos += moveLength;
+      }
+    }
+    if (direction === "left") {
+      if (currentMovePos != 0) {
+        currentMovePos -= moveLength;
+      }
+    }
+    checkButtonVisability();
+
+    questItems.forEach(function (element) {
+      if (element.classList.contains("active")) {
+        element.classList.remove("active");
+      }
+      element.style.transform = "translateX(-" + currentMovePos + "px)";
+    });
+  }
+
+  function checkButtonVisability() {
+    if (currentMovePos > 0) {
+      document.querySelector(".quests__quest-wrapper__move--left").classList.remove("hidden");
+    } else if (currentMovePos === 0) {
+      document.querySelector(".quests__quest-wrapper__move--left").classList.add("hidden");
+    }
+
+    if (currentMovePos >= size * displayAmount) {
+      document.querySelector(".quests__quest-wrapper__move--right").classList.add("hidden");
+    } else {
+      document.querySelector(".quests__quest-wrapper__move--right").classList.remove("hidden");
+    }
+  }
+}
+
+exports.default = moveDesktopQuests;
 
 /***/ })
 /******/ ]);

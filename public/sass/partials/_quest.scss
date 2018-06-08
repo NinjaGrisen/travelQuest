@@ -10,20 +10,200 @@ h2.quests--layout-option {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: calc(100% - 24px);
   justify-content: space-between;
-  @media all and (max-width: 950px) {
-    width: 100%;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__display {
+    width: 300px;
+    height: calc(100vh - 43px);
+    overflow: scroll;
+
+    h2 {
+      margin: 5px 0 0 12px;
+      font-size: 33px;
+      letter-spacing: 1px;
+    }
+
+    p {
+      padding: 0 12px;
+      line-height: 1.8rem;
+      font-size: 1.3rem;
+    }
+
+    #map {
+      max-width: 100%;
+      left: 0;
+    }
+  }
+
+  &__quick-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+
+    li {
+      padding: 0 6px;
+      font-size: 12px;
+      text-align: center;
+      color: rgba(white, 0.8);
+
+      &.full-width {
+        width: 100%;
+        margin: 6px 0 0 0;
+        padding: 0;
+      }
+    }
+  }
+
+  &__tags {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    flex-wrap: wrap;
+    list-style: none;
+    li {
+      padding: 3px 12px;
+      border: 1px solid white;
+      margin-left: 8px;
+      margin-bottom: 8px;
+      border-radius: 11px;
+      text-transform: uppercase;
+      font-size: 11px;
+      color: rgba(white, 0.8);
+      line-height: 11px;
+
+      a {
+        color: white;
+      }
+    }
+  }
+
+  &__desktop-wrapper {
+    width: calc(100vw - 300px);
+    height: calc(100vh - 43px);
+    background: $color-main;
+    background-size: cover;
+    h2 {
+      color: $color-main;
+    }
+    & > h2 {
+      background: white;
+      align-self: flex-start;
+      margin-left: 24px;
+      padding: 6px 12px;
+    }
+  }
+
+  &__quest-wrapper {
+    position: relative;
+    margin-top: 24px;
+    padding-top: 12px;
+    white-space: nowrap;
+    overflow-x: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+
+    &__move {
+      position: absolute;
+      left: 6px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      background: white;
+      z-index: 99;
+      border-radius: 50%;
+      box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+
+      &--left,
+      &--right {
+        &:after {
+          content: "<";
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          color: $color-main;
+          text-align: center;
+          font-size: 30px;
+          line-height: 50px;
+          pointer-events: none;
+        }
+      }
+
+      &--right {
+        left: auto;
+        right: 6px;
+        &:after {
+          content: ">";
+        }
+      }
+    }
+
+    a {
+      display: block;
+      min-width: 200px;
+      margin: 0 0 0 30px;
+      height: 300px;
+      overflow: hidden;
+      border-radius: 5px;
+      transition: all 0.25s ease;
+
+      &.active {
+        box-shadow: 2px 2px 21px rgba(0, 0, 0, 0.7);
+        transform: scale(1.03);
+      }
+    }
+
+    .quest {
+      height: 100%;
+      position: relative;
+
+      &__hero {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+      }
+
+      &__details {
+        position: absolute;
+        left: 10px;
+        bottom: 10px;
+        max-width: calc(100% - 20px);
+        padding: 6px;
+        background: $color-white;
+        overflow: hidden;
+
+        .title {
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
   }
 
   &--layout-option {
-    margin-top: 24px;
+    margin: 24px 0;
     white-space: nowrap;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
+    width: 100%;
 
     &.only-slides {
       margin-top: 12vh;
@@ -56,6 +236,7 @@ h2.quests--layout-option {
             &__hero {
               width: 100%;
               height: 100%;
+              background-size: cover;
             }
             &__details {
               padding: 0 12px;
@@ -88,6 +269,10 @@ h2.quests--layout-option {
               display: none;
             }
           }
+        }
+        &:last-child {
+          min-width: calc(72vw + 24px);
+          padding-right: 24px;
         }
         //   &:first-child {
         //     position: absolute;
@@ -167,276 +352,276 @@ h2.quests--layout-option {
     }
   }
 
-  a {
-    max-width: 900px;
+  // a {
+  //   max-width: 900px;
 
-    &:first-child {
-      width: 100%;
-      min-width: 100%;
-      max-height: 630px;
-      height: calc(0.4 * 100vw);
-      margin-bottom: 24px;
+  //   &:first-child {
+  //     width: 100%;
+  //     min-width: 100%;
+  //     max-height: 630px;
+  //     height: calc(0.4 * 100vw);
+  //     margin-bottom: 24px;
 
-      @media all and (max-width: 950px) {
-        min-width: calc(100% - 48px);
-      }
+  //     @media all and (max-width: 950px) {
+  //       min-width: calc(100% - 48px);
+  //     }
 
-      @media (max-width: 705px) {
-        min-width: calc(100% - 24px);
-        margin: 0 12px 24px 12px;
-      }
+  //     @media (max-width: 705px) {
+  //       min-width: calc(100% - 24px);
+  //       margin: 0 12px 24px 12px;
+  //     }
 
-      .quest {
-        min-height: auto;
-        max-height: 630px;
-        height: calc(0.4 * 100vw);
+  //     .quest {
+  //       min-height: auto;
+  //       max-height: 630px;
+  //       height: calc(0.4 * 100vw);
 
-        &__hero {
-          width: 75%;
+  //       &__hero {
+  //         width: 75%;
 
-          @media all and (max-width: 727px) {
-            height: auto;
-          }
-          @media all and (max-width: 705px) {
-            width: 55%;
-          }
-        }
+  //         @media all and (max-width: 727px) {
+  //           height: auto;
+  //         }
+  //         @media all and (max-width: 705px) {
+  //           width: 55%;
+  //         }
+  //       }
 
-        &__details {
-          width: 25%;
-          display: flex;
-          flex-direction: column;
+  //       &__details {
+  //         width: 25%;
+  //         display: flex;
+  //         flex-direction: column;
 
-          @media all and (max-width: 727px) {
-            margin-top: 0;
-          }
-          @media all and (max-width: 705px) {
-            width: 45%;
-          }
-        }
-      }
-    }
+  //         @media all and (max-width: 727px) {
+  //           margin-top: 0;
+  //         }
+  //         @media all and (max-width: 705px) {
+  //           width: 45%;
+  //         }
+  //       }
+  //     }
+  //   }
 
-    &:nth-child(2),
-    &:nth-child(3) {
-      width: calc(50% - 12px);
-      @media screen and(max-width: 1260px) {
-        max-height: 300px;
-      }
+  //   &:nth-child(2),
+  //   &:nth-child(3) {
+  //     width: calc(50% - 12px);
+  //     @media screen and(max-width: 1260px) {
+  //       max-height: 300px;
+  //     }
 
-      @media all and (max-width: 705px) {
-        max-height: none;
-      }
+  //     @media all and (max-width: 705px) {
+  //       max-height: none;
+  //     }
 
-      .quest {
-        &__hero {
-          @media screen and(max-width: 1260px) {
-            width: 45%;
-          }
-          @media all and (max-width: 705px) {
-            width: 100%;
-            height: 150px;
-          }
-        }
-        &__info {
-          @media all and (max-width: 705px) {
-            max-height: 120px;
-          }
-        }
-        &__details {
-          @media screen and(max-width: 1260px) {
-            width: 55%;
-          }
-          @media all and (max-width: 705px) {
-            width: 100%;
-          }
-        }
-        &__info {
-          @media screen and(max-width: 1260px) {
-            overflow: hidden;
-          }
-        }
-      }
-    }
-    &:nth-child(2):last-child {
-      width: 100%;
-      max-width: 100%;
-      @media screen and(max-width: 950px) {
-        width: calc(100% - 48px);
-        max-width: calc(100% - 48px);
-      }
+  //     .quest {
+  //       &__hero {
+  //         @media screen and(max-width: 1260px) {
+  //           width: 45%;
+  //         }
+  //         @media all and (max-width: 705px) {
+  //           width: 100%;
+  //           height: 150px;
+  //         }
+  //       }
+  //       &__info {
+  //         @media all and (max-width: 705px) {
+  //           max-height: 120px;
+  //         }
+  //       }
+  //       &__details {
+  //         @media screen and(max-width: 1260px) {
+  //           width: 55%;
+  //         }
+  //         @media all and (max-width: 705px) {
+  //           width: 100%;
+  //         }
+  //       }
+  //       &__info {
+  //         @media screen and(max-width: 1260px) {
+  //           overflow: hidden;
+  //         }
+  //       }
+  //     }
+  //   }
+  //   &:nth-child(2):last-child {
+  //     width: 100%;
+  //     max-width: 100%;
+  //     @media screen and(max-width: 950px) {
+  //       width: calc(100% - 48px);
+  //       max-width: calc(100% - 48px);
+  //     }
 
-      @media all and (max-width: 705px) {
-        width: calc(100% - 24px);
-        max-width: calc(100% - 24px);
-      }
-    }
-    &:nth-child(3):last-child {
-      width: calc(66% - 12px);
-      max-width: calc(66% - 12px);
+  //     @media all and (max-width: 705px) {
+  //       width: calc(100% - 24px);
+  //       max-width: calc(100% - 24px);
+  //     }
+  //   }
+  //   &:nth-child(3):last-child {
+  //     width: calc(66% - 12px);
+  //     max-width: calc(66% - 12px);
 
-      @media screen and(max-width:1627px) {
-        width: calc(50% - 12px);
-        max-width: calc(50% - 12px);
-      }
+  //     @media screen and(max-width:1627px) {
+  //       width: calc(50% - 12px);
+  //       max-width: calc(50% - 12px);
+  //     }
 
-      @media (max-width: 950px) {
-        width: calc(50% - 36px);
-        margin: 0 24px 0 12px;
-      }
-    }
+  //     @media (max-width: 950px) {
+  //       width: calc(50% - 36px);
+  //       margin: 0 24px 0 12px;
+  //     }
+  //   }
 
-    @media all and (max-width: 950px) {
-      &:last-child {
-        min-width: calc(72vw + 24px) !important;
+  //   @media all and (max-width: 950px) {
+  //     &:last-child {
+  //       min-width: calc(72vw + 24px) !important;
 
-        .quest__hero {
-          margin-right: 24px;
-          border-radius: 7px;
-        }
-      }
-      &:nth-child(2) {
-        width: calc(50% - 36px);
-        margin: 0 12px 0 24px;
-      }
+  //       .quest__hero {
+  //         margin-right: 24px;
+  //         border-radius: 7px;
+  //       }
+  //     }
+  //     &:nth-child(2) {
+  //       width: calc(50% - 36px);
+  //       margin: 0 12px 0 24px;
+  //     }
 
-      &:nth-child(3) {
-        width: calc(50% - 36px);
-        margin: 0 24px 0 12px;
-      }
-    }
+  //     &:nth-child(3) {
+  //       width: calc(50% - 36px);
+  //       margin: 0 24px 0 12px;
+  //     }
+  //   }
 
-    @media all and (max-width: 705px) {
-      &:nth-child(2) {
-        width: calc(50% - 18px);
-        margin: 0 6px 0 12px;
-      }
+  //   @media all and (max-width: 705px) {
+  //     &:nth-child(2) {
+  //       width: calc(50% - 18px);
+  //       margin: 0 6px 0 12px;
+  //     }
 
-      &:nth-child(3) {
-        width: calc(50% - 18px);
-        margin: 0 12px 0 6px;
-      }
-    }
+  //     &:nth-child(3) {
+  //       width: calc(50% - 18px);
+  //       margin: 0 12px 0 6px;
+  //     }
+  //   }
 
-    &:nth-child(4) {
-      width: 100%;
-      max-width: 100%;
+  //   &:nth-child(4) {
+  //     width: 100%;
+  //     max-width: 100%;
 
-      @media all and (max-width: 705px) {
-        width: calc(100% - 24px);
-        margin: 0 12px;
-      }
+  //     @media all and (max-width: 705px) {
+  //       width: calc(100% - 24px);
+  //       margin: 0 12px;
+  //     }
 
-      .quest {
-        &__hero,
-        &__details {
-          width: 50%;
-        }
+  //     .quest {
+  //       &__hero,
+  //       &__details {
+  //         width: 50%;
+  //       }
 
-        &__hero {
-          @media all and (max-width: 727px) {
-            height: auto;
-          }
-        }
+  //       &__hero {
+  //         @media all and (max-width: 727px) {
+  //           height: auto;
+  //         }
+  //       }
 
-        &__details {
-          @media all and (max-width: 727px) {
-            margin-top: 0;
-          }
-        }
-      }
-    }
+  //       &__details {
+  //         @media all and (max-width: 727px) {
+  //           margin-top: 0;
+  //         }
+  //       }
+  //     }
+  //   }
 
-    &:nth-child(5),
-    &:nth-child(6) {
-      width: calc(50% - 12px);
-      max-width: calc(50% - 12px);
+  //   &:nth-child(5),
+  //   &:nth-child(6) {
+  //     width: calc(50% - 12px);
+  //     max-width: calc(50% - 12px);
 
-      @media screen and(max-width: 1260px) {
-        max-height: 300px;
-        .quest {
-          &__hero {
-            width: 45%;
-          }
+  //     @media screen and(max-width: 1260px) {
+  //       max-height: 300px;
+  //       .quest {
+  //         &__hero {
+  //           width: 45%;
+  //         }
 
-          &__details {
-            width: 55%;
-          }
-          &__info {
-            overflow: hidden;
-          }
-        }
-      }
-      @media all and (max-width: 705px) {
-        max-height: none;
-      }
+  //         &__details {
+  //           width: 55%;
+  //         }
+  //         &__info {
+  //           overflow: hidden;
+  //         }
+  //       }
+  //     }
+  //     @media all and (max-width: 705px) {
+  //       max-height: none;
+  //     }
 
-      .quest {
-        &__hero {
-          @media screen and(max-width: 1260px) {
-            width: 45%;
-          }
-          @media all and (max-width: 705px) {
-            width: 100%;
-            height: 150px;
-          }
-        }
-        &__info {
-          @media all and (max-width: 705px) {
-            max-height: 120px;
-          }
-        }
-        &__details {
-          @media screen and(max-width: 1260px) {
-            width: 55%;
-          }
-          @media all and (max-width: 705px) {
-            width: 100%;
-          }
-        }
-        &__info {
-          @media screen and(max-width: 1260px) {
-            overflow: hidden;
-          }
-        }
-      }
-    }
+  //     .quest {
+  //       &__hero {
+  //         @media screen and(max-width: 1260px) {
+  //           width: 45%;
+  //         }
+  //         @media all and (max-width: 705px) {
+  //           width: 100%;
+  //           height: 150px;
+  //         }
+  //       }
+  //       &__info {
+  //         @media all and (max-width: 705px) {
+  //           max-height: 120px;
+  //         }
+  //       }
+  //       &__details {
+  //         @media screen and(max-width: 1260px) {
+  //           width: 55%;
+  //         }
+  //         @media all and (max-width: 705px) {
+  //           width: 100%;
+  //         }
+  //       }
+  //       &__info {
+  //         @media screen and(max-width: 1260px) {
+  //           overflow: hidden;
+  //         }
+  //       }
+  //     }
+  //   }
 
-    &:nth-child(5):last-child {
-      width: 100%;
-      max-width: 100%;
-      @media screen and(max-width: 950px) {
-        width: calc(100% - 48px);
-        max-width: calc(100% - 48px);
-      }
-    }
+  //   &:nth-child(5):last-child {
+  //     width: 100%;
+  //     max-width: 100%;
+  //     @media screen and(max-width: 950px) {
+  //       width: calc(100% - 48px);
+  //       max-width: calc(100% - 48px);
+  //     }
+  //   }
 
-    @media all and (max-width: 950px) {
-      &:nth-child(5) {
-        width: calc(50% - 36px);
-        margin: 0 12px 0 24px;
-      }
+  //   @media all and (max-width: 950px) {
+  //     &:nth-child(5) {
+  //       width: calc(50% - 36px);
+  //       margin: 0 12px 0 24px;
+  //     }
 
-      &:nth-child(6) {
-        width: calc(50% - 36px);
-        margin: 0 24px 0 12px;
-      }
-    }
-    @media all and (max-width: 705px) {
-      &:nth-child(5) {
-        width: calc(50% - 18px);
-        margin: 0 6px 0 12px;
-      }
+  //     &:nth-child(6) {
+  //       width: calc(50% - 36px);
+  //       margin: 0 24px 0 12px;
+  //     }
+  //   }
+  //   @media all and (max-width: 705px) {
+  //     &:nth-child(5) {
+  //       width: calc(50% - 18px);
+  //       margin: 0 6px 0 12px;
+  //     }
 
-      &:nth-child(6) {
-        width: calc(50% - 18px);
-        margin: 0 12px 0 6px;
-      }
-    }
-    @media all and (max-width: 950px) {
-      margin: 0 24px;
-    }
-  }
+  //     &:nth-child(6) {
+  //       width: calc(50% - 18px);
+  //       margin: 0 12px 0 6px;
+  //     }
+  //   }
+  //   @media all and (max-width: 950px) {
+  //     margin: 0 24px;
+  //   }
+  // }
 }
 
 .mobile {
@@ -447,135 +632,135 @@ h2.quests--layout-option {
     transition: none;
   }
 }
-.quest {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  background: $color-main;
-  margin-bottom: 24px;
-  width: 100%;
-  min-height: 236px;
-  border: 1px solid lighten($color-main, 10);
-  color: $color-white;
-  height: calc(100% - 24px);
-  transition: transform 0.25s ease;
+// .quest {
+//   position: relative;
+//   display: flex;
+//   flex-direction: row;
+//   flex-wrap: wrap;
+//   background: $color-main;
+//   margin-bottom: 24px;
+//   width: 100%;
+//   min-height: 236px;
+//   border: 1px solid lighten($color-main, 10);
+//   color: $color-white;
+//   height: calc(100% - 24px);
+//   transition: transform 0.25s ease;
 
-  &:hover {
-    background: lighten($color-main, 4);
-    box-shadow: 20px 20px 40px rgba($color-black, 0.6);
-    transform: scale(1.025);
-    transition: transform 0.25s ease;
+//   &:hover {
+//     background: lighten($color-main, 4);
+//     box-shadow: 20px 20px 40px rgba($color-black, 0.6);
+//     transform: scale(1.025);
+//     transition: transform 0.25s ease;
 
-    .quest__info {
-      &:after {
-        background: linear-gradient(
-          rgba(lighten($color-main, 4), 0) 60%,
-          lighten($color-main, 4)
-        );
-      }
-    }
-  }
+//     .quest__info {
+//       &:after {
+//         background: linear-gradient(
+//           rgba(lighten($color-main, 4), 0) 60%,
+//           lighten($color-main, 4)
+//         );
+//       }
+//     }
+//   }
 
-  &__info {
-    position: relative;
-    flex-grow: 1;
-    overflow: hidden;
+//   &__info {
+//     position: relative;
+//     flex-grow: 1;
+//     overflow: hidden;
 
-    &:after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      height: 34px;
-      background: linear-gradient(rgba($color-main, 0) 60%, $color-main);
-    }
-    p {
-      @media (max-width: 900px) {
-        line-height: 2rem;
-        font-size: 1.4rem;
-      }
-      @media (max-width: 705px) {
-        line-height: 1.9rem;
-        font-size: 1.4rem;
-      }
-    }
-  }
+//     &:after {
+//       content: "";
+//       position: absolute;
+//       left: 0;
+//       bottom: 0;
+//       width: 100%;
+//       height: 34px;
+//       background: linear-gradient(rgba($color-main, 0) 60%, $color-main);
+//     }
+//     p {
+//       @media (max-width: 900px) {
+//         line-height: 2rem;
+//         font-size: 1.4rem;
+//       }
+//       @media (max-width: 705px) {
+//         line-height: 1.9rem;
+//         font-size: 1.4rem;
+//       }
+//     }
+//   }
 
-  a {
-    color: $color-white;
-  }
+//   a {
+//     color: $color-white;
+//   }
 
-  &__hero {
-    position: relative;
-    display: block;
-    width: 55%;
-    background-size: cover;
-    background-position: center;
-    overflow: hidden;
+//   &__hero {
+//     position: relative;
+//     display: block;
+//     width: 55%;
+//     background-size: cover;
+//     background-position: center;
+//     overflow: hidden;
 
-    @media all and (max-width: 727px) {
-      width: 100%;
-    }
+//     @media all and (max-width: 727px) {
+//       width: 100%;
+//     }
 
-    @media all and (max-width: 445px) {
-      height: 150px;
-    }
+//     @media all and (max-width: 445px) {
+//       height: 150px;
+//     }
 
-    &:before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 101%;
-      height: 101%;
-      //background: $color-vertical-overlay;
-      opacity: 0.6;
-    }
-  }
+//     &:before {
+//       content: "";
+//       position: absolute;
+//       left: 0;
+//       top: 0;
+//       width: 101%;
+//       height: 101%;
+//       //background: $color-vertical-overlay;
+//       opacity: 0.6;
+//     }
+//   }
 
-  &__actions {
-    position: absolute;
+//   &__actions {
+//     position: absolute;
 
-    button {
-      color: $color-cta;
-      font-size: 3rem;
-      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
-      cursor: pointer;
+//     button {
+//       color: $color-cta;
+//       font-size: 3rem;
+//       text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+//       cursor: pointer;
 
-      &.heart__button--hearted {
-        color: $color-cta;
-      }
-    }
-  }
+//       &.heart__button--hearted {
+//         color: $color-cta;
+//       }
+//     }
+//   }
 
-  &__details {
-    width: 45%;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
+//   &__details {
+//     width: 45%;
+//     padding: 2rem;
+//     display: flex;
+//     flex-direction: column;
 
-    @media all and (max-width: 727px) {
-      width: 100%;
-      padding: 1rem;
-    }
+//     @media all and (max-width: 727px) {
+//       width: 100%;
+//       padding: 1rem;
+//     }
 
-    .title {
-      margin-left: -9px;
-      text-shadow: 5px 5px 10px rgba($color-black, 0.8);
+//     .title {
+//       margin-left: -9px;
+//       text-shadow: 5px 5px 10px rgba($color-black, 0.8);
 
-      @media all and (max-width: 900px) {
-        margin-left: 0;
-        font-size: 2rem;
-      }
-      @media all and (max-width: 705px) {
-        margin-left: 0;
-        font-size: 1.9rem;
-      }
-    }
-  }
-}
+//       @media all and (max-width: 900px) {
+//         margin-left: 0;
+//         font-size: 2rem;
+//       }
+//       @media all and (max-width: 705px) {
+//         margin-left: 0;
+//         font-size: 1.9rem;
+//       }
+//     }
+//   }
+// }
 
 .quest {
   &__action {

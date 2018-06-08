@@ -50,7 +50,12 @@
     }
     &__details {
       .title {
+        margin: 12px 24px;
         text-shadow: 3px 2px 6px rgba($color-black, 1);
+      }
+      .quest__info {
+        margin: 0 24px;
+        color: white;
       }
     }
     &__hero {
@@ -59,6 +64,7 @@
       }
       &--first {
         height: 210px;
+        background-size: cover;
         margin-top: -14px;
       }
     }

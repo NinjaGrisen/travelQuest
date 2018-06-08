@@ -6,7 +6,7 @@ include mixins/_pagination
 
 
 block content
-    .inner     
+    div(class=isMobile ? '': 'inner--quest').inner
         if isMobile
             h2.quests--layout-option #{title}
             a(href=`/quest/${quests[0].slug}`)   
@@ -30,11 +30,18 @@ block content
                      +questCardMobile(quest, index)
             
         else
-            h2 #{title}
-            .quests
-                each quest, index in quests
-                    +questCard(quest, index)
-            
-            
+            .quests__wrapper
+                .quests__display
 
-        +pagination(page, pages, count, isMobile, '/quests/page')
+                .quests.quests__desktop-wrapper
+                    h2 #{title}
+                    .quests__quest-wrapper
+                        span.quests__quest-wrapper__move.quests__quest-wrapper__move--left.hidden
+                        each quest, index in quests
+                            +questCard(quest, index)
+                        span.quests__quest-wrapper__move.quests__quest-wrapper__move--right
+                    +pagination(page, pages, count, isMobile, '/quests/page')
+            
+            
+        if isMobile
+            +pagination(page, pages, count, isMobile, '/quests/page')
