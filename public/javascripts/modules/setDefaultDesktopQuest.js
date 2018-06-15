@@ -1,5 +1,6 @@
 import { $ } from "./bling";
 import loadPlaces from "./map";
+import SimpleScrollbar from "./simple-scrollbar.min.js";
 
 function setDefaultDesktopQuest(wrapper) {
   const startElement = document.querySelector(".quests__quest-wrapper a");
@@ -16,6 +17,7 @@ function setDefaultDesktopQuest(wrapper) {
   let description;
 
   function setTemplateVariables(startElement) {
+    console.log(wrapper);
     title = startElement.dataset.title;
     img = startElement.dataset.img;
     tags = JSON.parse(startElement.dataset.animals);
@@ -28,12 +30,16 @@ function setDefaultDesktopQuest(wrapper) {
     description = startElement.dataset.description;
 
     $(".quests__desktop-wrapper").style.backgroundImage = `
-    linear-gradient(
-      rgba(43, 22, 75, 1), 
-      rgba(43, 22, 75, 0.45) 36%, 
-      rgb(44, 22, 75) 80%, 
-      rgb(43, 22, 75)), 
-      url(${img})`;
+      linear-gradient(
+         rgb(43, 22, 75), 
+         rgba(43, 22, 75, 0.45) 36%, 
+         rgb(44, 22, 75) 80%, 
+         rgb(43, 22, 75)), 
+         linear-gradient(to left, rgb(42, 22, 75), 
+         rgba(42, 22, 75, 0) 36%, 
+         rgba(255, 0, 0, 0.42) 80%, 
+         rgb(42, 22, 75)), 
+         url(${img})`;
 
     allElement.forEach(e => {
       if (e.classList.contains("active")) {
@@ -54,19 +60,25 @@ function setDefaultDesktopQuest(wrapper) {
     ${city ? `<li class="full-width">City: ${city}</li>` : ""}
     ${address ? `<li class="full-width">Address: ${address}</li>` : ""}
     </ul>
+    ${
+      tags.length > 0
+        ? `
     <ul class="quests__tags">
-    ${tags
-      .join(0)
-      .split(0)
-      .map(
-        (tag, i) => `
-      <li><a href=/city/${encodeURI(city)}/tags/${encodeURI(
-          tag
-        )}>${tag}</a></li>
-    `
-      )
-      .join("")}
-    </ul>
+      ${tags
+        .join(0)
+        .split(0)
+        .map(
+          (tag, i) => `
+         <li><a href=/city/${encodeURI(city)}/tags/${encodeURI(
+            tag
+          )}>${tag}</a></li>
+      `
+        )
+        .join("")}
+    </ul>`
+        : ``
+    }
+    
   
     <p>${description}</p>
 
@@ -77,6 +89,11 @@ function setDefaultDesktopQuest(wrapper) {
   `;
     wrapper.innerHTML = template;
     loadPlaces();
+    //  wrapper.removeAttribute("ss-container");
+    //  wrapper.classList.remove("ss-container");
+
+    wrapper.setAttribute("ss-container", true);
+    //  SimpleScrollbar.initAll();
   }
 
   allElement.addEventListener("click", e => {

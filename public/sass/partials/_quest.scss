@@ -18,9 +18,9 @@ h2.quests--layout-option {
   }
 
   &__display {
-    width: 300px;
+    width: 400px;
+    min-width: 400px;
     height: calc(100vh - 43px);
-    overflow: scroll;
 
     h2 {
       margin: 5px 0 0 12px;
@@ -86,10 +86,12 @@ h2.quests--layout-option {
   }
 
   &__desktop-wrapper {
-    width: calc(100vw - 300px);
+    width: calc(100vw - 413px);
     height: calc(100vh - 43px);
     background: $color-main;
     background-size: cover;
+    max-width: 1415px;
+    margin: 0 auto;
     h2 {
       color: $color-main;
     }
@@ -103,6 +105,7 @@ h2.quests--layout-option {
 
   &__quest-wrapper {
     position: relative;
+    width: 100%;
     margin-top: 24px;
     padding-top: 12px;
     white-space: nowrap;

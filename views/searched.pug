@@ -37,3 +37,45 @@ block content
                         +questCard(quest, index)
         if quests[0] != undefined
             +pagination(page, pages, count, isMobile, `/city/${quests[0].location.city}/page`)
+
+
+//-------------
+//- extends layout
+
+//- include mixins/_questCard
+//- include mixins/_questCardMobile
+
+//- include mixins/_pagination
+
+
+//- block topContent
+//-     .content.content__background-map.single__hero.single__hero--map(style=`background-image: url(${h.staticMap(quests[0].location.cityCoodrinates) || ''})`)
+//-         h2.city__heading #{title}
+//-         ul.tags.tags--city-page
+//-             li.tag
+//-                 a.tag__link.city__link(href=`/city/${quests[0].location.city}` class=(param === undefined ? 'tag__link--active': ''))
+//-                     span.tag__text All
+//-             each tag in existingTags
+//-                 li.tag
+//-                     a.tag__link.city__link(href=`/city/${quests[0].location.city}/tags/${tag}` class=(tag === param ? 'tag__link--active': ''))
+//-                         span.tag__text= tag
+//- block content
+//-     .content
+//-     .container
+        
+        
+//-     .container
+//-         .quests
+//-             //- each quest, index in quests
+//-             //-     +questCard(quest, index)
+//-             if isMobile
+//-                 .quests.quests--layout-option.only-slides
+//-                     each quest, index in quests
+//-                         +questCardMobile(quest, index)
+                
+//-             else
+//-                 .quests
+//-                     each quest, index in quests
+//-                         +questCard(quest, index)
+//-         if quests[0] != undefined
+//-             +pagination(page, pages, count, isMobile, `/city/${quests[0].location.city}/page`)

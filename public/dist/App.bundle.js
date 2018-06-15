@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 43);
+/******/ 	return __webpack_require__(__webpack_require__.s = 44);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -75,7 +75,7 @@
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var bind = __webpack_require__(9);
+var bind = __webpack_require__(10);
 
 /*global toString:true*/
 
@@ -407,7 +407,7 @@ exports.$$ = $$;
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(0);
-var normalizeHeaderName = __webpack_require__(36);
+var normalizeHeaderName = __webpack_require__(37);
 
 var PROTECTION_PREFIX = /^\)\]\}',?\n/;
 var DEFAULT_CONTENT_TYPE = {
@@ -424,10 +424,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(5);
+    adapter = __webpack_require__(6);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(5);
+    adapter = __webpack_require__(6);
   }
   return adapter;
 }
@@ -694,22 +694,55 @@ process.umask = function () {
 "use strict";
 
 
-module.exports = __webpack_require__(22);
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+function loadPlaces() {
+    var map;
+    function initMap() {
+        var coord = {
+            lat: parseFloat(document.getElementById('map').dataset["lat"]),
+            lng: parseFloat(document.getElementById('map').dataset["lng"])
+        };
+
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: coord,
+            zoom: 18
+        });
+
+        var marker = new google.maps.Marker({
+            position: coord,
+            map: map
+        });
+    }
+    initMap();
+}
+
+exports.default = loadPlaces;
 
 /***/ }),
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+
+
+module.exports = __webpack_require__(23);
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(0);
-var settle = __webpack_require__(28);
-var buildURL = __webpack_require__(31);
-var parseHeaders = __webpack_require__(37);
-var isURLSameOrigin = __webpack_require__(35);
-var createError = __webpack_require__(8);
-var btoa = typeof window !== 'undefined' && window.btoa && window.btoa.bind(window) || __webpack_require__(30);
+var settle = __webpack_require__(29);
+var buildURL = __webpack_require__(32);
+var parseHeaders = __webpack_require__(38);
+var isURLSameOrigin = __webpack_require__(36);
+var createError = __webpack_require__(9);
+var btoa = typeof window !== 'undefined' && window.btoa && window.btoa.bind(window) || __webpack_require__(31);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -802,7 +835,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(33);
+      var cookies = __webpack_require__(34);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ? cookies.read(config.xsrfCookieName) : undefined;
@@ -876,7 +909,7 @@ module.exports = function xhrAdapter(config) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -902,7 +935,7 @@ Cancel.prototype.__CANCEL__ = true;
 module.exports = Cancel;
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -913,13 +946,13 @@ module.exports = function isCancel(value) {
 };
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var enhanceError = __webpack_require__(27);
+var enhanceError = __webpack_require__(28);
 
 /**
  * Create an Error with the specified message, config, error code, and response.
@@ -936,7 +969,7 @@ module.exports = function createError(message, config, code, response) {
 };
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -953,7 +986,7 @@ module.exports = function bind(fn, thisArg) {
 };
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -981,7 +1014,7 @@ function autocomplete(input, latInput, lngInput) {
 exports.default = autocomplete;
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1028,7 +1061,7 @@ function citySearch(searchForm, cities) {
 exports.default = citySearch;
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1058,7 +1091,7 @@ function closeForm(form) {
 exports.default = completedQuest;
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1080,7 +1113,7 @@ function toggleDescription(toggleButton, toggleContainer) {
 exports.default = toggleDescription;
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1098,7 +1131,7 @@ function displayDesktopQuest(nodeList) {
 exports.default = displayDesktopQuest;
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1108,13 +1141,13 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _axios = __webpack_require__(4);
+var _axios = __webpack_require__(5);
 
 var _axios2 = _interopRequireDefault(_axios);
 
 var _bling = __webpack_require__(1);
 
-var _timers = __webpack_require__(41);
+var _timers = __webpack_require__(42);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1137,39 +1170,6 @@ function ajaxHeart(e) {
 }
 
 exports.default = ajaxHeart;
-
-/***/ }),
-/* 16 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-function loadPlaces() {
-    var map;
-    function initMap() {
-        var coord = {
-            lat: parseFloat(document.getElementById('map').dataset["lat"]),
-            lng: parseFloat(document.getElementById('map').dataset["lng"])
-        };
-
-        map = new google.maps.Map(document.getElementById('map'), {
-            center: coord,
-            zoom: 18
-        });
-
-        var marker = new google.maps.Marker({
-            position: coord,
-            map: map
-        });
-    }
-    initMap();
-}
-
-exports.default = loadPlaces;
 
 /***/ }),
 /* 17 */
@@ -1210,9 +1210,99 @@ Object.defineProperty(exports, "__esModule", {
 
 var _bling = __webpack_require__(1);
 
-var _map = __webpack_require__(16);
+function moveDesktopQuests(arrows, questItems) {
+  //the size and margin of one element;
+  var size = 230;
+  var containerWidth = (0, _bling.$)(".quests__quest-wrapper").getBoundingClientRect().width;
+  var moveLength = void 0;
+  var currentMovePos = 0;
+  var displayAmount = void 0;
+
+  if (containerWidth >= size * 5) {
+    moveLength = 4 * size;
+    displayAmount = 4;
+  } else if (containerWidth >= size * 4) {
+    moveLength = 3 * size;
+    displayAmount = 3;
+  } else if (containerWidth >= size * 3) {
+    moveLength = 2 * size;
+    displayAmount = 3;
+  } else if (containerWidth >= size * 2) {
+    moveLength = 1 * size;
+    displayAmount = 4;
+  } else {
+    moveLength = size;
+    displayAmount = 5;
+  }
+
+  arrows.forEach(function (element) {
+    element.addEventListener("click", function (e) {
+      if (e.target.classList.contains("quests__quest-wrapper__move--right")) {
+        moveQuestItems("right");
+      } else {
+        moveQuestItems("left");
+      }
+    });
+  });
+
+  function moveQuestItems(direction) {
+    if (direction === "right") {
+      if (currentMovePos < size * displayAmount) {
+        currentMovePos += moveLength;
+      }
+    }
+    if (direction === "left") {
+      if (currentMovePos != 0) {
+        currentMovePos -= moveLength;
+      }
+    }
+    checkButtonVisability();
+
+    questItems.forEach(function (element) {
+      if (element.classList.contains("active")) {
+        element.classList.remove("active");
+      }
+      element.style.transform = "translateX(-" + currentMovePos + "px)";
+    });
+  }
+
+  function checkButtonVisability() {
+    if (currentMovePos > 0) {
+      document.querySelector(".quests__quest-wrapper__move--left").classList.remove("hidden");
+    } else if (currentMovePos === 0) {
+      document.querySelector(".quests__quest-wrapper__move--left").classList.add("hidden");
+    }
+
+    if (currentMovePos >= size * displayAmount) {
+      document.querySelector(".quests__quest-wrapper__move--right").classList.add("hidden");
+    } else {
+      document.querySelector(".quests__quest-wrapper__move--right").classList.remove("hidden");
+    }
+  }
+}
+
+exports.default = moveDesktopQuests;
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _bling = __webpack_require__(1);
+
+var _map = __webpack_require__(4);
 
 var _map2 = _interopRequireDefault(_map);
+
+var _simpleScrollbarMin = __webpack_require__(50);
+
+var _simpleScrollbarMin2 = _interopRequireDefault(_simpleScrollbarMin);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1231,6 +1321,7 @@ function setDefaultDesktopQuest(wrapper) {
   var description = void 0;
 
   function setTemplateVariables(startElement) {
+    console.log(wrapper);
     title = startElement.dataset.title;
     img = startElement.dataset.img;
     tags = JSON.parse(startElement.dataset.animals);
@@ -1242,7 +1333,7 @@ function setDefaultDesktopQuest(wrapper) {
     address = startElement.dataset.address;
     description = startElement.dataset.description;
 
-    (0, _bling.$)(".quests__desktop-wrapper").style.backgroundImage = "\n    linear-gradient(\n      rgba(43, 22, 75, 1), \n      rgba(43, 22, 75, 0.45) 36%, \n      rgb(44, 22, 75) 80%, \n      rgb(43, 22, 75)), \n      url(" + img + ")";
+    (0, _bling.$)(".quests__desktop-wrapper").style.backgroundImage = "\n      linear-gradient(\n         rgb(43, 22, 75), \n         rgba(43, 22, 75, 0.45) 36%, \n         rgb(44, 22, 75) 80%, \n         rgb(43, 22, 75)), \n         linear-gradient(to left, rgb(42, 22, 75), \n         rgba(42, 22, 75, 0) 36%, \n         rgba(255, 0, 0, 0.42) 80%, \n         rgb(42, 22, 75)), \n         url(" + img + ")";
 
     allElement.forEach(function (e) {
       if (e.classList.contains("active")) {
@@ -1252,11 +1343,16 @@ function setDefaultDesktopQuest(wrapper) {
 
     startElement.classList.add("active");
 
-    var template = "\n  <div>\n    <img src=\"" + img + "\"/>\n    <h2>" + title + "</h2>\n    <ul class=\"quests__quick-info\">\n    \n    " + (price ? "<li>Ca price: " + price + "</li>" : "") + "\n    " + (estimatedTime ? "<li>Ca time: " + estimatedTime + "</li>" : "") + "\n    " + (city ? "<li class=\"full-width\">City: " + city + "</li>" : "") + "\n    " + (address ? "<li class=\"full-width\">Address: " + address + "</li>" : "") + "\n    </ul>\n    <ul class=\"quests__tags\">\n    " + tags.join(0).split(0).map(function (tag, i) {
-      return "\n      <li><a href=/city/" + encodeURI(city) + "/tags/" + encodeURI(tag) + ">" + tag + "</a></li>\n    ";
-    }).join("") + "\n    </ul>\n  \n    <p>" + description + "</p>\n\n    <div id=\"map\" \n      data-lng=" + lng + " \n      data-lat=" + lat + "></div>\n  </div>\n  ";
+    var template = "\n  <div>\n    <img src=\"" + img + "\"/>\n    <h2>" + title + "</h2>\n    <ul class=\"quests__quick-info\">\n    \n    " + (price ? "<li>Ca price: " + price + "</li>" : "") + "\n    " + (estimatedTime ? "<li>Ca time: " + estimatedTime + "</li>" : "") + "\n    " + (city ? "<li class=\"full-width\">City: " + city + "</li>" : "") + "\n    " + (address ? "<li class=\"full-width\">Address: " + address + "</li>" : "") + "\n    </ul>\n    " + (tags.length > 0 ? "\n    <ul class=\"quests__tags\">\n      " + tags.join(0).split(0).map(function (tag, i) {
+      return "\n         <li><a href=/city/" + encodeURI(city) + "/tags/" + encodeURI(tag) + ">" + tag + "</a></li>\n      ";
+    }).join("") + "\n    </ul>" : "") + "\n    \n  \n    <p>" + description + "</p>\n\n    <div id=\"map\" \n      data-lng=" + lng + " \n      data-lat=" + lat + "></div>\n  </div>\n  ";
     wrapper.innerHTML = template;
     (0, _map2.default)();
+    //  wrapper.removeAttribute("ss-container");
+    //  wrapper.classList.remove("ss-container");
+
+    wrapper.setAttribute("ss-container", true);
+    //  SimpleScrollbar.initAll();
   }
 
   allElement.addEventListener("click", function (e) {
@@ -1269,7 +1365,7 @@ function setDefaultDesktopQuest(wrapper) {
 exports.default = setDefaultDesktopQuest;
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1297,7 +1393,7 @@ exports.toggle = function () {
 };
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1307,11 +1403,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _axios = __webpack_require__(4);
+var _axios = __webpack_require__(5);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _dompurify = __webpack_require__(39);
+var _dompurify = __webpack_require__(40);
 
 var _dompurify2 = _interopRequireDefault(_dompurify);
 
@@ -1390,21 +1486,21 @@ function typeAhead(search) {
 exports.default = typeAhead;
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(0);
-var bind = __webpack_require__(9);
-var Axios = __webpack_require__(24);
+var bind = __webpack_require__(10);
+var Axios = __webpack_require__(25);
 var defaults = __webpack_require__(2);
 
 /**
@@ -1438,15 +1534,15 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(6);
-axios.CancelToken = __webpack_require__(23);
-axios.isCancel = __webpack_require__(7);
+axios.Cancel = __webpack_require__(7);
+axios.CancelToken = __webpack_require__(24);
+axios.isCancel = __webpack_require__(8);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(38);
+axios.spread = __webpack_require__(39);
 
 module.exports = axios;
 
@@ -1454,13 +1550,13 @@ module.exports = axios;
 module.exports.default = axios;
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var Cancel = __webpack_require__(6);
+var Cancel = __webpack_require__(7);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -1517,7 +1613,7 @@ CancelToken.source = function source() {
 module.exports = CancelToken;
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1525,10 +1621,10 @@ module.exports = CancelToken;
 
 var defaults = __webpack_require__(2);
 var utils = __webpack_require__(0);
-var InterceptorManager = __webpack_require__(25);
-var dispatchRequest = __webpack_require__(26);
-var isAbsoluteURL = __webpack_require__(34);
-var combineURLs = __webpack_require__(32);
+var InterceptorManager = __webpack_require__(26);
+var dispatchRequest = __webpack_require__(27);
+var isAbsoluteURL = __webpack_require__(35);
+var combineURLs = __webpack_require__(33);
 
 /**
  * Create a new instance of Axios
@@ -1608,7 +1704,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 module.exports = Axios;
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1666,15 +1762,15 @@ InterceptorManager.prototype.forEach = function forEach(fn) {
 module.exports = InterceptorManager;
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(0);
-var transformData = __webpack_require__(29);
-var isCancel = __webpack_require__(7);
+var transformData = __webpack_require__(30);
+var isCancel = __webpack_require__(8);
 var defaults = __webpack_require__(2);
 
 /**
@@ -1732,7 +1828,7 @@ module.exports = function dispatchRequest(config) {
 };
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1758,13 +1854,13 @@ module.exports = function enhanceError(error, config, code, response) {
 };
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var createError = __webpack_require__(8);
+var createError = __webpack_require__(9);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -1784,7 +1880,7 @@ module.exports = function settle(resolve, reject, response) {
 };
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1810,7 +1906,7 @@ module.exports = function transformData(data, headers, fns) {
 };
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1851,7 +1947,7 @@ function btoa(input) {
 module.exports = btoa;
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1918,7 +2014,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 };
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1937,7 +2033,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 };
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1996,7 +2092,7 @@ function nonStandardBrowserEnv() {
 }();
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2018,7 +2114,7 @@ module.exports = function isAbsoluteURL(url) {
 };
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2087,7 +2183,7 @@ function nonStandardBrowserEnv() {
 }();
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2105,7 +2201,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 };
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2150,7 +2246,7 @@ module.exports = function parseHeaders(headers) {
 };
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2184,7 +2280,7 @@ module.exports = function spread(callback) {
 };
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2997,7 +3093,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 });
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3185,10 +3281,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     attachTo.setImmediate = setImmediate;
     attachTo.clearImmediate = clearImmediate;
 })(typeof self === "undefined" ? typeof global === "undefined" ? undefined : global : self);
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(42), __webpack_require__(3)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(43), __webpack_require__(3)))
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3242,12 +3338,12 @@ exports._unrefActive = exports.active = function (item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(40);
+__webpack_require__(41);
 exports.setImmediate = setImmediate;
 exports.clearImmediate = clearImmediate;
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3277,37 +3373,37 @@ try {
 module.exports = g;
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(21);
+__webpack_require__(22);
 
 var _bling = __webpack_require__(1);
 
-var _autocomplete = __webpack_require__(10);
+var _autocomplete = __webpack_require__(11);
 
 var _autocomplete2 = _interopRequireDefault(_autocomplete);
 
-var _typeAhead = __webpack_require__(20);
+var _typeAhead = __webpack_require__(21);
 
 var _typeAhead2 = _interopRequireDefault(_typeAhead);
 
-var _heart = __webpack_require__(15);
+var _heart = __webpack_require__(16);
 
 var _heart2 = _interopRequireDefault(_heart);
 
-var _citySearch = __webpack_require__(11);
+var _citySearch = __webpack_require__(12);
 
 var _citySearch2 = _interopRequireDefault(_citySearch);
 
-var _map = __webpack_require__(16);
+var _map = __webpack_require__(4);
 
 var _map2 = _interopRequireDefault(_map);
 
-var _completedQuest = __webpack_require__(12);
+var _completedQuest = __webpack_require__(13);
 
 var _completedQuest2 = _interopRequireDefault(_completedQuest);
 
@@ -3315,23 +3411,23 @@ var _mobileToggle = __webpack_require__(17);
 
 var _mobileToggle2 = _interopRequireDefault(_mobileToggle);
 
-var _descriptionToggle = __webpack_require__(13);
+var _descriptionToggle = __webpack_require__(14);
 
 var _descriptionToggle2 = _interopRequireDefault(_descriptionToggle);
 
-var _toggleCompletedQuest = __webpack_require__(19);
+var _toggleCompletedQuest = __webpack_require__(20);
 
 var _toggleCompletedQuest2 = _interopRequireDefault(_toggleCompletedQuest);
 
-var _desktopQuestView = __webpack_require__(14);
+var _desktopQuestView = __webpack_require__(15);
 
 var _desktopQuestView2 = _interopRequireDefault(_desktopQuestView);
 
-var _setDefaultDesktopQuest = __webpack_require__(18);
+var _setDefaultDesktopQuest = __webpack_require__(19);
 
 var _setDefaultDesktopQuest2 = _interopRequireDefault(_setDefaultDesktopQuest);
 
-var _moveDesktopQuests = __webpack_require__(49);
+var _moveDesktopQuests = __webpack_require__(18);
 
 var _moveDesktopQuests2 = _interopRequireDefault(_moveDesktopQuests);
 
@@ -3379,95 +3475,71 @@ var completeForms = (0, _bling.$$)("form.completet");
 completeForms.on("submit", _heart2.default);
 
 /***/ }),
-/* 44 */,
 /* 45 */,
 /* 46 */,
 /* 47 */,
 /* 48 */,
-/* 49 */
+/* 49 */,
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+!function (t, e) {
+  "object" == ( false ? "undefined" : _typeof(exports)) ? module.exports = e(window, document) : t.SimpleScrollbar = e(window, document);
+}(undefined, function (t, e) {
+  function s(t) {
+    Object.prototype.hasOwnProperty.call(t, "data-simple-scrollbar") || Object.defineProperty(t, "data-simple-scrollbar", { value: new o(t) });
+  }
+  function i(t, s) {
+    function i(t) {
+      var e = t.pageY - a;
+      a = t.pageY, n(function () {
+        s.el.scrollTop += e / s.scrollRatio;
+      });
+    }
+    function r() {
+      t.classList.remove("ss-grabbed"), e.body.classList.remove("ss-grabbed"), e.removeEventListener("mousemove", i), e.removeEventListener("mouseup", r);
+    }
+    var a;
+    t.addEventListener("mousedown", function (s) {
+      return a = s.pageY, t.classList.add("ss-grabbed"), e.body.classList.add("ss-grabbed"), e.addEventListener("mousemove", i), e.addEventListener("mouseup", r), !1;
+    });
+  }
+  function r(t) {
+    for (this.target = t, this.direction = window.getComputedStyle(this.target).direction, this.bar = '<div class="ss-scroll">', this.wrapper = e.createElement("div"), this.wrapper.setAttribute("class", "ss-wrapper"), this.el = e.createElement("div"), this.el.setAttribute("class", "ss-content"), "rtl" === this.direction && this.el.classList.add("rtl"), this.wrapper.appendChild(this.el); this.target.firstChild;) {
+      this.el.appendChild(this.target.firstChild);
+    }this.target.appendChild(this.wrapper), this.target.insertAdjacentHTML("beforeend", this.bar), this.bar = this.target.lastChild, i(this.bar, this), this.moveBar(), this.el.addEventListener("scroll", this.moveBar.bind(this)), this.el.addEventListener("mouseenter", this.moveBar.bind(this)), this.target.classList.add("ss-container");
+    var s = window.getComputedStyle(t);
+    "0px" === s.height && "0px" !== s["max-height"] && (t.style.height = s["max-height"]);
+  }
+  function a() {
+    for (var t = e.querySelectorAll("*[ss-container]"), i = 0; i < t.length; i++) {
+      s(t[i]);
+    }
+  }
+  var n = t.requestAnimationFrame || t.setImmediate || function (t) {
+    return setTimeout(t, 0);
+  };
+  r.prototype = {
+    moveBar: function moveBar(t) {
+      var e = this.el.scrollHeight,
+          s = this.el.clientHeight,
+          i = this;
+      this.scrollRatio = s / e;
+      var r = "rtl" === i.direction,
+          a = r ? i.target.clientWidth - i.bar.clientWidth + 18 : -1 * (i.target.clientWidth - i.bar.clientWidth);
+      n(function () {
+        i.scrollRatio >= 1 ? i.bar.classList.add("ss-hidden") : (i.bar.classList.remove("ss-hidden"), i.bar.style.cssText = "height:" + Math.max(100 * i.scrollRatio, 10) + "%; top:" + i.el.scrollTop / e * 100 + "%;right:" + a + "px;");
+      });
+    }
+  }, e.addEventListener("DOMContentLoaded", a), r.initEl = s, r.initAll = a;
+  var o = r;
+  return o;
 });
-
-var _bling = __webpack_require__(1);
-
-function moveDesktopQuests(arrows, questItems) {
-  //the size and margin of one element;
-  var size = 230;
-  var containerWidth = (0, _bling.$)(".quests__quest-wrapper").getBoundingClientRect().width;
-  var moveLength = void 0;
-  var currentMovePos = 0;
-  var displayAmount = void 0;
-
-  if (containerWidth >= size * 5) {
-    moveLength = 4 * size;
-    displayAmount = 4;
-  } else if (containerWidth >= size * 4) {
-    moveLength = 3 * size;
-    displayAmount = 3;
-  } else if (containerWidth >= size * 3) {
-    moveLength = 2 * size;
-    displayAmount = 3;
-  } else if (containerWidth >= size * 2) {
-    moveLength = 1 * size;
-    displayAmount = 4;
-  } else {
-    moveLength = size;
-    displayAmount = 5;
-  }
-
-  arrows.forEach(function (element) {
-    element.addEventListener("click", function (e) {
-      if (e.target.classList.contains("quests__quest-wrapper__move--right")) {
-        moveQuestItems("right");
-      } else {
-        moveQuestItems("left");
-      }
-    });
-  });
-
-  function moveQuestItems(direction) {
-    if (direction === "right") {
-      if (currentMovePos < size * displayAmount) {
-        currentMovePos += moveLength;
-      }
-    }
-    if (direction === "left") {
-      if (currentMovePos != 0) {
-        currentMovePos -= moveLength;
-      }
-    }
-    checkButtonVisability();
-
-    questItems.forEach(function (element) {
-      if (element.classList.contains("active")) {
-        element.classList.remove("active");
-      }
-      element.style.transform = "translateX(-" + currentMovePos + "px)";
-    });
-  }
-
-  function checkButtonVisability() {
-    if (currentMovePos > 0) {
-      document.querySelector(".quests__quest-wrapper__move--left").classList.remove("hidden");
-    } else if (currentMovePos === 0) {
-      document.querySelector(".quests__quest-wrapper__move--left").classList.add("hidden");
-    }
-
-    if (currentMovePos >= size * displayAmount) {
-      document.querySelector(".quests__quest-wrapper__move--right").classList.add("hidden");
-    } else {
-      document.querySelector(".quests__quest-wrapper__move--right").classList.remove("hidden");
-    }
-  }
-}
-
-exports.default = moveDesktopQuests;
 
 /***/ })
 /******/ ]);
